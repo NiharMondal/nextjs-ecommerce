@@ -21,7 +21,7 @@ function classNames(...classes: string[]) {
 export default function Navbar() {
 	const activeSegment = useSelectedLayoutSegment();
 	return (
-		<Disclosure as="nav" className="bg-gray-50 dark:bg-gray-800 py-2 sticky top-0 left-0 right-0 shadow-lg z-50">
+		<Disclosure as="nav" className="bg-gray-50 dark:bg-gray-800 py-2 sticky top-0 left-0 right-0 shadow-sm z-50 mb-8">
 			{({ open }) => (
 				<>
 					<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">

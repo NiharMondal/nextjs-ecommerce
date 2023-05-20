@@ -1,45 +1,74 @@
-import Banner from "@/components/Banner";
-import Category from "@/components/Category";
-import { featuredProuducts } from "@/mock/mockData";
-import Image from "next/image";
-import Link from "next/link";
+import Horizontal from "@/components/Horizontal";
+import Vertical from "@/components/Vertical";
+import Wrapper from "@/components/Wrapper";
+import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
 	return (
 		<section>
-			<Banner />
-			<Category />
-
-			<div className="mt-8">
-				<h3 className="uppercase text-center tracking-wider">
-					{" "}
-					featured products
-				</h3>
-				<div className="mt-8 lg:max-w-4xl xl:max-w-6xl mx-auto px-4">
-					<div className="grid grid-cols-2  md:grid-cols-4 gap-4 ">
-						{featuredProuducts.map((fp) => (
-							<div key={fp.name}>
-								<Link href={`product/${fp.id}`}>
-									<Image
-										src={fp.cover}
-										width={150}
-										height={150}
-										sizes="100vw"
-										alt="featured product"
-										className="bg-gray-100 dark:bg-gray-800 w-full rounded-sm shadow-sm"
-									/>
-									<div className="mt-4 font-bold">
-										<h3 className="hover:underline">
-											{fp.name}
-										</h3>
-										<p>${fp.price}</p>
-									</div>
-								</Link>
-							</div>
-						))}
+			<div className="flex items-center justify-between ">
+				<div>
+					<h1 className="capitalize">New In</h1>
+				</div>
+				<div className="flex gap-4">
+					<div className="flex items-center  font-bold border-2 border-teal-300 px-4 py-2">
+						<Bars3BottomLeftIcon className="h-6 w-6" />
+						<span className="ml-4">Filter</span>
+					</div>
+					<div className="flex items-center  justify-between font-bold  border-2 border-teal-300 px-4 py-2 w-full">
+						<Bars3BottomLeftIcon className="h-6 w-6" />
+						<span className="ml-4">Sort</span>
 					</div>
 				</div>
 			</div>
+
+			<Wrapper>
+				<Horizontal
+					avatar="/img/horizontal/first_horizontal.png"
+					title="Get Up To 50% off"
+					bg_color="#BCE7F0"
+				/>
+				<Vertical />
+				<Vertical />
+				<Horizontal
+					avatar="/img/horizontal/second_horizontal.png"
+					title="New Jordan Series"
+					subtitle="Best of daily wear"
+					bg_color="#dec8f3"
+				/>
+			</Wrapper>
+			<Wrapper>
+				<Vertical />
+				<Vertical />
+				<Horizontal
+					avatar="/img/horizontal/third_horizontal.png"
+					title="New In Knitwear"
+					subtitle="Layers On. Layers"
+					bg_color="#FBE285"
+				/>
+				<Horizontal
+					avatar="/img/horizontal/forth_horizontal.png"
+					title="New Season"
+					subtitle="Reflect your style"
+					bg_color="#F9CADA"
+				/>
+			</Wrapper>
+			<Wrapper>
+				<Horizontal
+					avatar="/img/horizontal/fifth_horizontal.png"
+					title="End of Season"
+					subtitle="Always sporty"
+					bg_color="#99E6B0"
+				/>
+				<Vertical />
+				<Vertical />
+				<Horizontal
+					avatar="/img/horizontal/sixth_horizontal.png"
+					title="New Accessoris"
+					subtitle="Complete your combine"
+					bg_color="#f3e6c8"
+				/>
+			</Wrapper>
 		</section>
 	);
 }

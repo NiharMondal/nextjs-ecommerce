@@ -40,15 +40,40 @@ const PRODUCT_NAME = [
 ];
 const PORDUCT_PRICE = [652, 736, 361, 298];
 type TProduct = {
-	id: string
+	id: string;
 	cover: string;
 	name: string;
 	price: number;
 	description: string;
-	category: string
+	category: string;
 };
 
-const randomChar = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x']
+const randomChar = [
+	"a",
+	"b",
+	"c",
+	"d",
+	"e",
+	"f",
+	"g",
+	"h",
+	"i",
+	"j",
+	"k",
+	"l",
+	"m",
+	"n",
+	"o",
+	"p",
+	"q",
+	"r",
+	"s",
+	"t",
+	"u",
+	"v",
+	"w",
+	"x",
+];
 
 export const featuredProuducts: TProduct[] = [...Array(4)].map((_, index) => {
 	const setIndex = index + 1;
@@ -58,7 +83,7 @@ export const featuredProuducts: TProduct[] = [...Array(4)].map((_, index) => {
 		name: PRODUCT_NAME[index],
 		price: PORDUCT_PRICE[index],
 		description: DESCRIPTION,
-		category:'featured'
+		category: "featured",
 	};
 });
 export const allProducts: TProduct[] = [...Array(24)].map((_, index) => {
@@ -69,6 +94,34 @@ export const allProducts: TProduct[] = [...Array(24)].map((_, index) => {
 		name: PRODUCT_NAME[index],
 		price: PORDUCT_PRICE[index],
 		description: DESCRIPTION,
-		category:'featured'
+		category: "featured",
 	};
 });
+
+export const SIDEBAR_NAV_ITEM = [
+	{
+		icon: "⚡",
+		title: "New In",
+		link: "/",
+	},
+	{
+		icon: "👚",
+		title: "Clothing",
+		link: "/category/clothing",
+	},
+	{
+		icon: "👟",
+		title: "Shoes",
+		link: "/category/shoes",
+	},
+	{
+		icon: "👜",
+		title: "Accessoris",
+		link: "/category/accessoris",
+	},
+	{
+		icon: "🎁",
+		title: "Gifts & Living",
+		link: "/category/gifts-and-living",
+	},
+];
