@@ -1,4 +1,4 @@
-import Provider from "../../theme/Provider";
+import NextThemeProvider from "../../theme/Provider";
 
 import Navbar from "../components/Navbar";
 import "./globals.css";
@@ -6,6 +6,8 @@ import { Nunito_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
 
 import SideNavbar from "@/components/SideNavbar";
+import ReduxProvider from "@/redux/prodiver";
+
 const nutino_sans = Nunito_Sans({ subsets: ["latin"] });
 
 export const metadata = {
@@ -24,15 +26,17 @@ export default function RootLayout({
 			className={`relative dark ${nutino_sans.className}`}
 			suppressHydrationWarning
 		>
-			<body className=" bg-gray-200 dark:bg-gray-700">
-				<Provider>
+			<body className=" bg-slate-200 dark:bg-gray-700">
+				<NextThemeProvider>
 					<Navbar />
-					<main className="px-4 max-w-full lg:max-w-7xl mx-auto flex flex-col md:flex-row gap-x-2">
+					<main className="px-4 max-w-full lg:max-w-7xl mx-auto flex flex-col md:flex-row gap-x-5">
 						<SideNavbar />
-						<section className="min-h-screen w-full">{children}</section>
+						<section className="min-h-screen w-full">
+							<ReduxProvider>{children}</ReduxProvider>
+						</section>
 					</main>
 					<Footer />
-				</Provider>
+				</NextThemeProvider>
 			</body>
 		</html>
 	);

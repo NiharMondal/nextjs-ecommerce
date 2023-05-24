@@ -2,30 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-	h1{
-		@apply text-xl md:text-3xl font-bold text-slate-700 dark:text-white
+@layer base {
+	h1 {
+		@apply text-xl font-extrabold md:text-3xl  text-slate-700 dark:text-white;
 	}
-	h2{
-		@apply text-lg md:text-2xl text-slate-700 dark:text-white
+	h2 {
+		@apply text-lg md:text-2xl text-slate-700 dark:text-white;
 	}
-	h3{
-		@apply text-base md:text-xl text-slate-700 dark:text-white
+	h3 {
+		@apply text-base font-bold md:text-xl text-slate-700 dark:text-white;
 	}
-
+	h4 {
+		@apply text-base font-bold md:text-base text-slate-700 dark:text-white;
+	}
 }
 
-
 @layer components {
-	.banner {
-		background-image: url("/img/banner.webp");
-		height: 500px;
-		width: 100%;
-		border-radius: 0 0 1rem 1rem;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: left center;
+	.product-card {
+		@apply bg-slate-100 dark:bg-gray-600;
 	}
-	
+	.btn {
+		@apply text-center w-full py-3 border border-gray-300  uppercase bg-emerald-500 hover:bg-emerald-400 rounded-md text-white font-bold tracking-wider transition duration-100 delay-75;
+	}
 }

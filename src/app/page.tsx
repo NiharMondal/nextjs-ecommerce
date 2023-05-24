@@ -1,6 +1,6 @@
-import Horizontal from "@/components/Horizontal";
-import Vertical from "@/components/Vertical";
-import Wrapper from "@/components/Wrapper";
+import Horizontal from "@/components/home/Horizontal";
+import Vertical from "@/components/home/Vertical";
+import Wrapper from "@/components/home/Wrapper";
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
@@ -28,8 +28,16 @@ export default function Home() {
 					title="Get Up To 50% off"
 					bg_color="#BCE7F0"
 				/>
-				<Vertical />
-				<Vertical />
+				<Vertical
+					avatar="/img/vertical/vertical_1.png"
+					title="Hugo Boss Leather Jacket"
+					price={300}
+				/>
+				<Vertical
+					avatar="/img/vertical/vertical_2.png"
+					title="Polka-dotted slip dress"
+					price={200}
+				/>
 				<Horizontal
 					avatar="/img/horizontal/second_horizontal.png"
 					title="New Jordan Series"
@@ -38,8 +46,16 @@ export default function Home() {
 				/>
 			</Wrapper>
 			<Wrapper>
-				<Vertical />
-				<Vertical />
+				<Vertical
+					avatar="/img/vertical/vertical_3.png"
+					title="NiceJeans Denim Shirt"
+					price={170}
+				/>
+				<Vertical
+					avatar="/img/vertical/vertical_4.png"
+					title="CoolBrand Blouse"
+					price={120}
+				/>
 				<Horizontal
 					avatar="/img/horizontal/third_horizontal.png"
 					title="New In Knitwear"
@@ -60,8 +76,16 @@ export default function Home() {
 					subtitle="Always sporty"
 					bg_color="#99E6B0"
 				/>
-				<Vertical />
-				<Vertical />
+				<Vertical
+					avatar="/img/vertical/vertical_5.png"
+					title="Branded White Dress"
+					price={130}
+				/>
+				<Vertical
+					avatar="/img/vertical/vertical_6.png"
+					title="ClothWorld Hooded Yellow"
+					price={190}
+				/>
 				<Horizontal
 					avatar="/img/horizontal/sixth_horizontal.png"
 					title="New Accessoris"
