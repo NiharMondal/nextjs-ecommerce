@@ -2,11 +2,16 @@
 
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+	Bars3Icon,
+	XMarkIcon,
+	ShoppingCartIcon,
+} from "@heroicons/react/24/outline";
 
 import { useSelectedLayoutSegment } from "next/navigation";
 import Link from "next/link";
 import ToggleTheme from "../../theme/ToggleTheme";
+import { useAppSelector } from "@/redux/hooks";
 
 const navigation = [
 	{ name: "Dashboard", href: "/", current: null },
@@ -20,8 +25,12 @@ function classNames(...classes: string[]) {
 }
 export default function Navbar() {
 	const activeSegment = useSelectedLayoutSegment();
+	const cartLength = useAppSelector(state=>state.cart.cartItems)
 	return (
-		<Disclosure as="nav" className="bg-gray-50 dark:bg-gray-800 py-2 sticky top-0 left-0 right-0 shadow-sm z-50 mb-8">
+		<Disclosure
+			as="nav"
+			className="bg-gray-50 dark:bg-gray-800 py-2 sticky top-0 left-0 right-0 shadow-sm z-50 mb-8"
+		>
 			{({ open }) => (
 				<>
 					<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -79,7 +88,17 @@ export default function Navbar() {
 									</div>
 								</div>
 							</div>
+							<div className="relative">
+								<Link href="/cart">
+									<div className="flex items-center relative">
+										<span>Cart</span>
+										<ShoppingCartIcon className="h-6 w-6 ml-2 pr-2" />
+										<div className=" ">{cartLength.length}</div>
+									</div>
+								</Link>
 
+								{/* <Cart/> */}
+							</div>
 							<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 								{/* Profile dropdown */}
 								<Menu as="div" className="relative ml-3">

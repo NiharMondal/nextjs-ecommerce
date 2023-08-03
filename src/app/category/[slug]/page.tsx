@@ -3,18 +3,8 @@ import { Metadata } from "next";
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 import { FAKE_PRODUCTS } from "@/mock/productData";
 import Product from "@/components/Product";
-export type Product = {
-	id: number;
-	title: string;
-	price: number;
-	description: string;
-	category: string;
-	image: string;
-	rating: {
-		rate: number;
-		count: number;
-	};
-};
+import { TProduct } from "@/types";
+
 
 export const metadata: Metadata = {
 	title: "myCommerce | Category",
@@ -22,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function page({ params }: { params: { slug: string } }) {
-	const filterProduct: Product[] = FAKE_PRODUCTS.filter(
+	const filterProduct: TProduct[] = FAKE_PRODUCTS.filter(
 		(product) => product.category === params.slug
 	);
 

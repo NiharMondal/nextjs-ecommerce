@@ -28,14 +28,11 @@ export default function RootLayout({
 		>
 			<body className=" bg-slate-200 dark:bg-gray-700">
 				<NextThemeProvider>
-					<Navbar />
-					<main className="px-4 max-w-full lg:max-w-7xl mx-auto flex flex-col md:flex-row gap-x-5">
-						<SideNavbar />
-						<section className="min-h-screen w-full">
-							<ReduxProvider>{children}</ReduxProvider>
-						</section>
-					</main>
-					<Footer />
+					<ReduxProvider>
+						<Navbar />
+						<main className="container mx-auto ">{children}</main>
+						<Footer />
+					</ReduxProvider>
 				</NextThemeProvider>
 			</body>
 		</html>

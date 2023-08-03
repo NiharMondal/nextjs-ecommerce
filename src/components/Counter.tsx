@@ -7,7 +7,7 @@ import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { decrement, increment ,incrementByAmount} from "../redux/slice/counter";
 
 export function Counter() {
-	const count: number = useAppSelector((state) => state.counter.value);
+	// const count = useAppSelector((state) => state.counter.value);
 	const dispatch = useAppDispatch();
 
 	return (

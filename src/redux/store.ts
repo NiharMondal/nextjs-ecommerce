@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./slice/counter";
+import CartReducer from "../redux/slice/cartSlice";
 
 export const store = configureStore({
 	reducer: {
-      counter: counterReducer
-   },
+		cart: CartReducer,
+	},
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

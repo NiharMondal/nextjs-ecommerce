@@ -2,12 +2,22 @@
 module.exports = {
 	darkMode: "class",
 	content: [
-		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+		
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
-		extend: {},
+		extend: {
+			container: {
+				padding: {
+					DEFAULT: ".8rem",
+					sm: "2rem",
+					lg: "5rem",
+					xl: "6rem",
+					"2xl": "7rem",
+				},
+			},
+		},
 	},
 	plugins: [require("tailwind-scrollbar-hide")],
 };
