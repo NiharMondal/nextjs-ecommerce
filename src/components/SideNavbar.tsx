@@ -1,24 +1,32 @@
-import { SIDEBAR_NAV_ITEM } from "@/mock/mockData";
-import Link from "next/link";
 
+"use client"
+import { SIDEBAR_NAV_ITEM } from "@/mock/mockData";
+
+import { useRouter } from "next/navigation";
 
 export default function SideNavbar() {
+	const router = useRouter()
 	return (
-		<nav className="pl-3">
+		<nav className="pl-3 mb-8">
 			<h1 className="pt-1 mb-4 md:mb-8">Explore</h1>
-			<div className="flex flex-row  items-center md:items-start md:flex-col md:w-full overflow-x-auto scrollbar-hide">
+			<ul className="flex flex-row  items-center md:items-start md:flex-col overflow-x-auto scrollbar-hide md:space-y-4  pl-2 space-x-2 md:space-x-0">
 				{SIDEBAR_NAV_ITEM.map((item) => (
-					<div className="mb-8 w-full pl-2" key={item.title}>
-						<Link
-							href={item.link === "category/new-in" ? "/" : item.link}
-							className=" flex flex-col md:flex-row text-center w-14 last:w-36 md:last:w-auto md:w-full  font-semibold transition duration-100  active:text-blue-400 transform hover:scale-110 cursor-pointer last:mr-5 "
-						>
+					<li
+						key={item.title}
+						className="w-full transition-all hover:scale-105  hover:text-violet-600 hover:font-medium  duration-100 dark:hover:text-emerald-400 "
+						onClick={() =>
+							router.push(`/products?category=${item.category}`)
+						}
+					>
+						<div className=" inline-block text-center md:inline-flex cursor-pointer">
 							{item.icon}
-							<span className="md:ml-3"> {item.title}</span>
-						</Link>
-					</div>
+							<span className="flex flex-col md:flex-row text-center pl-3 md:pl-1 min-w-max tracking-wide ">
+								{item.title}
+							</span>
+						</div>
+					</li>
 				))}
-			</div>
+			</ul>
 		</nav>
 	);
 }

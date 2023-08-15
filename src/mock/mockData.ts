@@ -1,28 +1,27 @@
-
 export const SIDEBAR_NAV_ITEM = [
 	{
 		icon: "⚡",
 		title: "New In",
-		link: "/",
+		category: "featured",
 	},
 	{
 		icon: "👚",
 		title: "Electronics",
-		link: "/category/electronics",
+		category: "electronics",
 	},
 	{
 		icon: "👟",
 		title: "Jewelery",
-		link: "/category/jewelery",
+		category: "jewelery",
 	},
 	{
 		icon: "👜",
 		title: "Men's Clothing",
-		link: "/category/men-clothing",
+		category: "men's clothing",
 	},
 	{
 		icon: "🎁",
 		title: "Women's Clothing",
-		link: "/category/women-clothing",
+		category: "women's clothing",
 	},
 ];

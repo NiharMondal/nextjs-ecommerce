@@ -1,14 +1,15 @@
-import NextThemeProvider from "../../theme/Provider";
+import NextThemeProvider from "../components/providers/theme/Provider";
 
-import Navbar from "../components/Navbar";
+import SecondNavbar from '../components/shared/Navbar'
 import "./globals.css";
 import { Nunito_Sans } from "next/font/google";
-import Footer from "@/components/Footer";
-
-import SideNavbar from "@/components/SideNavbar";
-import ReduxProvider from "@/redux/prodiver";
+import Footer from "@/components/shared/Footer";
+import ReduxProvider from "@/components/providers/prodiver";
 
 const nutino_sans = Nunito_Sans({ subsets: ["latin"] });
+
+import ToastProvider from "@/components/react-toastify/ToastProvider";
+import NextSession from "@/components/providers/NextSession";
 
 export const metadata = {
 	title: "myCommerce",
@@ -27,13 +28,20 @@ export default function RootLayout({
 			suppressHydrationWarning
 		>
 			<body className=" bg-slate-200 dark:bg-gray-700">
-				<NextThemeProvider>
-					<ReduxProvider>
-						<Navbar />
-						<main className="container mx-auto ">{children}</main>
-						<Footer />
-					</ReduxProvider>
-				</NextThemeProvider>
+				<NextSession>
+					<NextThemeProvider>
+						<ReduxProvider>
+							<ToastProvider>
+								{/* <Navbar /> */}
+								<SecondNavbar/>
+								<main className="container mx-auto min-h-[510px]">
+									{children}
+								</main>
+								<Footer />
+							</ToastProvider>
+						</ReduxProvider>
+					</NextThemeProvider>
+				</NextSession>
 			</body>
 		</html>
 	);

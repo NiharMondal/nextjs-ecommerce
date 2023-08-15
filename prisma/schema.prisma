@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,13 +7,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+type ProductsRating {
+  count Int
+  /// Multiple data types found: Float: 95%, Int: 5% out of 20 sampled entries
+  rate  Int
+}
+
 model Products {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  avatar      String[]
-  name        String
-  price       Int
+  id          String         @id @default(auto()) @map("_id") @db.ObjectId
   category    String
   description String
-  colors      String[]
-  sizes       String[]
+  image       String
+  /// Multiple data types found: Float: 65%, Int: 35% out of 20 sampled entries
+  price       Int
+  rating      ProductsRating
+  title       String
+}
+
+model Users {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  email    String @unique
+  password String
+  username String
 }

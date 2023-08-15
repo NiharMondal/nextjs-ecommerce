@@ -4,17 +4,20 @@
 
 @layer base {
 	h1 {
-		@apply text-xl font-extrabold md:text-3xl  text-slate-700 dark:text-white;
+		@apply text-xl font-extrabold md:text-3xl;
 	}
 	h2 {
-		@apply text-lg md:text-2xl text-slate-700 dark:text-white;
+		@apply text-xl md:text-2xl font-bold tracking-wider;
 	}
 	h3 {
-		@apply text-base font-bold md:text-xl text-slate-700 dark:text-white;
+		@apply text-base font-bold md:text-xl;
 	}
 	h4 {
 		@apply text-base font-bold md:text-base text-slate-700 dark:text-white;
 	}
+
+	
+	
 }
 
 @layer components {
@@ -22,6 +25,15 @@
 		@apply bg-slate-100 dark:bg-gray-600;
 	}
 	.btn {
-		@apply text-center w-full py-3 border border-gray-300  uppercase bg-emerald-500 hover:bg-emerald-400 rounded-md text-white font-bold tracking-wider transition duration-100 delay-75;
+		@apply text-center w-full py-3 border border-gray-300  uppercase bg-violet-500 hover:bg-violet-600 rounded text-white tracking-wider transition duration-100 delay-75;
 	}
+
+	.btn-link{
+		@apply px-4 py-2 uppercase cursor-pointer bg-teal-400 hover:bg-teal-500  text-white tracking-wide rounded
+	}
+
+	.form-input{
+		@apply w-full py-2 rounded dark:bg-gray-200 px-2 text-gray-600
+	}
+
 }

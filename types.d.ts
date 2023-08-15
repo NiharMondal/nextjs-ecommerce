@@ -1,5 +1,6 @@
 export type TProduct = {
-	id: number;
+
+	id: string;
 	title: string;
 	price: number;
 	description: string;
@@ -9,5 +10,11 @@ export type TProduct = {
 		rate: number;
 		count: number;
 	};
-	cartQuantity?: number;
+	[vlaue: string]: any;
 };
+
+export interface IUserInfo {
+	username: string;
+	email: string;
+	password: string;
+}
