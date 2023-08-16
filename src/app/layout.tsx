@@ -1,6 +1,6 @@
 import NextThemeProvider from "../components/providers/theme/Provider";
 
-import SecondNavbar from '../components/shared/Navbar'
+import TopNavbar from "../components/shared/Navbar";
 import "./globals.css";
 import { Nunito_Sans } from "next/font/google";
 import Footer from "@/components/shared/Footer";
@@ -32,8 +32,7 @@ export default function RootLayout({
 					<NextThemeProvider>
 						<ReduxProvider>
 							<ToastProvider>
-								{/* <Navbar /> */}
-								<SecondNavbar/>
+								<TopNavbar />
 								<main className="container mx-auto min-h-[510px]">
 									{children}
 								</main>

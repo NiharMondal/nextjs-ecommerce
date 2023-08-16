@@ -6,11 +6,9 @@ import Wrapper from "@/components/home/Wrapper";
 export default function Home() {
 	return (
 		<section className="flex flex-col md:flex-row gap-2">
-			{/* SideNavbar */}
 			<aside className="w-full md:w-[220px] shrink-0">
 				<SideNavbar />
 			</aside>
-			{/*children */}
 			<div className="flex-1">
 				<Wrapper>
 					<Horizontal
