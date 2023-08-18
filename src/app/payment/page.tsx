@@ -17,6 +17,10 @@ export default function PaymentPage() {
 				>
 					logout
 				</button>
+
+				<div>
+					thanks for your payment
+				</div>
 			</div>
 		</div>
 	);
