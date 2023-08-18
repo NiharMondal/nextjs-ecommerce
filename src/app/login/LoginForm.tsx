@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 export default function LoginForm() {
 	const router = useRouter();
-	const [errors, setErrors] = useState<string | null>(null);
+	const [error, setError] = useState<string | null>(null);
 	const [loading, setLoading] = useState<boolean>(false);
 	const [authState, setAuthState] = useState({
 		email: "",
@@ -32,7 +32,7 @@ export default function LoginForm() {
 		});
 		if (response?.error) {
 			setLoading(false);
-			setErrors(response?.error);
+			setError(response?.error);
 		}
 		if (response?.error === null) {
 			setLoading(false);
@@ -77,8 +77,10 @@ export default function LoginForm() {
 							onChange={handleChange}
 							value={authState.password}
 						></input>
-						{errors ? (
-							<p className="text-red-500 mt-1 font-bold">{errors}</p>
+						{error ? (
+							<p className="mt-2 text-red-600 text-center font-semibold">
+								{error}
+							</p>
 						) : null}
 					</div>
 				</div>

@@ -1,22 +1,14 @@
 "use client";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
-Spin
+Spin;
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Spin from "@/components/AnimateButton";
 
-interface ErrorMessage {
-	error?: string;
-	username?: string;
-	email?: string;
-	password?: string;
-	success?: string;
-}
-
 export default function RegisterForm() {
 	const router = useRouter();
-	const [errors, setErrors] = useState<ErrorMessage>({});
+	const [error, setError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(false);
 	const [authState, setAuthState] = useState({
 		username: "",
@@ -48,7 +40,7 @@ export default function RegisterForm() {
 			const error = await response.json();
 			if (error) {
 				setLoading(false);
-				setErrors(error);
+				setError(error);
 			}
 		}
 	};
@@ -69,9 +61,6 @@ export default function RegisterForm() {
 							onChange={handleChange}
 							value={authState.username}
 						></input>
-						{errors ? (
-							<p className="text-red-500 mt-1">{errors.username}</p>
-						) : null}
 					</div>
 				</div>
 
@@ -90,11 +79,6 @@ export default function RegisterForm() {
 							onChange={handleChange}
 							value={authState.email}
 						></input>
-						{errors ? (
-							<p className="text-red-500 mt-1">
-								{errors.email || errors.error}
-							</p>
-						) : null}
 					</div>
 				</div>
 				<div>
@@ -113,9 +97,6 @@ export default function RegisterForm() {
 							onChange={handleChange}
 							value={authState.password}
 						></input>
-						{errors ? (
-							<p className="text-red-500 mt-1">{errors.password}</p>
-						) : null}
 					</div>
 				</div>
 				<div>
@@ -137,6 +118,11 @@ export default function RegisterForm() {
 							onChange={handleChange}
 							value={authState.password_confirmation}
 						></input>
+						{error ? (
+							<p className="mt-2 text-red-600 text-center font-semibold">
+								{error}
+							</p>
+						) : null}
 					</div>
 				</div>
 				<div>
