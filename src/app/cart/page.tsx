@@ -17,7 +17,7 @@ import {
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-export default function Cart() {
+const Cart = () => {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
 	const { cartItems, totalAmount } = useAppSelector((state) => state.cart);
@@ -29,12 +29,8 @@ export default function Cart() {
 		router.back();
 	};
 
-	
-
 	return (
 		<div className="container flex flex-col space-y-4 p-6 px-2 sm:p-10 sm:px-2">
-			
-
 			<ul className="flex flex-col divide-y divide-gray-200">
 				{cartItems.length > 0 ? (
 					cartItems.map((product) => {
@@ -158,4 +154,5 @@ export default function Cart() {
 			</div>
 		</div>
 	);
-}
+};
+export default Cart;

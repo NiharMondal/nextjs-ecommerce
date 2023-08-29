@@ -59,7 +59,7 @@ export default function Home() {
 					/>
 				</Wrapper>
 
-				{/* <Wrapper>
+				<Wrapper>
 					<Horizontal
 						avatar="/img/horizontal/fifth_horizontal.png"
 						title="End of Season"
@@ -82,7 +82,7 @@ export default function Home() {
 						subtitle="Complete your combine"
 						bg_color="#f3e6c8"
 					/>
-				</Wrapper> */}
+				</Wrapper>
 			</div>
 		</section>
 	);
