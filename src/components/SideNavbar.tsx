@@ -13,9 +13,7 @@ export default function SideNavbar() {
 					<li
 						key={item.title}
 						className=" w-full transition-all hover:scale-105 hover:text-violet-600 hover:font-medium  duration-100 dark:hover:text-emerald-400  cursor-pointer"
-						onClick={() =>
-							router.push(`/products?category=${item.category}`)
-						}
+						onClick={() => router.push(`?category=${item.category}`)}
 					>
 						<p className="inline-block text-center md:inline-flex ">
 							{item.icon}
