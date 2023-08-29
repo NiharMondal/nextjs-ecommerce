@@ -4,9 +4,7 @@ import { TProduct } from "@/types";
 
 //fetch product by category
 const getProducts = async (): Promise<TProduct[] | undefined> => {
-	const response = await fetch(`http://localhost:3000/api/products`, {
-		cache: "no-cache",
-	});
+	const response = await fetch(`http://localhost:3000/api/products`)
 
 	if (response.ok) return response.json();
 };

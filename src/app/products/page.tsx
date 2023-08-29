@@ -2,14 +2,13 @@ import CategoryProduct from "@/components/CategoryProduct";
 import { TProduct } from "@/types";
 
 
-
 //fetch product by category
 const getProducts = async (
 	category: string
 ): Promise<TProduct[] | undefined> => {
 	const response = await fetch(
 		`http://localhost:3000/api/products?category=${category}`,
-		{ cache: "no-cache" }
+		{ cache: "no-store" }
 	);
 
 	if (response.ok) return response.json();
