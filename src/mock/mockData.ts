@@ -17,11 +17,11 @@ export const SIDEBAR_NAV_ITEM = [
 	{
 		icon: "👜",
 		title: "Men's Clothing",
-		category: "men's clothing",
+		category: "men-clothing",
 	},
 	{
 		icon: "🎁",
 		title: "Women's Clothing",
-		category: "women's clothing",
+		category: "women-clothing",
 	},
 ];

@@ -5,7 +5,7 @@ export async function GET(
 	req: Request,
 	{ params }: { params: { id: string } }
 ) {
-	const productId = params.id;
+	const productId =  params.id;
 
    try {
       
@@ -16,8 +16,9 @@ export async function GET(
 		});
 
 
-
 		return NextResponse.json(products, { status: 200 });
+
+
    } catch (error) {
       NextResponse.json(error,{status:500})
    }
