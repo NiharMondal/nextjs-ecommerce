@@ -17,7 +17,7 @@ export default function SideNavbar() {
 							router.push(`/products?category=${item.category}`)
 						}
 					>
-						<p className="  inline-block text-center md:inline-flex ">
+						<p className="inline-block text-center md:inline-flex ">
 							{item.icon}
 							<span className="flex flex-col md:flex-row  px-3 md:px-1 min-w-max tracking-wide ">
 								{item.title}

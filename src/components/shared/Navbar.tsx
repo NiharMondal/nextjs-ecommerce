@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ToggleTheme from "../providers/theme/ToggleTheme";
+import ToggleTheme from "../ToggleTheme";
 import NavCart from "./NavCart";
 import NavAuth from "./NavAuth";
 
