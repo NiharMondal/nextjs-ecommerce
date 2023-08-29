@@ -2,17 +2,19 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TProduct } from "@/types";
 import { toast } from "react-toastify";
 
-
 type InitialStateType = {
-	cartItems: TProduct[] ;
+	cartItems: TProduct[];
 	cartQuantity: number;
 	totalAmount: number;
 };
 
+const initialCartItem =
+	typeof window !== "undefined"
+		? JSON.parse(window.localStorage.getItem("cartItems")!)
+		: null;
+
 const initialState: InitialStateType = {
-	cartItems: localStorage.getItem("cartItems")
-		? JSON.parse(localStorage.getItem("cartItems")!)
-		: [],
+	cartItems: initialCartItem || [],
 	cartQuantity: 0,
 	totalAmount: 0,
 };
