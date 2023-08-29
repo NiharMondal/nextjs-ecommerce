@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
-    "@prisma/client": "^5.1.1",
+    "@prisma/client": "^5.2.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.1.0",
     "@types/react": "18.2.6",
@@ -35,6 +35,6 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
-    "prisma": "^5.1.1"
+    "prisma": "^5.2.0"
   }
 }
