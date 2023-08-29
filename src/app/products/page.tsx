@@ -20,14 +20,14 @@ export default async function ProductPage({
 }: {
 	searchParams: { [key: string]: string };
 }) {
-	const products = await getProducts(searchParams.category);
+	const products = await getProducts(searchParams.category!);
 	return (
 		<section className="py-2 ">
 			<h2 className="capitalize mb-8">{searchParams.category}</h2>
 			<section className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-4">
 				{products &&
-					products.map((item) => (
-						<CategoryProduct product={item} key={item.id} />
+					products?.map((item) => (
+						<CategoryProduct product={ item &&item} key={item?.id} />
 					))}
 			</section>
 		</section>

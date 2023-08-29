@@ -16,10 +16,17 @@ import {
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+
+import { redirect } from "next/navigation";
+
 
 const Cart = () => {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
+
+		const { data: session } = useSession();
+		if (!session?.user) redirect("/login");
 	const { cartItems, totalAmount } = useAppSelector((state) => state.cart);
 	useEffect(() => {
 		dispatch(getTotalAmount());

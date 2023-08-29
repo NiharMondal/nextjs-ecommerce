@@ -1,4 +1,3 @@
-
 export const config = {
-	matcher: ["/payment"],
+	matcher: ["/cart","/payment"],
 };

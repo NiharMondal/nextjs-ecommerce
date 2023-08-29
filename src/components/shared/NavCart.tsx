@@ -4,6 +4,8 @@ import Link from "next/link";
 
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useAppSelector } from "@/redux/hooks";
+
+
 const NavCart = () => {
 	const { cartQuantity } = useAppSelector((state) => state.cart);
 	return (
