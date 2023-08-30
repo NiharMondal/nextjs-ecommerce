@@ -3,17 +3,20 @@ import { TProduct } from "@/types";
 import CartButton from "@/components/CartButton";
 import ProductRating from "@/components/Rating";
 
-
-
 //fetch product by id
 const fetchProduct = async (id: string): Promise<TProduct | undefined> => {
-	const response = await fetch(`http://localhost:3000/api/products/${id}`, {cache:'no-store'});
+	const url = process.env.API_URL;
+	const response = await fetch(`${url}/api/products/${id}`, {
+		cache: "no-store",
+	});
 	if (response.ok) return await response.json();
 };
 
-
-
-export default async function SingleProduct({ params }: { params: { slug: string } }) {
+export default async function SingleProduct({
+	params,
+}: {
+	params: { slug: string };
+}) {
 	const product = await fetchProduct(params.slug);
 	return (
 		<section className=" pt-12 ">

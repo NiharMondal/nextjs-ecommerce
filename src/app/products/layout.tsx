@@ -6,7 +6,7 @@ export default async function ProductLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<main className="flex flex-col md:flex-row gap-8">
+		<main className="flex flex-col md:flex-row gap-4">
 			<aside className="w-full md:w-[220px] shrink-0">
 				<SideNavbar />
 			</aside>

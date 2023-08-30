@@ -5,6 +5,7 @@ const nutino_sans = Nunito_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 
 import Providers from "@/components/providers/Providers";
 import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/shared/Footer";
 
 export const metadata = {
 	title: "Classy Garments",
@@ -27,7 +28,9 @@ export default function RootLayout({
 					<Navbar />
 					<main className="container mx-auto min-h-[510px]">
 						{children}
+
 					</main>
+					<Footer/>
 				</Providers>
 			</body>
 		</html>

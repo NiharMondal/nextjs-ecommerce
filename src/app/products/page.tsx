@@ -1,15 +1,14 @@
 import CategoryProduct from "@/components/CategoryProduct";
 import { TProduct } from "@/types";
 
-
 //fetch product by category
 const getProducts = async (
 	category: string
 ): Promise<TProduct[] | undefined> => {
-	const response = await fetch(
-		`http://localhost:3000/api/products?category=${category}`,
-		{ cache: "no-store" }
-	);
+	const url = process.env.API_URL;
+	const response = await fetch(`${url}/api/products?category=${category}`, {
+		cache: "no-store",
+	});
 
 	if (response.ok) return response.json();
 };
@@ -26,7 +25,7 @@ export default async function ProductPage({
 			<section className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-4">
 				{products &&
 					products?.map((item) => (
-						<CategoryProduct product={ item &&item} key={item?.id} />
+						<CategoryProduct product={item && item} key={item?.id} />
 					))}
 			</section>
 		</section>
