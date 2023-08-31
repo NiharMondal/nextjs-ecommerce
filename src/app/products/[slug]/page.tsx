@@ -7,7 +7,7 @@ const url = process.env.API_URL;
 
 const getProductById = async (id: string): Promise<TProduct | undefined> => {
 	const response = await fetch(
-		`https://nextjs-ts-ecommerce-zeta.vercel.app/api/products/${id}`
+		`${url}/api/products/${id}`, {cache:"no-store"}
 	);
 
 	if (response.ok) return await response.json();
