@@ -12,7 +12,7 @@ export default function Products({ product }: Props) {
 			<Link href={`/products/${product.id}`}>
 				<div className="relative h-[400px]   rounded-md group">
 					<Image
-						src={product?.image}
+						src={product.image}
 						alt="product-image"
 						className="z-0 h-full w-full  object-cover object-center rounded-md  group-hover:scale-110 duration-200 transition-all overflow-hidden"
 						width={300}
@@ -21,11 +21,11 @@ export default function Products({ product }: Props) {
 					/>
 					<div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent rounded-md"></div>
 					<div className="absolute bottom-4 left-0 px-3 w-full">
-						<h3 className="text-white">{product?.title}</h3>
+						<h3 className="text-white">{product.title}</h3>
 
 						<div className="flex justify-between mt-2">
-							<h4 className="text-blue-400">${product?.price}</h4>
-							<ProductRating value={product?.rating.rate} />
+							<h4 className="text-blue-400">${product.price}</h4>
+							<ProductRating value={product.rating.rate} />
 						</div>
 					</div>
 				</div>
