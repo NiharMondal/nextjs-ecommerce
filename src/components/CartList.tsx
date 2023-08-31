@@ -8,7 +8,6 @@ import {
 	increaseQuantity,
 	removeItem,
 } from "@/redux/slice/cartSlice";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import Image from "next/image";
@@ -22,8 +21,6 @@ import {
 export default function CartList() {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
-
-	const { data: session } = useSession();
 
 	const { cartItems, totalAmount } = useAppSelector((state) => state.cart);
 	useEffect(() => {
@@ -108,7 +105,7 @@ export default function CartList() {
 						<button
 							onClick={goBack}
 							type="button"
-							className="rounded-md border border-violet-500 hover:bg-violet-400 px-3 py-2 text-sm "
+							className="rounded-md border border-blue-500 hover:bg-blue-500/80 px-3 py-2 text-sm "
 						>
 							Back to shop
 						</button>
@@ -141,11 +138,12 @@ export default function CartList() {
 								<button
 									onClick={goBack}
 									type="button"
-									className="rounded-md border border-violet-500 hover:bg-violet-400 px-3 py-2 text-sm "
+									className="rounded-md border border-blue-500 hover:bg-blue-500/80 px-3 py-2 text-sm "
 								>
 									Back to shop
 								</button>
 								<button
+									onClick={() => router.push("/payment")}
 									type="button"
 									className="rounded-md border border-black dark:border-gray-300 px-3 py-2 text-sm font-semibold  shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
 								>

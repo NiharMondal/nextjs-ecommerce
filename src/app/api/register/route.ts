@@ -24,6 +24,7 @@ export async function POST(req: NextRequest) {
 				status: 302,
 			});
 
+		//making hash password
 		const hashedPass = await bcrypt.hash(password, 10);
 
 		await prisma.users.create({
@@ -36,6 +37,6 @@ export async function POST(req: NextRequest) {
 
 		return NextResponse.json({ status: 201 });
 	} catch (error) {
-		return NextResponse.json("Internal server error", { status: 500 });
+		return NextResponse.json(error, { status: 500 });
 	}
 }

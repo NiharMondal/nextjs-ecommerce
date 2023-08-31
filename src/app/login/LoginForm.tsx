@@ -2,14 +2,17 @@
 
 import React, { useState } from "react";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import Spin from "../../components/AnimateButton";
+
 import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
+import Spin from "@/components/AnimateButton";
 import { useRouter } from "next/navigation";
 export default function LoginForm() {
 	const router = useRouter();
 	const [error, setError] = useState<string | null>(null);
+
 	const [loading, setLoading] = useState<boolean>(false);
+
 	const [authState, setAuthState] = useState({
 		email: "",
 		password: "",
@@ -37,11 +40,16 @@ export default function LoginForm() {
 		if (response?.error === null) {
 			setLoading(false);
 			toast.success("You successfully logged in");
-			router.push("/payment");
+			router.replace('/')
 		}
 	};
 	return (
 		<form onSubmit={handleSubmit} className="mt-8">
+			{error ? (
+				<div className="mt-2 bg-red-600 text-center font-semibold text-white p-4 rounded mb-4">
+					{error}
+				</div>
+			) : null}
 			<div className="space-y-5">
 				<div>
 					<label htmlFor="email" className="text-base font-medium ">
@@ -77,18 +85,10 @@ export default function LoginForm() {
 							onChange={handleChange}
 							value={authState.password}
 						></input>
-						{error ? (
-							<p className="mt-2 text-red-600 text-center font-semibold">
-								{error}
-							</p>
-						) : null}
 					</div>
 				</div>
 				<div>
-					<button
-						type="submit"
-						className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
-					>
+					<button type="submit" className="submit-btn">
 						{loading ? (
 							<span className="flex items-center">
 								<Spin />

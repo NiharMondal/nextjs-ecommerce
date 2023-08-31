@@ -1,5 +1,9 @@
 import SideNavbar from "@/components/SideNavbar";
 
+
+export const metadata = {
+	title: "Classy Garments | Products",
+};
 export default async function ProductLayout({
 	children,
 }: {

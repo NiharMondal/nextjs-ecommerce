@@ -6,6 +6,10 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Spin from "@/components/AnimateButton";
 
+//your website link url
+const url = process.env.API_URL;
+
+
 export default function RegisterForm() {
 	const router = useRouter();
 	const [error, setError] = useState<string | null>(null);
@@ -24,12 +28,13 @@ export default function RegisterForm() {
 	const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setLoading(true);
-		const response = await fetch("http://localhost:3000/api/register", {
+
+		const response = await fetch(`${url}/api/register`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify(authState),
+			body: JSON.stringify({ ...authState }),
 		});
 
 		if (response.status === 200 && response.ok === true) {

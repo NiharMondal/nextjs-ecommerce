@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useAppSelector } from "@/redux/hooks";
 
-
 const NavCart = () => {
 	const { cartQuantity } = useAppSelector((state) => state.cart);
 	return (
@@ -13,7 +12,7 @@ const NavCart = () => {
 			<Link href="/cart">
 				<div className="relative w-full">
 					<ShoppingCartIcon className="h-7" />
-					<span className="absolute -top-3 -right-3 text-violet-500 font-bold">
+					<span className="absolute -top-3 -right-3 text-blue-500 font-bold">
 						{cartQuantity}
 					</span>
 				</div>

@@ -7,12 +7,16 @@ export async function GET(req: Request) {
 	const category = searchParams.get("category") as string;
 	try {
 		if (category) {
-			const products = await prisma.products.findMany({
+			const categoryProduct = await prisma.products.findMany({
 				where: {
 					category: category,
 				},
 			});
-			return NextResponse.json(products, { status: 200 });
+
+			
+			return NextResponse.json(categoryProduct, { status: 200 });
+
+
 		} else {
 			const allProducts = await prisma.products.findMany();
 			return NextResponse.json(allProducts, { status: 200 });

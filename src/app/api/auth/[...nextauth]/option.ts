@@ -9,7 +9,7 @@ export const authOptions: AuthOptions = {
 
 	providers: [
 		CredentialsProvider({
-			name: "Credentials",
+			name: "credentials",
 
 			credentials: {
 				email: { type: "email" },
@@ -18,7 +18,7 @@ export const authOptions: AuthOptions = {
 
 			async authorize(credentials) {
 				if (!credentials?.email || !credentials?.password) {
-					throw new Error("Invalid credentials");
+					throw new Error("Sign in failed. Check the details you provided are correct");
 				}
 
 				const user = await prisma.users.findUnique({
@@ -37,7 +37,9 @@ export const authOptions: AuthOptions = {
 				);
 
 				if (!isCorrectPassword) {
-					throw new Error("Invalid credentials");
+					throw new Error(
+						"Sign in failed. Check the details you provided are correct"
+					);
 				}
 
 				return user;

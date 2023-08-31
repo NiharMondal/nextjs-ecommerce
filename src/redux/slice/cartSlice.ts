@@ -46,6 +46,7 @@ export const cartSlice = createSlice({
 				const tempProduct = { ...action.payload, productQuantity: 1 };
 				state.cartItems.push(tempProduct);
 				state.cartQuantity += 1;
+
 				toast.success("Product added to cart");
 			}
 
@@ -87,6 +88,7 @@ export const cartSlice = createSlice({
 
 			const cartQan = (cartItem!.productQuantity += 1);
 			state.cartQuantity = cartQan;
+
 			localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
 		},
 

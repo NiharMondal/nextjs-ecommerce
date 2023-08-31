@@ -1,14 +1,14 @@
 import "./globals.css";
 import { Nunito_Sans } from "next/font/google";
 
-const nutino_sans = Nunito_Sans({ subsets: ["latin"], weight: ["400", "700"] });
+const nutino_sans = Nunito_Sans({ subsets: ["latin"] });
 
 import Providers from "@/components/providers/Providers";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 
 export const metadata = {
-	title: "Classy Garments",
+	title: "Classy Garments | Home",
 	description: "Home or Landing page",
 };
 
@@ -28,9 +28,8 @@ export default function RootLayout({
 					<Navbar />
 					<main className="container mx-auto min-h-[510px]">
 						{children}
-
 					</main>
-					<Footer/>
+					<Footer />
 				</Providers>
 			</body>
 		</html>

@@ -15,7 +15,7 @@ const CartButton = ({ pd }: ButtonProps) => {
 	};
 	return (
 		<button
-			className="py-3 bg-violet-500 rounded-md hover:bg-violet-600 font-medium text-white"
+			className="py-3 bg-blue-500 rounded-md hover:bg-blue-500/80 font-medium text-white"
 			onClick={() => addProduct(pd)}
 		>
 			ADD TO CART
