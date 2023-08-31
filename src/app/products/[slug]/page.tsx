@@ -6,7 +6,7 @@ import Image from "next/image";
 const url = process.env.API_URL;
 
 const getProductById = async (id: string): Promise<TProduct | undefined> => {
-	const response = await fetch(`${url}/api/products/${id}`);
+	const response = await fetch(`http://localhost:3000/api/products/${id}`);
 
 	if (response.ok) return await response.json();
 };
