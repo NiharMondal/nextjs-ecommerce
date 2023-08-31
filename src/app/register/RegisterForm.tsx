@@ -27,13 +27,16 @@ export default function RegisterForm() {
 		e.preventDefault();
 		setLoading(true);
 
-		const response = await fetch(`/api/register/`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(authState),
-		});
+		const response = await fetch(
+			"https://nextjs-ts-ecommerce-zeta.vercel.app/api/register/",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(authState),
+			}
+		);
 
 		if (response.status === 200 && response.ok === true) {
 			setLoading(false);
