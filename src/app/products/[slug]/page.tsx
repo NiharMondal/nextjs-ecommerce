@@ -1,24 +1,23 @@
 import CartButton from "@/components/CartButton";
 import ProductRating from "@/components/Rating";
-import { TProduct } from "@/types";
 import Image from "next/image";
 
 const url = process.env.API_URL;
 
-const getProductById = async (id: string): Promise<TProduct | undefined> => {
-	const response = await fetch(
-		`${url}/api/products/${id}`, {cache:"no-store"}
-	);
+async function getSingleProduct(slug: string) {
+	const response = await fetch(`${url}/api/products/${slug}`, {
+		cache: "no-store",
+	});
 
-	if (response.ok) return await response.json();
-};
+	if (response.status === 200) return await response.json();
+}
 
 export default async function SingleProduct({
 	params,
 }: {
 	params: { slug: string };
 }) {
-	const product = await getProductById(params.slug);
+	const product = await getSingleProduct(params.slug);
 
 	return (
 		<section className=" pt-12 ">
