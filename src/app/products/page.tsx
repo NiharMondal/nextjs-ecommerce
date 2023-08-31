@@ -1,15 +1,12 @@
 import Products from "@/components/Products";
 import { TProduct } from "@/types";
 
-
 const url = process.env.API_URL;
-
 
 //fetch product by category
 const getProducts = async (
 	category: string
 ): Promise<TProduct[] | undefined> => {
-	
 	const response = await fetch(`${url}/api/products?category=${category}`, {
 		cache: "no-store",
 	});
@@ -23,14 +20,14 @@ export default async function ProductPage({
 	searchParams: { [key: string]: string };
 }) {
 	const products = await getProducts(searchParams.category!);
-	if (!products) return <p>Loading</p>;
 	return (
 		<section className="py-2 ">
 			<h2 className="capitalize mb-8">{searchParams.category}</h2>
 			<section className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-4">
-				{products.map((item) => (
-					<Products product={item && item} key={item?.id} />
-				))}
+				{products &&
+					products.map((item) => (
+						<Products product={item} key={item.id} />
+					))}
 			</section>
 		</section>
 	);

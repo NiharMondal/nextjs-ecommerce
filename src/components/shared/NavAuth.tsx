@@ -14,9 +14,11 @@ const NavAuth = () => {
 
 	return (
 		<div
-			className="relative h-10 w-10 border rounded-full bg-blue-700 cursor-pointer"
+			className="relative h-10 w-10 border rounded-full cursor-pointer"
 			onClick={toggleMenu}
+			title="Profile"
 		>
+			<img src="/img/head.png" alt="head" className="absolute	inset-0 rounded-full "/>
 			{menu ? (
 				<div className="absolute top-14 -left-56 bg-gray-100 text-black p-2  w-56 cursor-default rounded ">
 					{session ? (

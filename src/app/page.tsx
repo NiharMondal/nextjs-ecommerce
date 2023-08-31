@@ -6,7 +6,6 @@ const url = process.env.API_URL;
 
 //fetch product by category
 const getProducts = async (): Promise<TProduct[] | undefined> => {
-	
 	const response = await fetch(`${url}/api/products`);
 
 	if (response.ok) return response.json();

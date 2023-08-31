@@ -7,8 +7,6 @@ import { toast } from "react-toastify";
 import Spin from "@/components/AnimateButton";
 
 //your website link url
-const url = process.env.API_URL;
-
 
 export default function RegisterForm() {
 	const router = useRouter();
@@ -29,12 +27,12 @@ export default function RegisterForm() {
 		e.preventDefault();
 		setLoading(true);
 
-		const response = await fetch(`${url}/api/register`, {
+		const response = await fetch(`/api/register/`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({ ...authState }),
+			body: JSON.stringify(authState),
 		});
 
 		if (response.status === 200 && response.ok === true) {
