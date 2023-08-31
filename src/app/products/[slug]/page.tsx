@@ -3,7 +3,8 @@ import { TProduct } from "@/types";
 import CartButton from "@/components/CartButton";
 import ProductRating from "@/components/Rating";
 
-const url = process.env.API_URL;
+const url = process.env.API_URL!;
+
 //fetch product by id
 const fetchProduct = async (id: string): Promise<TProduct | undefined> => {
 	const response = await fetch(`${url}/api/products/${id}`, {
@@ -18,6 +19,7 @@ export default async function SingleProduct({
 	params: { slug: string };
 }) {
 	const product = await fetchProduct(params.slug!);
+
 	return (
 		<section className=" pt-12 ">
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-4 lg:gap-8">
@@ -34,9 +36,9 @@ export default async function SingleProduct({
 					<h1>{product?.title}</h1>
 					<div className="flex justify-between">
 						<h2 className="text-blue-500">${product?.price}</h2>
-						<ProductRating value={product?.rating?.rate!} />
+						<ProductRating value={product?.rating.rate!} />
 					</div>
-					<CartButton pd={product!} />
+					<CartButton pd={product ?? product!} />
 					<div>
 						<h4>Product Description: </h4>
 						<p>{product?.description}</p>

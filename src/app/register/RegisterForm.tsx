@@ -8,6 +8,10 @@ import Spin from "@/components/AnimateButton";
 
 //your website link url
 
+const url = process.env.API_URL!;
+
+
+
 export default function RegisterForm() {
 	const router = useRouter();
 	const [error, setError] = useState<string | null>(null);
@@ -28,7 +32,7 @@ export default function RegisterForm() {
 		setLoading(true);
 
 		const response = await fetch(
-			"https://nextjs-ts-ecommerce-zeta.vercel.app/api/register/",
+			`${url}/api/register/`,
 			{
 				method: "POST",
 				headers: {
