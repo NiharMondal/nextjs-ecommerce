@@ -8,9 +8,9 @@ type Props = {
 export default function Products({ product }: Props) {
 
 	return (
-		<div className=" rounded-md overflow-hidden">
+		
 			<Link href={`/products/${product.id}`}>
-				<div className="relative h-[400px]   rounded-md group">
+				<div className="relative h-[400px]   rounded-md group overflow-hidden">
 					<Image
 						src={product.image}
 						alt="product-image"
@@ -30,6 +30,6 @@ export default function Products({ product }: Props) {
 					</div>
 				</div>
 			</Link>
-		</div>
+		
 	);
 }

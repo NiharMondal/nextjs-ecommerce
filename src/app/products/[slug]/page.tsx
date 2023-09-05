@@ -17,7 +17,7 @@ export default async function SingleProduct({
 }: {
 	params: { slug: string };
 }) {
-	const product = await getSingleProduct(params.slug);
+	const product = await getSingleProduct(params.slug!);
 
 	return (
 		<section className=" pt-12 ">

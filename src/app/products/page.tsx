@@ -24,10 +24,7 @@ export default async function ProductPage({
 		<section className="py-2 ">
 			<h2 className="capitalize mb-8">{searchParams.category}</h2>
 			<section className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-4">
-				{products &&
-					products.map((item) => (
-						<Products product={item} key={item.id} />
-					))}
+				{products?.map(product=><Products product={product} key={product.id}/>)}
 			</section>
 		</section>
 	);
