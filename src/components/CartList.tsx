@@ -11,6 +11,7 @@ import {
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import Image from "next/image";
+import { loadStripe } from "@stripe/stripe-js";
 
 import {
 	TrashIcon,
@@ -18,26 +19,57 @@ import {
 	ChevronRightIcon,
 } from "@heroicons/react/24/solid";
 
+const url = process.env.API_URL;
+
 export default function CartList() {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
 
 	const { cartItems, totalAmount } = useAppSelector((state) => state.cart);
+
 	useEffect(() => {
 		dispatch(getTotalAmount());
 	}, [cartItems]);
 
+	//go back
 	const goBack = () => {
 		router.back();
+	};
+
+	//price fruction
+	const getRidOfFruction = (price: number, quantity: number) => {
+		const totalProductAmount = price * quantity;
+		return totalProductAmount.toFixed(2);
+	};
+
+	//make payment
+
+	const makePayment = async () => {
+		const stripe = await loadStripe(
+			"pk_test_51NprDyEuV5fOCajBjV53aCsJSQHJuh8wOOtUchlpmduNrOrXGhDX5OKa4wNHE2xUXE6p1fyjw9okfwH8L1cRjVLy00vpJmLXNT"
+		);
+
+		const response = await fetch(`${url}/api/payment`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(cartItems),
+		});
+
+		const session = await response.json();
+		
+		await stripe?.redirectToCheckout({
+			sessionId: session.id
+		})
+		
+		
 	};
 	return (
 		<div className="container flex flex-col space-y-4 p-6 px-2 sm:p-10 sm:px-2">
 			<ul className="flex flex-col divide-y divide-gray-200">
 				{cartItems.length > 0 ? (
 					cartItems.map((product) => {
-						const totalProductAmount =
-							product.price * product.productQuantity;
-						const finalAmount = totalProductAmount.toFixed(2);
 						return (
 							<li
 								key={product.id}
@@ -61,7 +93,10 @@ export default function CartList() {
 											</div>
 											<div className="text-right">
 												<p className="text-lg font-semibold">
-													{finalAmount}
+													{getRidOfFruction(
+														product.price,
+														product.productQuantity
+													)}
 												</p>
 											</div>
 										</div>
@@ -126,11 +161,10 @@ export default function CartList() {
 						</div>
 						<div className="space-y-3">
 							<div className="space-y-1 text-right">
-								<p>
-									Total amount:
+								<p className="tracking-wider">
+									Total amount: {" "}
 									<span className="font-semibold">
-										{" "}
-										{totalAmount.toFixed(2)}
+										 {totalAmount.toFixed(2)}
 									</span>
 								</p>
 							</div>
@@ -143,7 +177,7 @@ export default function CartList() {
 									Back to shop
 								</button>
 								<button
-									onClick={() => router.push("/payment")}
+									onClick={makePayment}
 									type="button"
 									className="rounded-md border border-black dark:border-gray-300 px-3 py-2 text-sm font-semibold  shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
 								>

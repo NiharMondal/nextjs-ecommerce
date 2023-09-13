@@ -1,6 +1,9 @@
 import "./globals.css";
 import { Nunito_Sans } from "next/font/google";
 
+
+import "@stripe/stripe-js";
+
 const nutino_sans = Nunito_Sans({ subsets: ["latin"] });
 
 import Providers from "@/components/providers/Providers";
