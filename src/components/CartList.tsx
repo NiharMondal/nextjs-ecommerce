@@ -19,8 +19,6 @@ import {
 	ChevronRightIcon,
 } from "@heroicons/react/24/solid";
 
-const url = process.env.API_URL;
-
 export default function CartList() {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
@@ -43,13 +41,16 @@ export default function CartList() {
 	};
 
 	//make payment
-
 	const makePayment = async () => {
+		
+		//livehost address
+		const url = "https://nextjs-ts-ecommerce-zeta.vercel.app";
+
 		const stripe = await loadStripe(
 			"pk_test_51NprDyEuV5fOCajBjV53aCsJSQHJuh8wOOtUchlpmduNrOrXGhDX5OKa4wNHE2xUXE6p1fyjw9okfwH8L1cRjVLy00vpJmLXNT"
 		);
 
-		const response = await fetch(`${url}/api/payment`, {
+		const response = await fetch(`${url}/api/checkout-payment`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -58,16 +59,14 @@ export default function CartList() {
 		});
 
 		const session = await response.json();
-		
+
 		await stripe?.redirectToCheckout({
-			sessionId: session.id
-		})
-		
-		
+			sessionId: session.id,
+		});
 	};
 	return (
 		<div className="container flex flex-col space-y-4 p-6 px-2 sm:p-10 sm:px-2">
-			<ul className="flex flex-col divide-y divide-gray-200">
+			<ul className="flex flex-col divide-y divide-blue-400">
 				{cartItems.length > 0 ? (
 					cartItems.map((product) => {
 						return (
@@ -148,7 +147,7 @@ export default function CartList() {
 				)}
 			</ul>
 
-			<div>
+			<div className="border-t border-blue-400 pt-5">
 				{cartItems.length > 0 ? (
 					<div className="flex justify-between items-end">
 						<div>
@@ -162,9 +161,9 @@ export default function CartList() {
 						<div className="space-y-3">
 							<div className="space-y-1 text-right">
 								<p className="tracking-wider">
-									Total amount: {" "}
+									Total amount:{" "}
 									<span className="font-semibold">
-										 {totalAmount.toFixed(2)}
+										{totalAmount.toFixed(2)}
 									</span>
 								</p>
 							</div>
@@ -172,14 +171,15 @@ export default function CartList() {
 								<button
 									onClick={goBack}
 									type="button"
-									className="rounded-md border border-blue-500 hover:bg-blue-500/80 px-3 py-2 text-sm "
+									className="rounded-md border border-blue-500 
+									bg-blue-500 hover:bg-blue-500/80 px-3 py-2 text-white font-semibold"
 								>
 									Back to shop
 								</button>
 								<button
 									onClick={makePayment}
 									type="button"
-									className="rounded-md border border-black dark:border-gray-300 px-3 py-2 text-sm font-semibold  shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+									className="rounded-md border border-violet-600 px-3 py-2 hover:bg-violet-500"
 								>
 									Checkout
 								</button>
