@@ -2,7 +2,7 @@ import CartButton from "@/components/CartButton";
 import ProductRating from "@/components/Rating";
 import Image from "next/image";
 
-const url = process.env.API_URL;
+const url = process.env.API_URL!;
 
 async function getSingleProduct(slug: string) {
 	const response = await fetch(`${url}/api/products/${slug}`, {
