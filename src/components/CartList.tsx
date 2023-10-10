@@ -43,7 +43,7 @@ export default function CartList() {
 	//make payment
 	const makePayment = async () => {
 		//livehost address
-		const url = "https://nextjs-ts-ecommerce-zeta.vercel.app";
+		const url = "https://nextjs-ecommerce-two-ashen.vercel.app";
 		// const url = "http://localhost:3000/";
 		const stripe = await loadStripe(
 			"pk_test_51NprDyEuV5fOCajBjV53aCsJSQHJuh8wOOtUchlpmduNrOrXGhDX5OKa4wNHE2xUXE6p1fyjw9okfwH8L1cRjVLy00vpJmLXNT"
