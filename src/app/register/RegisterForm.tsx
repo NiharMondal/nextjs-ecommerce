@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import Spin from "@/components/AnimateButton";
 
 //your website link url
-const url = "https://nextjs-ts-ecommerce-zeta.vercel.app";
+const url = "https://nextjs-ecommerce-two-ashen.vercel.app/";
 
 // const url = "http://localhost:3000"; //local
 

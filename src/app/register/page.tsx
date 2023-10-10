@@ -15,7 +15,7 @@ export default function RegisterPage() {
 						Sign up to create account
 					</h2>
 					<p className="mt-2 text-center text-base text-gray-600 dark:text-gray-200 ">
-						Already have an account?{" "}
+						Already have an account?
 						<Link
 							href="/login"
 							className="font-bold text-black dark:text-emerald-500 transition-all duration-200 hover:underline"
