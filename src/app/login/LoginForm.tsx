@@ -29,9 +29,9 @@ export default function LoginForm() {
 		setLoading(true);
 
 		const response = await signIn("credentials", {
+			redirect: false,
 			email: authState.email,
 			password: authState.password,
-			redirect: false,
 		});
 		if (response?.error) {
 			setLoading(false);
@@ -40,7 +40,7 @@ export default function LoginForm() {
 		if (response?.error === null) {
 			setLoading(false);
 			toast.success("You successfully logged in");
-			router.replace('/')
+			router.replace("/cart");
 		}
 	};
 	return (

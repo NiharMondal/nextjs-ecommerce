@@ -4,7 +4,7 @@ import RegisterForm from "./RegisterForm";
 
 export const metadata = {
 	title: "Register | Classy Garments",
-	description: "Create your account",
+	description: "Registration page. Create your account",
 };
 export default function RegisterPage() {
 	return (

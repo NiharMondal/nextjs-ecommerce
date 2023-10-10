@@ -5,6 +5,8 @@ const url = process.env.API_URL as string;
 
 //fetch product by category
 
+
+
 type ServerResponse = {
 	data: TProduct[];
 	total: number;

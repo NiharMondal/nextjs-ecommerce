@@ -2,6 +2,11 @@
 
 import { useRouter } from "next/navigation";
 
+export const metadata = {
+	title: "Cancel | Classy Garments",
+	description: "Cancel page. When you cancel the paymet",
+};
+
 export default function CancelPage() {
 	const router = useRouter();
 	return (

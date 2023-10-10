@@ -1,6 +1,10 @@
 "use client"
 import { useRouter } from "next/navigation";
-
+export const metadata = {
+	title: "Success | Classy Garments",
+	description:
+		"It will show the success page after doing successfull payment method",
+};
 export default function SuccessPage() {
   const router = useRouter()
 	return (

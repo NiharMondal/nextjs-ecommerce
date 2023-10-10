@@ -2,7 +2,9 @@ import SideNavbar from "@/components/SideNavbar";
 
 
 export const metadata = {
-	title: "Classy Garments | Products",
+	title: "Product | Classy Garments",
+	description:
+		"Product page. shows all products and also categorised products",
 };
 export default async function ProductLayout({
 	children,
