@@ -10,15 +10,13 @@ A Next.js ^13.4.19 and App Router-ready ecommerce template featuring:
 -  New fetching and caching paradigms
 -  Dynamic OG images
 -  Styling with Tailwind CSS
--  Checkout and payments with stripe
--  Automatic light/dark mode based on system settings
 
 > [!NOTE]
 > **Important Feature**
 * **Pagination**
 * **Fetch product by query**
 * **Automatic light/dark mode based on system settings**
-
+* **Checkout and payments with stripe**
 
 ## Running locally
 
