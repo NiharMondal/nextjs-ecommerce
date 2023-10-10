@@ -3,12 +3,6 @@ import { signOut, useSession } from "next-auth/react";
 
 import { redirect } from "next/navigation";
 
-export const metadata = {
-	title: "Payment | Classy Garments",
-	description:
-		"Payment page. shows all products and also categorised products",
-};
-
 export default function PaymentPage() {
 	const { data: session } = useSession();
 	if (!session?.user) redirect("/login");
@@ -24,9 +18,7 @@ export default function PaymentPage() {
 					logout
 				</button>
 
-				<div>
-					thanks for your payment
-				</div>
+				<div>thanks for your payment</div>
 			</div>
 		</div>
 	);

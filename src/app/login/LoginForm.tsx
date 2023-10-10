@@ -40,7 +40,7 @@ export default function LoginForm() {
 		if (response?.error === null) {
 			setLoading(false);
 			toast.success("You successfully logged in");
-			router.replace("/cart");
+			router.push("/cart");
 		}
 	};
 	return (

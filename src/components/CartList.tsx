@@ -42,10 +42,9 @@ export default function CartList() {
 
 	//make payment
 	const makePayment = async () => {
-		
 		//livehost address
 		const url = "https://nextjs-ts-ecommerce-zeta.vercel.app";
-
+		// const url = "http://localhost:3000/";
 		const stripe = await loadStripe(
 			"pk_test_51NprDyEuV5fOCajBjV53aCsJSQHJuh8wOOtUchlpmduNrOrXGhDX5OKa4wNHE2xUXE6p1fyjw9okfwH8L1cRjVLy00vpJmLXNT"
 		);
@@ -150,12 +149,12 @@ export default function CartList() {
 			<div className="border-t border-blue-400 pt-5">
 				{cartItems.length > 0 ? (
 					<div className="flex justify-between items-end">
-						<div>
+						<div className="mr-2">
 							<button
-								className="uppercase px-8 py-2  rounded bg-red-500 hover:bg-red-600 text-white"
+								className="uppercase px-4 lg:px-8 py-2  rounded bg-red-500 hover:bg-red-600 text-white"
 								onClick={() => dispatch(clearCart())}
 							>
-								clear cart
+								clear
 							</button>
 						</div>
 						<div className="space-y-3">
@@ -179,7 +178,7 @@ export default function CartList() {
 								<button
 									onClick={makePayment}
 									type="button"
-									className="rounded-md border border-violet-600 px-3 py-2 hover:bg-violet-500"
+									className="rounded-md border border-pink-400 px-3 py-2 hover:bg-pink-400 hover:text-white"
 								>
 									Checkout
 								</button>
