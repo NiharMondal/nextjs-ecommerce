@@ -8,6 +8,9 @@ export async function GET(
 	const productId = params.id;
 
 	try {
+		if (!productId) {
+			return NextResponse.json("Invalid Id", { status: 404 });
+		}
 		const products = await prisma.products.findUnique({
 			where: {
 				id: productId,
@@ -16,6 +19,6 @@ export async function GET(
 
 		return NextResponse.json(products, { status: 200 });
 	} catch (error) {
-		NextResponse.json(error, { status: 500 });
+		return NextResponse.json(error, { status: 500 });
 	}
 }

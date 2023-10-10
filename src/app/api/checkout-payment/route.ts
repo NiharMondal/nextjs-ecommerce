@@ -24,8 +24,8 @@ export async function POST(req: Request) {
 			payment_method_types: ["card"],
 			line_items: lineItems,
 			mode: "payment",
-			success_url: `${process.env.API_URL}/success`, //"http://localhost:3000/success",
-			cancel_url: `${process.env.API_URL}/cancel`,
+			success_url: `${process.env.API_URL!}/success`, //"http://localhost:3000/success",
+			cancel_url: `${process.env.API_URL!}/cancel`,
 		});
 		return NextResponse.json({ id: session.id });
 	} catch (error) {

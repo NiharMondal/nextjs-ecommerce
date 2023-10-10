@@ -5,22 +5,22 @@ export const SIDEBAR_NAV_ITEM = [
 		category: "featured",
 	},
 	{
-		icon: "👚",
+		icon: "🖥️",
 		title: "Electronics",
 		category: "electronics",
 	},
 	{
-		icon: "👟",
+		icon: "🎁",
 		title: "Jewelery",
 		category: "jewelery",
 	},
 	{
-		icon: "👜",
+		icon: "🙍‍♂️",
 		title: "Men's Clothing",
 		category: "men-clothing",
 	},
 	{
-		icon: "🎁",
+		icon: "🚺",
 		title: "Women's Clothing",
 		category: "women-clothing",
 	},

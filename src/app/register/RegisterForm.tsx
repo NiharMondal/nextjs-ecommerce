@@ -10,8 +10,6 @@ import Spin from "@/components/AnimateButton";
 
 const url = process.env.API_URL!;
 
-
-
 export default function RegisterForm() {
 	const router = useRouter();
 	const [error, setError] = useState<string | null>(null);
@@ -31,16 +29,13 @@ export default function RegisterForm() {
 		e.preventDefault();
 		setLoading(true);
 
-		const response = await fetch(
-			`${url}/api/register/`,
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(authState),
-			}
-		);
+		const response = await fetch(`${url}/api/register/`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(authState),
+		});
 
 		if (response.status === 200 && response.ok === true) {
 			setLoading(false);
