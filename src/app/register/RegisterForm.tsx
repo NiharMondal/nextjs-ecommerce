@@ -7,8 +7,7 @@ import { toast } from "react-toastify";
 import Spin from "@/components/AnimateButton";
 
 //your website link url
-
-const url = process.env.API_URL!;
+const url = "https://nextjs-ts-ecommerce-zeta.vercel.app";
 
 export default function RegisterForm() {
 	const router = useRouter();
