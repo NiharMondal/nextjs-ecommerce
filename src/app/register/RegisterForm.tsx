@@ -9,12 +9,14 @@ import Spin from "@/components/AnimateButton";
 //your website link url
 const url = "https://nextjs-ts-ecommerce-zeta.vercel.app";
 
+// const url = "http://localhost:3000"; //local
+
 export default function RegisterForm() {
 	const router = useRouter();
 	const [error, setError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(false);
 	const [authState, setAuthState] = useState({
-		username: "",
+		name: "",
 		email: "",
 		password: "",
 		password_confirmation: "",
@@ -60,10 +62,10 @@ export default function RegisterForm() {
 							className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
 							type="text"
 							placeholder="Full Name"
-							id="username"
-							name="username"
+							id="name"
+							name="name"
 							onChange={handleChange}
-							value={authState.username}
+							value={authState.name}
 						></input>
 					</div>
 				</div>

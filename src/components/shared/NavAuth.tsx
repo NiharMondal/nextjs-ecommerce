@@ -18,22 +18,27 @@ const NavAuth = () => {
 			onClick={toggleMenu}
 			title="Profile"
 		>
-			<img src="/img/head.png" alt="head" className="absolute	inset-0 rounded-full "/>
+			<img
+				src="/img/head.png"
+				alt="head"
+				className="absolute	inset-0 rounded-full "
+			/>
 			{menu ? (
 				<div className="absolute top-14 -left-56 bg-gray-100 text-black p-2  w-56 cursor-default rounded ">
 					{session ? (
-						<div>
-							<h4 className="dark:text-black">
-								{" "}
-								Welcom, {session.user?.email}
-							</h4>
+						<>
+							<div className="dark:text-black pl-3  text-base ">
+								<p className=" font-semibold">
+									{session?.user?.name?.toUpperCase()}
+								</p>
+							</div>
 							<button
 								className="mt-4 hover:bg-blue-500 w-full text-left p-2 rounded hover:text-white"
 								onClick={() => signOut()}
 							>
 								Log out
 							</button>
-						</div>
+						</>
 					) : (
 						<div className="flex flex-col ">
 							<Link

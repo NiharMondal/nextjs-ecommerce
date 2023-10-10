@@ -3,11 +3,10 @@ import { prisma } from "@/lib/db";
 import bcrypt from "bcrypt";
 
 export async function POST(req: NextRequest) {
-	const { username, email, password, password_confirmation } =
-		await req.json();
+	const { name, email, password, password_confirmation } = await req.json();
 
 	try {
-		if (!username || !email || !password) {
+		if (!name || !email || !password) {
 			return NextResponse.json("All fields are required", { status: 400 });
 		}
 
@@ -27,15 +26,18 @@ export async function POST(req: NextRequest) {
 		//making hash password
 		const hashedPass = await bcrypt.hash(password, 10);
 
-		await prisma.users.create({
+		const createdUser = await prisma.users.create({
 			data: {
-				email: email,
-				name: username,
+				email,
+				name,
 				password: hashedPass,
 			},
 		});
-
-		return NextResponse.json({ status: 201 });
+		const response = {
+			name: createdUser.name,
+			email: createdUser.email,
+		};
+		return NextResponse.json(response, { status: 201 });
 	} catch (error) {
 		return NextResponse.json(error, { status: 500 });
 	}

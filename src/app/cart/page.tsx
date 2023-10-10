@@ -11,6 +11,6 @@ export const metadata = {
 };
 export default async function Cart() {
 	const session = await getServerSession(authOptions);
-
+	
 	return session?.user?.email ? <CartList /> : redirect("/login");
 }
