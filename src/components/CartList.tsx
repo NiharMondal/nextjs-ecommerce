@@ -42,14 +42,14 @@ export default function CartList() {
 
 	//make payment
 	const makePayment = async () => {
-		//livehost address
-		const url = "https://nextjs-ecommerce-two-ashen.vercel.app";
-		// const url = "http://localhost:3000/";
+
+		//stripe published key
+		
 		const stripe = await loadStripe(
 			"pk_test_51NprDyEuV5fOCajBjV53aCsJSQHJuh8wOOtUchlpmduNrOrXGhDX5OKa4wNHE2xUXE6p1fyjw9okfwH8L1cRjVLy00vpJmLXNT"
 		);
 
-		const response = await fetch(`${url}/api/checkout-payment`, {
+		const response = await fetch("/api/checkout-payment", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -80,6 +80,7 @@ export default function CartList() {
 										className="h-20 w-20 flex-shrink-0 rounded object-fill outline-none dark:border-transparent sm:h-32 sm:w-32"
 										src={product.image}
 										alt={product.title}
+										sizes="20px"
 									/>
 									<div className="flex w-full flex-col justify-between pb-4">
 										<div className="flex w-full justify-between space-x-2 pb-2">

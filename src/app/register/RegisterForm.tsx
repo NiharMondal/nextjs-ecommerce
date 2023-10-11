@@ -6,10 +6,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Spin from "@/components/AnimateButton";
 
-//your website link url
-const url = "https://nextjs-ecommerce-two-ashen.vercel.app";
 
-// const url = "http://localhost:3000"; //local
 
 export default function RegisterForm() {
 	const router = useRouter();
@@ -30,7 +27,7 @@ export default function RegisterForm() {
 		e.preventDefault();
 		setLoading(true);
 
-		const response = await fetch(`${url}/api/register/`, {
+		const response = await fetch("/api/register", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -38,10 +35,13 @@ export default function RegisterForm() {
 			body: JSON.stringify(authState),
 		});
 
-		if (response.status === 200 && response.ok === true) {
+		console.log(response);
+		
+
+		if (response.status === 201 && response.ok === true) {
 			setLoading(false);
 			toast.success("User created successfully");
-			router.push("/login");
+			router.replace("/login");
 		} else {
 			const error = await response.json();
 			if (error) {
