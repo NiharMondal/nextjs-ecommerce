@@ -1,6 +1,14 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
 @layer base {
 	h1 {
@@ -17,10 +25,12 @@
 	}
 
 	
-	
 }
 
 @layer components {
+	.btn-primary {
+		@apply px-4 py-2 rounded tracking-wide bg-primary text-background
+	}
 	.product-card {
 		@apply bg-slate-100 dark:bg-gray-600;
 	}
@@ -28,14 +38,15 @@
 		@apply text-center w-full py-3 border border-gray-300  uppercase bg-blue-500 hover:bg-blue-500/80 rounded text-white tracking-wider transition duration-100 delay-75;
 	}
 
-	.btn-link{
-		@apply px-4 py-2 uppercase cursor-pointer bg-blue-400 hover:bg-blue-500/80  text-white tracking-wide rounded
+	.btn-link {
+		@apply px-4 py-2 uppercase cursor-pointer bg-blue-400 hover:bg-blue-500/80  text-white tracking-wide rounded;
 	}
 
-	.form-input{
-		@apply w-full py-2 rounded dark:bg-gray-200 px-2 text-gray-600
+	.form-input {
+		@apply w-full py-2 rounded dark:bg-gray-200 px-2 text-gray-600;
 	}
-	.submit-btn{
-		@apply inline-flex w-full items-center justify-center rounded-md bg-blue-500 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-blue-500/80
+	.submit-btn {
+		@apply inline-flex w-full items-center justify-center rounded-md bg-blue-500 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-blue-500/80;
 	}
+	
 }

@@ -2,7 +2,13 @@
 
 const nextConfig = {
 	images: {
-		domains: ["fakestoreapi.com", "images.unsplash.com"],
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "*",
+				port: "",
+			},
+		],
 	},
 };
 

@@ -1,18 +1,17 @@
 import "./globals.css";
-import { Nunito_Sans } from "next/font/google";
-
-
+import "swiper/css";
+import "swiper/css/bundle";
 import "@stripe/stripe-js";
+import { Nunito } from "next/font/google";
 
-const nutino_sans = Nunito_Sans({ subsets: ["latin"] });
-
-import Providers from "@/components/providers/Providers";
-import Navbar from "@/components/shared/Navbar";
-import Footer from "@/components/shared/Footer";
+const nunito = Nunito({
+	subsets: ["latin"],
+	weight: ["400", "500", "600", "700", "800"],
+});
 
 export const metadata = {
-	title: "Classy Garments | Home",
-	description: "Home or Landing page",
+	title: "Gadget Galaxy | Home",
+	description: "classy garments home page. classy garments landing page",
 };
 
 export default function RootLayout({
@@ -21,19 +20,9 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html
-			lang="en"
-			className={`relative dark ${nutino_sans.className}`}
-			suppressHydrationWarning
-		>
-			<body className="bg-slate-200 dark:bg-gray-700">
-				<Providers>
-					<Navbar />
-					<main className="container mx-auto min-h-[510px]">
-						{children}
-					</main>
-					<Footer />
-				</Providers>
+		<html lang="en" className={nunito.className}>
+			<body className="bg-background">
+				<main>{children}</main>
 			</body>
 		</html>
 	);
