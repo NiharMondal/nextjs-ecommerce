@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+	--primary:"#2C43E4",
+	--secondary:"#EE7CD7",
+}
 * {
 	margin: 0;
 	padding: 0;
@@ -31,22 +35,25 @@
 	.btn-primary {
 		@apply px-4 py-2 rounded tracking-wide bg-primary text-background
 	}
-	.product-card {
-		@apply bg-slate-100 dark:bg-gray-600;
-	}
-	.btn {
-		@apply text-center w-full py-3 border border-gray-300  uppercase bg-blue-500 hover:bg-blue-500/80 rounded text-white tracking-wider transition duration-100 delay-75;
+	
+	.style{
+		@apply outline-none p-2 w-full rounded-md ring-2 
 	}
 
-	.btn-link {
-		@apply px-4 py-2 uppercase cursor-pointer bg-blue-400 hover:bg-blue-500/80  text-white tracking-wide rounded;
+	.example-thumb{
+		height: 15px;
+		width: 15px;
+		background-color: #EB609A;
+		outline: none;
+		cursor: grab;
+		border-radius: 50%;
+		top:-6px;
+		z-index: -1;
 	}
-
-	.form-input {
-		@apply w-full py-2 rounded dark:bg-gray-200 px-2 text-gray-600;
-	}
-	.submit-btn {
-		@apply inline-flex w-full items-center justify-center rounded-md bg-blue-500 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-blue-500/80;
+	.example-track.example-track-1{
+		height: 4px !important;
+		background-color: #EB609A !important;
+		
 	}
 	
 }
