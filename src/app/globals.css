@@ -27,7 +27,10 @@
 	h4 {
 		@apply text-base font-bold md:text-base text-slate-700 dark:text-white;
 	}
-
+	input[type="checkbox"]{
+		@apply h-5 w-5
+	}
+	
 	
 }
 
@@ -43,10 +46,11 @@
 	.example-thumb{
 		height: 15px;
 		width: 15px;
-		background-color: #EB609A;
+		background-color: #ffffff;
 		outline: none;
 		cursor: grab;
 		border-radius: 50%;
+		border: 4px solid #EB609A;
 		top:-6px;
 		z-index: -1;
 	}
