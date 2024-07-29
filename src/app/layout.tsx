@@ -5,6 +5,7 @@ import "@stripe/stripe-js";
 import { Nunito } from "next/font/google";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 const nunito = Nunito({
 	subsets: ["latin"],
 	weight: ["400", "500", "600", "700", "800"],
