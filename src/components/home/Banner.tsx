@@ -2,7 +2,6 @@
 import Image from "next/image";
 import React from "react";
 import Slider from "react-slick";
-import { Swiper, SwiperSlide } from "swiper/react";
 const offersProduct = [
 	{
 		id: "1653262",

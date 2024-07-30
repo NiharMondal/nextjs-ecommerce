@@ -1,7 +1,5 @@
 import "./globals.css";
-import "swiper/css";
-import "swiper/css/bundle";
-import "@stripe/stripe-js";
+
 import { Nunito } from "next/font/google";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

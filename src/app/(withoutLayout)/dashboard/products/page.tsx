@@ -1,7 +1,10 @@
-import React from 'react'
+import ProductModal from "@/components/admin-dashboard/@product/ProductModal";
+import React from "react";
 
 export default function ProductPage() {
-  return (
-    <div>ProductPage</div>
-  )
+	return (
+		<div>
+			<ProductModal />
+		</div>
+	);
 }

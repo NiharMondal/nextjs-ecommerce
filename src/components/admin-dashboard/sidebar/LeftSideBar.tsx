@@ -14,12 +14,10 @@ export default function LeftSideBar({
 	const pathname = usePathname();
 
 	return (
-		<aside
-			className={`min-h-screen ${
-				open ? "block" : "hidden"
-			}`}
-		>
-			<div className={`fixed top-0 left-0 lg:relative bg-white shadow-xl h-full w-[250px]`}>
+		<aside className={`min-h-screen ${open ? "block" : "hidden"}`}>
+			<div
+				className={`fixed top-0 left-0 lg:relative bg-white shadow-xl h-full w-[250px]`}
+			>
 				<div className="h-[80px] border-b-2 border-accent">
 					<div className="h-full flex items-center justify-between px-4">
 						<div>hello</div>
@@ -32,7 +30,7 @@ export default function LeftSideBar({
 				</div>
 				<ul className="p-5">
 					{adminRoutes.map(({ level, route }) => (
-						<Link href={route} className="">
+						<Link href={route} key={level}>
 							<li
 								className={`px-4 py-3 font-medium rounded-tl rounded-bl tracking-wide duration-300 transition-all ease-in ${
 									pathname === route

@@ -1,5 +1,5 @@
 "use client";
-import { Checkbox, Field, Input, Label } from "@headlessui/react";
+
 import React, { useState } from "react";
 import ReactSlider from "react-slider";
 import FilterContainer from "./FilterContainer";

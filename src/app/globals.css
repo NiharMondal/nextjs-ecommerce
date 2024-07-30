@@ -32,6 +32,11 @@
 	}
 	
 	
+	
+	input, select{
+		@apply p-2 outline-none ring-1 ring-accent/70 focus:ring-2 focus:ring-accent rounded-md w-full
+	}
+	
 }
 
 @layer components {

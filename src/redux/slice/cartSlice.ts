@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TProduct } from "@/types";
+import { TOldProduct } from "@/types";
 import { toast } from "react-toastify";
 
 type InitialStateType = {
-	cartItems: TProduct[];
+	cartItems: TOldProduct[];
 	cartQuantity: number;
 	totalAmount: number;
 };
@@ -34,7 +34,7 @@ export const cartSlice = createSlice({
 			localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
 		},
 
-		addToCart: (state, action: PayloadAction<TProduct>) => {
+		addToCart: (state, action: PayloadAction<TOldProduct>) => {
 			const itemIndex = state.cartItems.findIndex(
 				(item) => item.id === action.payload.id
 			);
