@@ -2,7 +2,7 @@ import React from "react";
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { adminRoutes } from "../admin-routes";
-import {usePathname} from 'next/navigation'
+import { usePathname } from "next/navigation";
 
 export default function LeftSideBar({
 	closeDrawer,
@@ -12,10 +12,14 @@ export default function LeftSideBar({
 	open: boolean;
 }) {
 	const pathname = usePathname();
-	
+
 	return (
-		<aside className={` ${open ? "block" : "hidden"}`}>
-			<div className={` bg-white  shadow-xl min-h-screen w-[250px]`}>
+		<aside
+			className={`min-h-screen ${
+				open ? "block" : "hidden"
+			}`}
+		>
+			<div className={`fixed top-0 left-0 lg:relative bg-white shadow-xl h-full w-[250px]`}>
 				<div className="h-[80px] border-b-2 border-accent">
 					<div className="h-full flex items-center justify-between px-4">
 						<div>hello</div>

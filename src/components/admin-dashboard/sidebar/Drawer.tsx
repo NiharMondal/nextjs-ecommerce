@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import LeftSideBar from "./LeftSideBar";
 import RightSideBar from "./RightSideBar";
-
+ 
 export default function Drawer({ children }: { children: React.ReactNode }) {
 	const [open, setOpen] = useState(true);
 	const openDrawer = () => {

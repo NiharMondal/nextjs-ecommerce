@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Chart } from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import { Bar } from "react-chartjs-2";
@@ -7,7 +7,7 @@ import { Bar } from "react-chartjs-2";
 Chart.register(CategoryScale);
 
 export default function BarChart() {
-	const [chartData] = useState({
+	const chartData = {
 		labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
 		datasets: [
 			{
@@ -18,7 +18,8 @@ export default function BarChart() {
 				maxBarThickness: 12,
 			},
 		],
-	});
+	};
+
 	return (
 		<div className="md:col-span-2 bg-white rounded-md p-5">
 			<h2>Sales statistics</h2>

@@ -1,12 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Chart } from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 Chart.register(CategoryScale);
 
 export default function DoughnutChart() {
-	const [chartData] = useState({
+    const data = {
 		labels: ["Jan", "Feb", "Mar", "Apr"],
 		datasets: [
 			{
@@ -18,11 +18,11 @@ export default function DoughnutChart() {
 				hoverOffset: 4,
 			},
 		],
-	});
+	};
 	return (
 		<div className="bg-white p-5 rounded-md col-span-1">
 			<h2>Visitors</h2>
-			<Doughnut data={chartData} />
+			<Doughnut data={data} />
 		</div>
 	);
 }
