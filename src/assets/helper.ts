@@ -275,4 +275,13 @@ const operating_system = [
             {name:"macOS",value:"macOS"},
             {name:"ChromeOS",value:"ChromeOS"},
         ]
-export const productManager = {brand, processor_type, processor_model, ram, ram_type, generation, display_size, display_type, hdd, ssd, graphics, operating_system}
+
+const features = [
+    
+    {name:"Backlit Keyboard",value:"backlit-keyboard"},
+    {name:"Finger Print",value:"finger-print"},
+    {name:"360°",value:"360°"},
+    {name:"Touch Screen",value:"touch-screen"},
+    {name:"Type-C Port",value:"type-c-port"},
+]
+export const productManager = {brand, processor_type, processor_model, ram, ram_type, generation, display_size, display_type, hdd, ssd, graphics, operating_system, features}

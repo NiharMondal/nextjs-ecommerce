@@ -66,7 +66,7 @@ export default function SearchBox() {
 						placeholder="Search products..."
 						className="pl-8 w-full h-full outline-none text-gray-500"
 					/>
-					<button className="btn-primary w-[80px] h-full group">
+					<button className="btn primary w-[80px] h-full group">
 						<MagnifyingGlassIcon
 							width={20}
 							className="mx-auto text-background  transition-transform duration-100 ease-in group-hover:scale-125"

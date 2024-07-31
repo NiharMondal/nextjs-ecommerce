@@ -28,7 +28,7 @@
 		@apply text-base font-bold md:text-base text-slate-700 dark:text-white;
 	}
 	input[type="checkbox"]{
-		@apply h-5 w-5
+		@apply h-5 w-5 ring-0 focus:ring-0
 	}
 	
 	
@@ -40,9 +40,17 @@
 }
 
 @layer components {
-	.btn-primary {
-		@apply px-4 py-2 rounded tracking-wide bg-primary text-background
+	.btn {
+		@apply px-4 py-2 tracking-wide text-background rounded
 	}
+	.primary {
+		@apply bg-primary hover:bg-primary/80 
+	}
+
+	.dashboard{
+		@apply bg-secondary hover:bg-secondary/80
+	}
+	
 	
 	.style{
 		@apply outline-none p-2 w-full rounded-md ring-2 

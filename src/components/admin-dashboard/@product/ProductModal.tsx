@@ -1,26 +1,52 @@
 "use client";
 import { productManager } from "@/assets/helper";
-import { createProduct } from "@/assets/helper";
 import { TProduct } from "@/types";
 
 import { Dialog, DialogPanel } from "@headlessui/react";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useAddProductMutation } from "@/redux/api/productApi";
+import { toast } from "react-toastify";
 
 export default function ProductModal() {
 	const [isOpen, setIsOpen] = useState(false);
+	const [features, setFeatures] = useState<string[]>([]);
+	const [addProduct] = useAddProductMutation();
+	const { register, handleSubmit } = useForm<TProduct>();
 
-	const {
-		register,
-		handleSubmit,
-		watch,
-		formState: { errors },
-	} = useForm<TProduct>();
+	console.log(features);
+	const handleFeaturesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const { value, checked } = e.target;
+		if (checked) {
+			setFeatures([...features, value]);
+		} else {
+			setFeatures(features.filter((item) => item !== value));
+		}
+	};
 
-	const onSubmit: SubmitHandler<TProduct> = (data) => console.log(data);
+	const onSubmit: SubmitHandler<TProduct> = async (data) => {
+		data.price = Number(data.price);
+		data.regularPrice = Number(data.regularPrice);
+		data.inStock = Number(data.inStock);
+		data.features = features;
+		try {
+			const response = await addProduct(data).unwrap();
+			if (response.success) {
+				toast.success(response.message,{autoClose:1000});
+				setIsOpen(false)
+			}
+		} catch (error: any) {
+			toast.error(error.message);
+		}
+	};
 	return (
 		<>
-			<button onClick={() => setIsOpen(true)}>Create Product</button>
+			<button
+				onClick={() => setIsOpen(true)}
+				className="bg-secondary px-5 py-2 text-white rounded-md hover:bg-secondary/80"
+			>
+				Create Product
+			</button>
 
 			<Dialog
 				open={isOpen}
@@ -221,9 +247,40 @@ export default function ProductModal() {
 									</div>
 								</div>
 								<div>
-									<textarea rows={4} placeholder="Product description..." className="w-full p-2 rounded-md outline-none ring-1 ring-secondary/70 focus:ring-2 focus:ring-secondary"></textarea>
+									<textarea
+										{...register("description")}
+										rows={4}
+										placeholder="Product description..."
+										className="w-full p-2 rounded-md outline-none ring-1 ring-secondary/70 focus:ring-2 focus:ring-secondary"
+									></textarea>
 								</div>
-								<button className="bg-accent py-2 text-white rounded-md hover:bg-accent/90 px-5">
+								<div>
+									<p>Features</p>
+									<div>
+										{productManager.features.map((data) => (
+											<div
+												key={data.value}
+												className="flex gap-x-3 items-center"
+											>
+												<input
+													onChange={
+														handleFeaturesChange
+													}
+													type="checkbox"
+													value={data.value}
+													id="features"
+												/>
+												<label htmlFor="features">
+													{data.name}
+												</label>
+											</div>
+										))}
+									</div>
+								</div>
+								<button
+									type="submit"
+									className="bg-accent py-2 text-white rounded-md hover:bg-accent/90 px-5"
+								>
 									Create Product
 								</button>
 							</form>

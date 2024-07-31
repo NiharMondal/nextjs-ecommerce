@@ -5,7 +5,6 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
-		
 		"start": "next start",
 		"lint": "next lint",
 		"postinstall": "prisma generate"
@@ -19,6 +18,7 @@
 		"@types/react": "18.2.6",
 		"@types/react-dom": "18.2.4",
 		"autoprefixer": "10.4.14",
+		"axios": "^1.7.2",
 		"chart.js": "^4.4.3",
 		"next": "^14.2.3",
 		"next-cloudinary": "^6.5.2",

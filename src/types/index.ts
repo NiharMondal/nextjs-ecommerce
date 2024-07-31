@@ -1,10 +1,9 @@
 export type TProduct = {
-
   name: string;
   description: string;
-  price: string;
-  regularPrice: string;
-  inStock: string;
+  price: number;
+  regularPrice: number;
+  inStock: number;
   brand: string;
   processor_type: string;
   processor_model: string;
@@ -18,9 +17,9 @@ export type TProduct = {
   ssd: string;
   graphics: string;
   operating_system: string;
-//   features?: string[];
+  features?: string[];
 };
-
+export type TProductResponse = TProduct & {id:string; rating:number; slug:string; createdAt:string; updatedAt:string;}
 export type TOldProduct = {
 
 	id: string;
@@ -35,3 +34,11 @@ export type TOldProduct = {
 	};
 	[vlaue: string]: any;
 };
+
+
+
+export type TServerResponse<T> = {
+  success: boolean
+  message: string;
+  result:T
+}

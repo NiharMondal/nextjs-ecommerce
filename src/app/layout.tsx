@@ -3,6 +3,7 @@ import "./globals.css";
 import { Nunito } from "next/font/google";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Wrapper from "@/components/provider/Wrapper";
 
 const nunito = Nunito({
 	subsets: ["latin"],
@@ -22,7 +23,9 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={nunito.className}>
 			<body className="bg-background">
-				<main>{children}</main>
+				<Wrapper>
+					<main>{children}</main>
+				</Wrapper>
 			</body>
 		</html>
 	);
