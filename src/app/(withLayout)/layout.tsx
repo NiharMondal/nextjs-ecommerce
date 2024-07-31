@@ -7,9 +7,9 @@ export default function HomeLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<section>
+		<>
 			<TopAppBar />
 			{children}
-		</section>
+		</>
 	);
 }

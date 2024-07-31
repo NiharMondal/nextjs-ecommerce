@@ -9,7 +9,7 @@ export default function Wrapper({children}:{children:React.ReactNode}) {
   return (
     <Provider store={store}>
         {children}
-        <ToastContainer/>
+        <ToastContainer autoClose={1000}/>
     </Provider>
   )
 }

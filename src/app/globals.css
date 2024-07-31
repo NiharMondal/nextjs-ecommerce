@@ -55,7 +55,9 @@
 	.style{
 		@apply outline-none p-2 w-full rounded-md ring-2 
 	}
-
+	.pill{
+		@apply bg-gray-200 rounded-full px-3 py-1
+	}
 	.example-thumb{
 		height: 15px;
 		width: 15px;

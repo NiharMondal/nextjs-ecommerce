@@ -1,20 +1,25 @@
 "use client";
 import { productManager } from "@/assets/helper";
-import { TProduct } from "@/types";
+import { TProduct, TServerResponse } from "@/types";
 
 import { Dialog, DialogPanel } from "@headlessui/react";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useAddProductMutation } from "@/redux/api/productApi";
 import { toast } from "react-toastify";
+import ImageWeidget from "@/components/shared/ImageWeidget";
 
 export default function ProductModal() {
+	const [addProduct, { isLoading }] = useAddProductMutation();
+	//for modal
 	const [isOpen, setIsOpen] = useState(false);
+	//for features
 	const [features, setFeatures] = useState<string[]>([]);
-	const [addProduct] = useAddProductMutation();
+	//for image upload
+	const [photo, setPhoto] = useState<any>(null);
 	const { register, handleSubmit } = useForm<TProduct>();
 
-	console.log(features);
+	//hangle array of features
 	const handleFeaturesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { value, checked } = e.target;
 		if (checked) {
@@ -24,7 +29,9 @@ export default function ProductModal() {
 		}
 	};
 
+	//handle onSubmit
 	const onSubmit: SubmitHandler<TProduct> = async (data) => {
+		data.photo = photo?.secure_url;
 		data.price = Number(data.price);
 		data.regularPrice = Number(data.regularPrice);
 		data.inStock = Number(data.inStock);
@@ -32,8 +39,8 @@ export default function ProductModal() {
 		try {
 			const response = await addProduct(data).unwrap();
 			if (response.success) {
-				toast.success(response.message,{autoClose:1000});
-				setIsOpen(false)
+				toast.success(response.message);
+				setIsOpen(false);
 			}
 		} catch (error: any) {
 			toast.error(error.message);
@@ -62,6 +69,7 @@ export default function ProductModal() {
 					</button>
 					<DialogPanel className="min-w-full min-h-full">
 						<div className="max-w-5xl mx-auto pt-10">
+							<ImageWeidget setPhoto={setPhoto} />
 							<form
 								onSubmit={handleSubmit(onSubmit)}
 								className="bg-background p-10 rounded-md space-y-4"
@@ -281,7 +289,9 @@ export default function ProductModal() {
 									type="submit"
 									className="bg-accent py-2 text-white rounded-md hover:bg-accent/90 px-5"
 								>
-									Create Product
+									{isLoading
+										? "Creating product..."
+										: "Create Product"}
 								</button>
 							</form>
 						</div>
