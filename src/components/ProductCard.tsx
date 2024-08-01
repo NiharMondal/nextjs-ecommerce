@@ -17,7 +17,7 @@ export default function ProductCard({
 						height={300}
 						alt="product-name"
 						src={product?.photo}
-						className="h-full w-full  object-center group-hover:opacity-75"
+						className="h-full w-full object-contain object-center group-hover:opacity-75"
 					/>
 				</div>
 				<p className="mt-4 text-base text-color font-normal group-hover:underline">

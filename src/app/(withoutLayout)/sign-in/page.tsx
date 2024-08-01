@@ -47,7 +47,7 @@ export default function SignInPage() {
 							Forgot your password?
 						</Link>
 					</div>
-					<button className="btn-primary w-full">Sign in</button>
+					<button className="btn primary w-full">Sign in</button>
 					<div>
 						<p>
 							Don&apos;t have an account?{" "}

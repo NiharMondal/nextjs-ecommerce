@@ -42,13 +42,15 @@ export default function Navbar() {
 							/>
 						</button>
 					</div>
-					<div className="flex items-center justify-center gap-x-8">
+					<div className="flex items-center justify-center gap-x-10">
 						<NavCart />
-						<Link href="/login">
-							<button className="bg-secondary px-6 py-2 rounded font-medium text-lg text-white hover:bg-secondary/90 hover:shadow-md">
-								Login
-							</button>
-						</Link>
+						<div>
+							<Link href="/login">
+								<button className="bg-secondary px-6 py-2 rounded font-medium text-lg text-white hover:bg-secondary/90 hover:shadow-md">
+									Login
+								</button>
+							</Link>
+						</div>
 					</div>
 				</div>
 			</nav>

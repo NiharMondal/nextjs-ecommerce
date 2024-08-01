@@ -58,7 +58,7 @@ export default function RegisterPage() {
 						/>
 					</div>
 
-					<button className="btn-primary w-full">Sign up</button>
+					<button className="btn primary w-full">Sign up</button>
 					<div>
 						<p>
 							Already have an account?{" "}

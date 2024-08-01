@@ -1,4 +1,5 @@
 export type TProduct = {
+  [key: string]: any
   name: string;
   photo:string;
   description: string;

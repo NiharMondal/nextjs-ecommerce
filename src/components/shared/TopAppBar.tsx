@@ -36,7 +36,7 @@ export default function TopAppBar() {
 					</div>
 
 					<SearchBox />
-					<div className="flex items-center gap-x-5">
+					<div className="flex items-center gap-x-10">
 						<NavCart />
 
 						<Login />

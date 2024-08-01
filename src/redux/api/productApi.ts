@@ -4,6 +4,7 @@ import { TProduct } from "@/types";
 
 const productApi = baseApi.injectEndpoints({
     endpoints: (builder)=>({
+        
         addProduct : builder.mutation<TServerResponse<TProductResponse>,TProduct>({
             query: (payload)=>{
                 return {
@@ -12,8 +13,16 @@ const productApi = baseApi.injectEndpoints({
                     data: payload
                 }
             }
+        }),
+
+        getProduct: builder.query({
+            query:()=>({
+                url:"/porduct",
+                method:"GET",
+
+            })
         })
     })
 })
 
-export const {useAddProductMutation} = productApi;
+export const {useAddProductMutation,useGetProductQuery} = productApi;

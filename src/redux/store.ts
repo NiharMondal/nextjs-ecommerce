@@ -1,14 +1,39 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "../redux/slice/cartSlice";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
+
 import { baseApi } from "./baseApi";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+
+const persistConfig = {
+	key: "cart",
+	version: 1,
+	storage
+}
+
+const persistedReducer = persistReducer(persistConfig, cartReducer )
+
 export const store = configureStore({
 	reducer: {
 		[baseApi.reducerPath] : baseApi.reducer,
-		cart: cartReducer,
+		cart: persistedReducer,
 	},
 	 middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(baseApi.middleware),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat(baseApi.middleware),
 
 });
 
