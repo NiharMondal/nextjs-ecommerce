@@ -6,27 +6,27 @@ export const adminRoutes = [
         level:"Dashboard"
     },
     {
-        route:"/dashboard/products",
+        route:"/dashboard/admin/products",
         level:"Products"
     },
     {
-        route:"/dashboard/customers",
+        route:"/dashboard/admin/customers",
         level:"Customers"
     },
     {
-        route:"/dashboard/reviews",
+        route:"/dashboard/admin/reviews",
         level:"Reviews"
     },
     {
-        route:"/dashboard/statistics",
+        route:"/dashboard/admin/statistics",
         level:"Statistics"
     },
     {
-        route:"/dashboard/transactions",
+        route:"/dashboard/admin/transactions",
         level:"Transactions"
     },
     {
-        route:"/dashboard/hot-offers",
+        route:"/dashboard/admin/hot-offers",
         level:"Hot Offers"
     },
 ]

@@ -1,3 +1,4 @@
+
 import {
 	Disclosure,
 	DisclosureButton,
@@ -6,22 +7,19 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 type QueryType = {
-	name: string;
-	value: string;
-};
-type FieldFilteringProps = {
-	label: string;
+	name:string;
+	value:string;
+}
+type AccordionProps = {
+	label:string;
 	data: QueryType[];
 	query: string[];
 	setQuery: React.Dispatch<React.SetStateAction<string[]>>;
 };
-export default function FieldFiltering({
-	query,
-	setQuery,
-	label,
-	data,
-}: FieldFilteringProps) {
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+export default function Accordion({query, setQuery, label, data}: AccordionProps) {
+    
+    
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { value, checked } = e.target;
 		if (checked) {
 			setQuery([...query, value]);
@@ -36,24 +34,26 @@ export default function FieldFiltering({
 				<ChevronDownIcon className="size-5 fill-black/60 group-data-[hover]:fill-black/50 group-data-[open]:rotate-180" />
 			</DisclosureButton>
 			<DisclosurePanel className="border-t-2 mt-2 py-2 text-wrap">
-				<div className="max-h-[300px] pr-5 overflow-y-auto filter-scrollbar">
-					{data.map((item) => (
+				<div className="space-y-2 max-h-[300px] overflow-y-auto filter-scrollbar">
+					{data.map((brand) => (
 						<div
-							className="py-1 px-4 flex items-center gap-x-3 w-full hover:bg-primary/5 duration-100"
-							key={item.value}
+							className="flex items-center gap-x-3"
+							key={brand.value}
 						>
 							<input
-								onChange={handleChange}
+                                onChange={handleChange}
 								type="checkbox"
-								name={item.name}
-								id={item.value}
-								value={item.value}
+								name="brand"
+								id="brand"
+								value={brand.value}
 							/>
-							<label htmlFor={item.value} className="w-full inline-block h-full cursor-pointer">{item.name}</label>
+							<label htmlFor="brand">{brand.name}</label>
 						</div>
 					))}
 				</div>
 			</DisclosurePanel>
 		</Disclosure>
+
+        
 	);
 }

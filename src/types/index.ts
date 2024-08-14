@@ -44,3 +44,9 @@ export type TServerResponse<T> = {
   message: string;
   result:T
 }
+
+export type TCreateHotOffer = {
+	discount: number;
+	productId: string;
+	endDate: string;
+};

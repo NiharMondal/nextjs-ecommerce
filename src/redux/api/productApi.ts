@@ -7,22 +7,47 @@ const productApi = baseApi.injectEndpoints({
         
         addProduct : builder.mutation<TServerResponse<TProductResponse>,TProduct>({
             query: (payload)=>{
+                console.log(payload)
                 return {
                     url:"/product",
                     method:"POST",
                     data: payload
                 }
-            }
+                
+            },
+            invalidatesTags:["product"]
+            
         }),
 
-        getProduct: builder.query({
-            query:()=>({
-                url:"/porduct",
-                method:"GET",
+        getProduct: builder.query<TServerResponse<TProductResponse[]>, Record<string, string>>({
+            query:(query)=>{
+               const params = new URLSearchParams();
+                if (query && Object.keys(query).length > 0) {
+                    Object.keys(query).forEach((key) => {
+                        if (query[key] && query[key].length > 0) {
+                        params.append(key, query[key].toString());
+                        }
+                    });
+                    }
+                return{
 
-            })
+                    url:`/product`,
+                    method:"GET",
+                    params:params
+                }
+
+            },
+            providesTags:["product"]
+        }),
+
+        deleteProduct : builder.mutation<TServerResponse<TProductResponse>,string>({
+            query:(id)=>({
+                url:`/product/${id}`,
+                method:"DELETE",
+            }),
+            invalidatesTags:["product"]
         })
     })
 })
 
-export const {useAddProductMutation,useGetProductQuery} = productApi;
+export const {useAddProductMutation,useGetProductQuery,useDeleteProductMutation} = productApi;

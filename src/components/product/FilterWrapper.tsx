@@ -5,7 +5,7 @@ import ReactSlider from "react-slider";
 import Accordion from "../shared/Accortdion";
 const MIN = 0;
 const MAX = 100000;
-export default function Filter() {
+export default function FilterWrapper() {
 	const [price, setPrice] = useState([MIN, MAX]);
 
 	return (
@@ -30,7 +30,7 @@ export default function Filter() {
 				</div>
 			</div>
 
-			<Accordion />
+			{/* <Accordion /> */}
 		</div>
 	);
 }

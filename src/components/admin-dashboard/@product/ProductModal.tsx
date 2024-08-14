@@ -1,13 +1,13 @@
 "use client";
 import { productManager } from "@/assets/helper";
-import { TProduct, TServerResponse } from "@/types";
+import { TProduct } from "@/types";
 
 import { Dialog, DialogPanel } from "@headlessui/react";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useAddProductMutation } from "@/redux/api/productApi";
 import { toast } from "react-toastify";
 import ImageWeidget from "@/components/shared/ImageWeidget";
+import { useAddProductMutation } from "@/redux/api/productApi";
 
 export default function ProductModal() {
 	const [addProduct, { isLoading }] = useAddProductMutation();
@@ -36,8 +36,10 @@ export default function ProductModal() {
 		data.regularPrice = Number(data.regularPrice);
 		data.inStock = Number(data.inStock);
 		data.features = features;
+
 		try {
 			const response = await addProduct(data).unwrap();
+
 			if (response.success) {
 				toast.success(response.message);
 				setIsOpen(false);
@@ -116,7 +118,10 @@ export default function ProductModal() {
 										<select {...register("brand")}>
 											{productManager.brand.map(
 												(brand) => (
-													<option value={brand.value}>
+													<option
+														value={brand.value}
+														key={brand.value}
+													>
 														{brand.name}
 													</option>
 												)
@@ -128,7 +133,10 @@ export default function ProductModal() {
 										<select {...register("processor_type")}>
 											{productManager.processor_type.map(
 												(data) => (
-													<option value={data.value}>
+													<option
+														value={data.value}
+														key={data.value}
+													>
 														{data.name}
 													</option>
 												)
@@ -142,7 +150,10 @@ export default function ProductModal() {
 										>
 											{productManager.processor_model.map(
 												(data) => (
-													<option value={data.value}>
+													<option
+														value={data.value}
+														key={data.value}
+													>
 														{data.name}
 													</option>
 												)
@@ -154,7 +165,10 @@ export default function ProductModal() {
 										<select {...register("generation")}>
 											{productManager.generation.map(
 												(data) => (
-													<option value={data.value}>
+													<option
+														value={data.value}
+														key={data.value}
+													>
 														{data.name}
 													</option>
 												)
@@ -166,7 +180,10 @@ export default function ProductModal() {
 										<select {...register("display_size")}>
 											{productManager.display_size.map(
 												(data) => (
-													<option value={data.value}>
+													<option
+														value={data.value}
+														key={data.value}
+													>
 														{data.name}
 													</option>
 												)
@@ -178,7 +195,10 @@ export default function ProductModal() {
 										<select {...register("display_type")}>
 											{productManager.display_type.map(
 												(data) => (
-													<option value={data.value}>
+													<option
+														value={data.value}
+														key={data.value}
+													>
 														{data.name}
 													</option>
 												)
@@ -189,7 +209,10 @@ export default function ProductModal() {
 										<p>RAM </p>
 										<select {...register("ram")}>
 											{productManager.ram.map((data) => (
-												<option value={data.value}>
+												<option
+													value={data.value}
+													key={data.value}
+												>
 													{data.name}
 												</option>
 											))}
@@ -200,7 +223,10 @@ export default function ProductModal() {
 										<select {...register("ram_type")}>
 											{productManager.ram_type.map(
 												(data) => (
-													<option value={data.value}>
+													<option
+														value={data.value}
+														key={data.value}
+													>
 														{data.name}
 													</option>
 												)
@@ -211,7 +237,10 @@ export default function ProductModal() {
 										<p>HDD </p>
 										<select {...register("hdd")}>
 											{productManager.hdd.map((data) => (
-												<option value={data.value}>
+												<option
+													value={data.value}
+													key={data.value}
+												>
 													{data.name}
 												</option>
 											))}
@@ -221,7 +250,10 @@ export default function ProductModal() {
 										<p>SSD </p>
 										<select {...register("ssd")}>
 											{productManager.ssd.map((data) => (
-												<option value={data.value}>
+												<option
+													value={data.value}
+													key={data.value}
+												>
 													{data.name}
 												</option>
 											))}
@@ -232,7 +264,10 @@ export default function ProductModal() {
 										<select {...register("graphics")}>
 											{productManager.graphics.map(
 												(data) => (
-													<option value={data.value}>
+													<option
+														value={data.value}
+														key={data.value}
+													>
 														{data.name}
 													</option>
 												)
@@ -246,7 +281,10 @@ export default function ProductModal() {
 										>
 											{productManager.operating_system.map(
 												(data) => (
-													<option value={data.value}>
+													<option
+														value={data.value}
+														key={data.value}
+													>
 														{data.name}
 													</option>
 												)

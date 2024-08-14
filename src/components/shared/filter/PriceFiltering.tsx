@@ -1,14 +1,18 @@
-"use client";
+"use client"
+import React from 'react'
+import ReactSlider from 'react-slider';
 
-import React, { useState } from "react";
-import ReactSlider from "react-slider";
-import Accordion from "../shared/Accortdion";
-const MIN = 0;
-const MAX = 100000;
-export default function Filter() {
-	const [price, setPrice] = useState([MIN, MAX]);
+type Props = {
+    price: number[];
+    setPrice: React.Dispatch<React.SetStateAction<number[]>>;
+    min: number;
+    max: number;
 
-	return (
+}
+
+export default function PriceFiltering({price,setPrice,min, max}:Props) {
+   
+  return (
 		<div className="space-y-2">
 			<div className="p-4 bg-white">
 				<h3 className="border-b">Price Range</h3>
@@ -20,8 +24,8 @@ export default function Filter() {
 					onChange={setPrice}
 					defaultValue={price}
 					value={price}
-					min={MIN}
-					max={MAX}
+					min={min}
+					max={max}
 				/>
 
 				<div className="flex items-center justify-between mt-5">
@@ -29,8 +33,6 @@ export default function Filter() {
 					<code className="px-4 py-2 border">{price[1]}</code>
 				</div>
 			</div>
-
-			<Accordion />
 		</div>
-	);
+  );
 }
