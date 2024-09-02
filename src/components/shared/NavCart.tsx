@@ -1,23 +1,23 @@
 "use client";
 
+import { useAppSelector } from "@/redux/hooks";
+import {  selectCartQuantity } from "@/redux/slice/cartSlice";
+import { ShoppingBagIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
-import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { useAppSelector } from "@/redux/hooks";
-
 const NavCart = () => {
-	const { cartQuantity } = useAppSelector((state) => state.cart);
+	const cartQuantity = useAppSelector(selectCartQuantity);
 	return (
-		<div className="w-16  px-4 ">
-			<Link href="/cart">
-				<div className="relative w-full">
-					<ShoppingCartIcon className="h-7" />
-					<span className="absolute -top-3 -right-3 text-blue-500 font-bold">
-						{cartQuantity}
-					</span>
+		<Link href="/cart">
+			<div className="relative text-primary">
+				<div>
+					<ShoppingBagIcon width={20} />
 				</div>
-			</Link>
-		</div>
+				<span className="absolute -top-2 -right-2 text-sm ">
+					{cartQuantity}
+				</span>
+			</div>
+		</Link>
 	);
 };
 

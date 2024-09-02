@@ -10,24 +10,73 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-type ProductsRating {
-  count Int
-  rate  Int
+model Brand {
+  id       String     @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  products Products[]
+
+  @@map("brand")
+}
+
+model Category {
+  id       String     @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  products Products[]
+
+  @@map("category")
 }
 
 model Products {
-  id          String         @id @default(auto()) @map("_id") @db.ObjectId
-  category    String
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  title       String
   description String
   image       String
-  price       Int
-  rating      ProductsRating
-  title       String
+  price       Float
+  rating      Float
+  inStock     Int
+
+  orders     Orders[]
+  brand      Brand    @relation(fields: [brandId], references: [id])
+  brandId    String   @db.ObjectId
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String   @db.ObjectId
+
+  @@map("products")
+}
+
+model Orders {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  shippingCost Float
+  vat          Float
+  totalCost    Float
+  user         Users  @relation(fields: [userId], references: [id])
+  userId       String @db.ObjectId
+
+  products  Products @relation(fields: [productId], references: [id])
+  productId String   @db.ObjectId
+
+  @@map("orders")
 }
 
 model Users {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
-  email    String @unique
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  email    String   @unique
   password String
   name     String
+  orders   Orders[]
+  address  Address?
+
+  @@map("users")
+}
+
+model Address {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  street  String
+  city    String
+  country String
+
+  user   Users  @relation(fields: [userId], references: [id])
+  userId String @unique @db.ObjectId
 }

@@ -1,27 +1,25 @@
-export const SIDEBAR_NAV_ITEM = [
+import { MagnifyingGlassIcon,ShoppingCartIcon,CreditCardIcon,RocketLaunchIcon } from "@heroicons/react/24/solid";
+
+export const processData = [
 	{
-		icon: "⚡",
-		title: "New In",
-		category: "featured",
+		icon: MagnifyingGlassIcon,
+		title: "Discover Products", 
+		description:"Browse through our extensive collection of electronic devices." 
 	},
 	{
-		icon: "🖥️",
-		title: "Electronics",
-		category: "electronics",
+		icon: ShoppingCartIcon,
+		title: "Add Items to Cart", 
+		description:"See something you like? Add it to your cart effortlessly." 
 	},
 	{
-		icon: "🎁",
-		title: "Jewelery",
-		category: "jewelery",
+		icon: CreditCardIcon,
+		title: "Secure Checkout", 
+		description:"Ready to buy? Proceed to our secure checkout process." 
 	},
 	{
-		icon: "🙍‍♂️",
-		title: "Men's Clothing",
-		category: "men-clothing",
+		icon: RocketLaunchIcon,
+		title: "Track Your Order", 
+		description:"Keep an eye on your order from the moment it’s placed until it arrives at your doorstep." 
 	},
-	{
-		icon: "🚺",
-		title: "Women's Clothing",
-		category: "women-clothing",
-	},
-];
+
+]

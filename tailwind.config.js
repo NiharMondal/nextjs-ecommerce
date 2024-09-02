@@ -2,7 +2,6 @@
 module.exports = {
 	darkMode: "class",
 	content: [
-		
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
@@ -12,12 +11,22 @@ module.exports = {
 				padding: {
 					DEFAULT: ".8rem",
 					sm: "2rem",
-					lg: "5rem",
-					xl: "6rem",
-					"2xl": "7rem",
+					lg: "3rem",
+					xl: "5rem",
+					"2xl": "6rem",
 				},
+			},
+			colors: {
+				background: "#F5F6FE",
+				color:"#04061C",
+				primary: "#2C43E4",
+				secondary: "#EE7CD7",
+				accent: "#EB609A",
 			},
 		},
 	},
-	plugins: [require("tailwind-scrollbar-hide")],
+	corePlugins: {
+		aspectRatio: false,
+	},
+	plugins: [require("@tailwindcss/aspect-ratio")],
 };

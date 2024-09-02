@@ -1,118 +1,120 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TProduct } from "@/types";
-import { toast } from "react-toastify";
+import { RootState } from "../store";
+import { CartProductType } from "@/types";
+
 
 type InitialStateType = {
-	cartItems: TProduct[];
-	cartQuantity: number;
-	totalAmount: number;
+    cartItems: CartProductType[];
+    cartQuantity: number;
+    totalAmount: number;
 };
 
-const initialCartItem =
-	typeof window !== "undefined"
-		? JSON.parse(window.localStorage.getItem("cartItems")!)
-		: null;
-
 const initialState: InitialStateType = {
-	cartItems: initialCartItem || [],
-	cartQuantity: 0,
-	totalAmount: 0,
+    cartItems: [],
+    cartQuantity: 0,
+    totalAmount: 0,
 };
 
 export const cartSlice = createSlice({
-	name: "cart",
+    name: "cart",
+    initialState,
+    reducers: {
+        clearCart: (state) => {
+            state.cartItems = [];
+            state.cartQuantity = 0;
+            state.totalAmount = 0;
+        },
 
-	initialState,
+        addToCart: (state, action: PayloadAction<CartProductType>) => {
+            const itemIndex = state.cartItems.findIndex(
+                (item) => item.id === action.payload.id
+            );
 
-	reducers: {
-		clearCart: (state) => {
-			window.alert("Do you want to clear cart?");
-			state.cartItems = [];
-			state.cartQuantity = 0;
-			state.totalAmount = 0;
+            if (itemIndex >= 0) {
+                state.cartItems[itemIndex].productQuantity += 1;
+                state.cartQuantity += 1;
+                state.totalAmount += state.cartItems[itemIndex].price;
+            } else {
+                const tempProduct = { ...action.payload, productQuantity: 1 };
+                state.cartItems.push(tempProduct);
+                state.cartQuantity += 1;
+                state.totalAmount += tempProduct.price
+            }
+        },
 
-			localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-		},
+        removeItem: (state, action: PayloadAction<string>) => {
+            const nextCartItems = state.cartItems.filter(
+                (product) => product.id !== action.payload
+            );
 
-		addToCart: (state, action: PayloadAction<TProduct>) => {
-			const itemIndex = state.cartItems.findIndex(
-				(item) => item.id === action.payload.id
-			);
+            const removedItem = state.cartItems.find(
+                (product) => product.id === action.payload
+            );
 
-			if (itemIndex >= 0) {
-				state.cartItems[itemIndex].productQuantity += 1;
-				state.cartQuantity += 1;
-			} else {
-				const tempProduct = { ...action.payload, productQuantity: 1 };
-				state.cartItems.push(tempProduct);
-				state.cartQuantity += 1;
+            state.cartItems = nextCartItems;
+            if (removedItem) {
+                state.cartQuantity -= removedItem.productQuantity;
+                state.totalAmount -= removedItem.price * removedItem.productQuantity;
+            }
+        },
 
-				toast.success("Product added to cart");
-			}
+        decreaseQuantity: (state, action: PayloadAction<string>) => {
+            const cartItem = state.cartItems.find(
+                (pd) => pd.id === action.payload
+            );
+            if (cartItem) {
+                if (cartItem.productQuantity > 1) {
+                    cartItem.productQuantity -= 1;
+                    state.cartQuantity -= 1;
+                    state.totalAmount -= cartItem.price;
 
-			// setting product item to local storage
-			localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-		},
+                } else {
+                    const nextCartItems = state.cartItems.filter(
+                        (product) => product.id !== action.payload
+                    );
+                    state.cartItems = nextCartItems;
+                    state.cartQuantity -= 1;
+                    state.totalAmount -= cartItem.price;
+                }
+            }
+        },
 
-		removeItem: (state, action: PayloadAction<string>) => {
-			const nextCartItems = state.cartItems.filter(
-				(product) => product.id !== action.payload
-			);
+        increaseQuantity: (state, action: PayloadAction<string>) => {
+            const cartItem = state.cartItems.find(
+                (pd) => pd.id === action.payload
+            );
 
-			state.cartItems = nextCartItems;
+            if (cartItem) {
+                cartItem.productQuantity += 1;
+                state.cartQuantity += 1;
+                state.totalAmount += cartItem.price;
+            }
+        },
 
-			toast.warning("Product has been removed");
-			localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-		},
+        getTotalAmount: (state) => {
+            let quantity = 0;
+            let total = 0;
 
-		decreaseQuantity: (state, action: PayloadAction<string>) => {
-			const cartItem = state.cartItems.find(
-				(pd) => pd.id === action.payload
-			);
-			if (cartItem!.productQuantity > 1) {
-				cartItem!.productQuantity -= 1;
-			} else {
-				const nextCartItems = state.cartItems.filter(
-					(product) => product.id !== action.payload
-				);
-				state.cartItems = nextCartItems;
-			}
+            state.cartItems.forEach((item) => {
+                quantity += item.productQuantity;
+                total += item.price * item.productQuantity;
+            });
 
-			localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-		},
-
-		increaseQuantity: (state, action: PayloadAction<string>) => {
-			const cartItem = state.cartItems.find(
-				(pd) => pd.id === action.payload
-			);
-
-			const cartQan = (cartItem!.productQuantity += 1);
-			state.cartQuantity = cartQan;
-
-			localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
-		},
-
-		getTotalAmount: (state) => {
-			let quantity = 0;
-			let total = 0;
-
-			state.cartItems.forEach((item) => {
-				quantity += item.productQuantity;
-				total += item.price * item.productQuantity;
-			});
-
-			state.cartQuantity = quantity;
-			state.totalAmount = total;
-		},
-	},
+            state.cartQuantity = quantity;
+            state.totalAmount = total;
+        },
+    },
 });
+
 export const {
-	addToCart,
-	removeItem,
-	increaseQuantity,
-	decreaseQuantity,
-	clearCart,
-	getTotalAmount,
+    addToCart,
+    removeItem,
+    increaseQuantity,
+    decreaseQuantity,
+    clearCart,
+    getTotalAmount,
 } = cartSlice.actions;
 
+export const selectCartQuantity = (state: RootState) => state.cart.cartQuantity;
+export const selectCartItems = (state: RootState) => state.cart.cartItems;
 export default cartSlice.reducer;

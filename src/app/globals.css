@@ -1,41 +1,105 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root{
+	--primary:"#2C43E4",
+	--secondary:"#EE7CD7",
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 @layer base {
 	h1 {
-		@apply text-xl font-extrabold md:text-3xl;
+		@apply text-4xl font-bold md:text-5xl ;
 	}
 	h2 {
-		@apply text-xl md:text-2xl font-bold tracking-wider;
+		@apply text-3xl md:text-4xl font-bold tracking-wider ;
 	}
 	h3 {
-		@apply text-base font-bold md:text-xl;
+		@apply text-2xl font-bold md:text-3xl;
 	}
 	h4 {
-		@apply text-base font-bold md:text-base text-slate-700 dark:text-white;
+		@apply text-xl font-bold md:text-2xl ;
 	}
-
+	input[type="checkbox"]{
+		@apply h-5 w-5 ring-0 focus:ring-0
+	}
 	
+	
+	
+	input, select{
+		@apply p-2 outline-none ring-1 ring-accent/70 focus:ring-2 focus:ring-accent rounded-md w-full
+	}
 	
 }
 
 @layer components {
-	.product-card {
-		@apply bg-slate-100 dark:bg-gray-600;
-	}
 	.btn {
-		@apply text-center w-full py-3 border border-gray-300  uppercase bg-blue-500 hover:bg-blue-500/80 rounded text-white tracking-wider transition duration-100 delay-75;
+		@apply px-4 py-2 tracking-wide rounded
+	}
+	.primary {
+		@apply bg-primary hover:bg-primary/80 
+	}
+	.primary-outline {
+		@apply border border-primary hover:bg-primary hover:text-background
 	}
 
-	.btn-link{
-		@apply px-4 py-2 uppercase cursor-pointer bg-blue-400 hover:bg-blue-500/80  text-white tracking-wide rounded
+	.dashboard{
+		@apply bg-secondary hover:bg-secondary/80
+	}
+	
+	
+	.style{
+		@apply outline-none p-2 w-full rounded-md ring-2 
+	}
+	.pill{
+		@apply bg-gray-200 rounded-full px-3 py-1
+	}
+	.example-thumb{
+		height: 15px;
+		width: 15px;
+		background-color: #ffffff;
+		outline: none;
+		cursor: grab;
+		border-radius: 50%;
+		border: 4px solid #EB609A;
+		top:-6px;
+		z-index: -1;
+	}
+	.example-track.example-track-1{
+		height: 4px !important;
+		background-color: #EB609A !important;
+		
+	}
+	.filter-scrollbar::-webkit-scrollbar {
+		width: 6px;
+		height: 4px;
+	}
+	.filter-scrollbar:hover::-webkit-scrollbar {
+		width: 8px;
+		height: 4px;
+	}
+	
+	.filter-scrollbar::-webkit-scrollbar-track {
+		background: #E5F1F3;
+	}
+	
+	.filter-scrollbar::-webkit-scrollbar-thumb {
+		background: #ccc8ca;
+		border-radius: 6px;
+	}
+	.filter-scrollbar:hover::-webkit-scrollbar-thumb {
+		background: #bdbabb;
+		
 	}
 
-	.form-input{
-		@apply w-full py-2 rounded dark:bg-gray-200 px-2 text-gray-600
-	}
-	.submit-btn{
-		@apply inline-flex w-full items-center justify-center rounded-md bg-blue-500 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-blue-500/80
+	.footer_link{
+		@apply hover:text-accent
 	}
 }
