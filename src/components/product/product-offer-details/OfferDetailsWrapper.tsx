@@ -2,9 +2,9 @@
 import { THotOfferResponse } from "@/types";
 import Image from "next/image";
 import React from "react";
-import ProductInfo from "../product-details/ProductInfo";
+
 import AddToCart from "../product-details/AddToCart";
-import KeyFeatures from "../product-details/KeyFeatures";
+
 import OfferProductInfo from "./OfferProductInfo";
 import OfferKeyFeatures from "./OfferKeyFeatures";
 

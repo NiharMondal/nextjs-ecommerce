@@ -12,8 +12,9 @@ const nunito = Nunito({
 });
 
 export const metadata = {
-	title: "Gadget Galaxy | Home",
-	description: "classy garments home page. classy garments landing page",
+	title: "Home | Gadget Galaxy",
+	description:
+		"Discover the best deals on electronics, gadgets, and accessories at Gadget Galaxy. Shop our wide selection of laptops, cameras, and more.",
 };
 
 export default function RootLayout({

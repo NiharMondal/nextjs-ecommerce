@@ -3,8 +3,8 @@ import React from "react";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { useAppDispatch } from "@/redux/hooks";
 import { decreaseQuantity, increaseQuantity } from "@/redux/slice/cartSlice";
-import { TProductResponse } from "@/types";
-import { CartProductType } from "../product/product-details/AddToCart";
+import { CartProductType } from "@/types";
+
 
 export default function ProductQuantityInput({
 	product,

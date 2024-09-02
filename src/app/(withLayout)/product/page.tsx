@@ -10,6 +10,10 @@ import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 
 import React, { Suspense, useState } from "react";
 import Pagination from "@/components/shared/Pagination";
+import { Metadata } from "next";
+
+
+
 export type InitialStateType = {
 	brand: string[];
 	processor_type: string[];

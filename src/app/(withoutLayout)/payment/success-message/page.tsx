@@ -1,6 +1,12 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
+export const metadata: Metadata = {
+	title: "Payment Successful | Gadget Galaxy",
+	description:
+		"Thank you for your purchase! Your payment was successful. Check your email for order details.",
+};
 
 export default function SuccessMessage() {
   return (

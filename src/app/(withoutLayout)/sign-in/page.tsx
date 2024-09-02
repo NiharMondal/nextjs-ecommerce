@@ -3,6 +3,12 @@ import Link from "next/link";
 import React from "react";
 import SignInForm from "./SignInForm";
 import CredentialModal from "./CredentialModal";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Sign in | Gadget Galaxy",
+	description:"Log in to your account at Your Store Name to access your order history, saved items, and more.",
+};
 
 export default function SignInPage() {
 	return (

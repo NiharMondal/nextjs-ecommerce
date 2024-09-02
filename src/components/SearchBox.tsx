@@ -2,7 +2,7 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button, Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
+import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 export default function SearchBox() {
 	const router = useRouter();
 	const [search, setSearch] = useState("");

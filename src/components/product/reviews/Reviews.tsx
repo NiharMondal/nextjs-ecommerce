@@ -2,8 +2,7 @@ import React from "react";
 import { TReviews } from "@/types";
 import { ClipboardDocumentListIcon } from "@heroicons/react/24/outline";
 
-export default function Reviews({  reviews }: TReviews[]) {
-	
+export default function Reviews() {
 	return (
 		<div className="bg-white p-5 rounded-md">
 			<div className="md:flex flex-wrap items-center justify-between w-full border-b pb-3">
@@ -21,7 +20,7 @@ export default function Reviews({  reviews }: TReviews[]) {
 					</button>
 				</div>
 			</div>
-			{!reviews.length && <div className="flex flex-col items-center justify-center h-[200px]">
+			<div className="flex flex-col items-center justify-center h-[200px]">
 				<div className="p-5 bg-primary/5 rounded-full">
 					<ClipboardDocumentListIcon className="size-12 text-primary" />
 				</div>
@@ -29,7 +28,7 @@ export default function Reviews({  reviews }: TReviews[]) {
 					This product has no reviews yet. Be the first one to write a
 					review.
 				</p>
-			</div>}
+			</div>
 		</div>
 	);
 }

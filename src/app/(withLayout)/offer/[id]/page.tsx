@@ -1,9 +1,14 @@
 import OfferDetailsWrapper from "@/components/product/product-offer-details/OfferDetailsWrapper";
 import RelatedProduct from "@/components/product/reviews/RelatedProduct";
-import Reviews from "@/components/product/reviews/Reviews";
 import { config } from "@/config";
 
 import { THotOfferResponse, TServerResponse } from "@/types";
+export const metadata = {
+	title: "Special Offers | Gadget Galaxy",
+	description:
+		"Explore the latest discounts and special offers on electronics, gadgets, and accessories at Gadget Galaxy. Limited-time deals available now.",
+};
+
 const productDetails = async (
 	id: string
 ): Promise<TServerResponse<THotOfferResponse>> => {
@@ -24,7 +29,7 @@ export default async function ProductDetails({
 	params: { id: string };
 }) {
 	const { result: product } = await productDetails(id);
-    const reviewData = {
+	const reviewData = {
 		rating: product?.product?.rating,
 		reviews: product?.product?.reviews,
 	};
@@ -85,8 +90,8 @@ export default async function ProductDetails({
 										Storage Capacity
 									</td>
 									<td>
-										{product?.product?.ssd} SSD &amp; {product?.product?.hdd}{" "}
-										HHD{" "}
+										{product?.product?.ssd} SSD &amp;{" "}
+										{product?.product?.hdd} HHD{" "}
 									</td>
 								</tr>
 							</table>

@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
+export const metadata = {
+	title: "Forgot Password | Gadget Galaxy",
+	description: "Reset your password to regain access to your account at Your Store Name. Enter your email to receive password reset instructions.",
+};
 export default function ForgotPassword() {
 	return (
 		<section className="h-screen flex items-center justify-center">

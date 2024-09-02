@@ -3,7 +3,12 @@ import Link from "next/link";
 import React from "react";
 
 import SignUpForm from "./SignUpForm";
-
+import { Metadata } from "next";
+export const metadata:Metadata = {
+	title: "Sign Up | Gadget Galaxy",
+	description:
+		"Create your account at Your Store Name to enjoy exclusive offers and a seamless shopping experience.",
+};
 export default function RegisterPage() {
 	return (
 		<section className="grid grid-cols-1 h-screen place-content-center justify-items-center px-4">

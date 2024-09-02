@@ -1,10 +1,27 @@
 import React from "react";
 import { TProductResponse, TServerResponse } from "@/types";
 import DetailsWrapper from "@/components/product/product-details/DetailsWrapper";
-import Reviews from "@/components/product/reviews/Reviews";
 import RelatedProduct from "@/components/product/reviews/RelatedProduct";
 import { config } from "@/config";
+import type { Metadata } from "next";
 
+type Props = {
+	params: { slug: string };
+	// searchParams: { [key: string]: string | string[] | undefined };
+};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	// read route params
+	const slug = params.slug;
+
+	// fetch data
+	const product = await fetch(`${config.backend_url}/product/${slug}`).then(
+		(res) => res.json()
+	);
+
+	return {
+		title: `${product?.result.name} | Gadget Galaxy`,
+	};
+}
 const productDetails = async (
 	slug: string
 ): Promise<TServerResponse<TProductResponse>> => {

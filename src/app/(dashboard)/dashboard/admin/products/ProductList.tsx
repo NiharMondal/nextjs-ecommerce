@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import AdminLoading from "../../loading";
 
 import ProductAction from "./ProductAction";
 import { useGetAllProductQuery } from "@/redux/api/productApi";

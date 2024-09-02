@@ -1,10 +1,12 @@
-import ProductQuantityInput from "@/components/shared/ProductQuantityInput";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { selectCartItems } from "@/redux/slice/cartSlice";
-import Image from "next/image";
+
 import React from "react";
 import CartList from "./CartList";
 
+export const metadata = {
+	title: "Shopping Cart | Gadget Galaxy",
+	description:
+		"Review your selected items and proceed to checkout. Secure and easy shopping at Gadget Galaxy.",
+};
 export default function CartPage() {
 	return (
 		<>

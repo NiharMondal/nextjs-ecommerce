@@ -1,5 +1,10 @@
+import { Metadata } from "next";
 import React from "react";
-
+export const metadata: Metadata = {
+	title: "About Us | Gadget Galaxy",
+	description:
+		"Learn more about Your Store Name, our mission, values, and the team behind the best online shopping experience.",
+};
 export default function AboutUs() {
 	return (
 		<div className="max-w-5xl mx-auto py-10 space-y-5 px-4">

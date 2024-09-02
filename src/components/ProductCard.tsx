@@ -18,6 +18,7 @@ export default function ProductCard({
 		name: product.name,
 		photo: product.photo,
 		price: product.price,
+		productQuantity: 1,
 	};
 	return (
 		<div className="bg-white pb-5 rounded-md">

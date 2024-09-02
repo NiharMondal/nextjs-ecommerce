@@ -1,6 +1,14 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+
+
+export const metadata: Metadata = {
+	title: "Payment Cancelled | Gadget Galaxy",
+	description:
+		"Your payment was cancelled. Return to the shopping cart to complete your purchase.",
+};
 
 export default function CancelPage() {
 	return (
