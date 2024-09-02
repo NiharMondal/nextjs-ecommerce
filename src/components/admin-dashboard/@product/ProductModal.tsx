@@ -7,10 +7,11 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import ImageWeidget from "@/components/shared/ImageWeidget";
-import { useAddProductMutation } from "@/redux/api/productApi";
+import { useCreateProductMutation } from "@/redux/api/productApi";
 
 export default function ProductModal() {
-	const [addProduct, { isLoading }] = useAddProductMutation();
+	const [createProduct, { isLoading: createLoading }] =
+		useCreateProductMutation();
 	//for modal
 	const [isOpen, setIsOpen] = useState(false);
 	//for features
@@ -38,8 +39,7 @@ export default function ProductModal() {
 		data.features = features;
 
 		try {
-			const response = await addProduct(data).unwrap();
-
+			const response = await createProduct(data).unwrap();
 			if (response.success) {
 				toast.success(response.message);
 				setIsOpen(false);
@@ -327,9 +327,7 @@ export default function ProductModal() {
 									type="submit"
 									className="bg-accent py-2 text-white rounded-md hover:bg-accent/90 px-5"
 								>
-									{isLoading
-										? "Creating product..."
-										: "Create Product"}
+									{createLoading ? "Creating..." : "Create"}
 								</button>
 							</form>
 						</div>

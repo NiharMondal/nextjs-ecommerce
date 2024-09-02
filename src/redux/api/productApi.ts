@@ -4,22 +4,20 @@ import { TProduct } from "@/types";
 
 const productApi = baseApi.injectEndpoints({
     endpoints: (builder)=>({
-        
-        addProduct : builder.mutation<TServerResponse<TProductResponse>,TProduct>({
+
+        //create product
+        createProduct: builder.mutation<TServerResponse<TProductResponse>,TProduct>({
             query: (payload)=>{
-                console.log(payload)
-                return {
+                return{
                     url:"/product",
                     method:"POST",
-                    data: payload
+                    body: payload
                 }
-                
             },
-            invalidatesTags:["product"]
-            
+            invalidatesTags:['product']
         }),
 
-        getProduct: builder.query<TServerResponse<TProductResponse[]>, Record<string, string>>({
+        getAllProduct: builder.query<TServerResponse<TProductResponse[]>, Record<string, string>>({
             query:(query)=>{
                const params = new URLSearchParams();
                 if (query && Object.keys(query).length > 0) {
@@ -47,7 +45,10 @@ const productApi = baseApi.injectEndpoints({
             }),
             invalidatesTags:["product"]
         })
-    })
-})
 
-export const {useAddProductMutation,useGetProductQuery,useDeleteProductMutation} = productApi;
+
+    })
+});
+
+
+export const {useCreateProductMutation,useGetAllProductQuery,useDeleteProductMutation} = productApi;

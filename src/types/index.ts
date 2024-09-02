@@ -21,9 +21,23 @@ export type TProduct = {
   operating_system: string;
   features?: string[];
 };
-export type TProductResponse = TProduct & {id:string; rating:number; slug:string; createdAt:string; updatedAt:string;}
-export type TOldProduct = {
+export type TProductResponse = TProduct & {
+  id:string; 
+  rating:number; 
+  slug:string;
+  reviews?: TReviews[]
+  createdAt:string; 
+  updatedAt:string;
+}
 
+export type TReviews = {
+  rating: number;
+  message: string;
+  userId: string;
+  productId:string;
+}
+
+export type TOldProduct = {
 	id: string;
 	title: string;
 	price: number;
@@ -38,10 +52,14 @@ export type TOldProduct = {
 };
 
 
-
+type MetaData = {
+  totalPages: number;
+  page:number;
+}
 export type TServerResponse<T> = {
   success: boolean
   message: string;
+  meta?: MetaData;
   result:T
 }
 
@@ -50,3 +68,90 @@ export type TCreateHotOffer = {
 	productId: string;
 	endDate: string;
 };
+
+
+export type THotOfferResponse = {
+    discount:number;
+    endDate: string;
+    price:number;
+    id:string;
+    product: TProductResponse;
+}
+export type TFeaturedProductResponse = {
+    id:string;
+    productId: string;
+    product: TProductResponse;
+}
+export type CartProductType = {
+	id: string;
+	name: string;
+	photo: string;
+	price: number;
+	productQuantity: any;
+};
+export type TUserRegistration = {
+  name: string;
+  email: string;
+  password: string;
+  confirmPass: string;
+}
+
+export type TUserRegistrationResponse = {
+  id: string;
+  email: string;
+  password: string;
+  role: string;
+  avatar: string;
+  
+}
+
+export type TLoginResponse = {
+  avatar: string;
+  authToken:string;
+}
+
+export type TUserResponse = {
+  id:string;
+  name:string;
+  email:string;
+  avatar:string;
+  phone:string;
+}
+
+export type TChangePassword = {
+	oldPassword: string;
+	newPassword: string;
+	confirmPass: string;
+};
+
+export type TAddress = {
+  
+  street:string;
+  postCode:string;
+  city:string;
+  country:string;
+}
+
+export type TOrderProduct = {
+  productId: string;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
+
+export type TOrderRequest = {
+  userId: string,
+	totalPrice: number,		
+  items: TOrderProduct[],
+}
+
+
+export type TOrderResponse = {
+  id: string;
+  userId:string;
+  totalPrice: number;
+  createdAt: string;
+  updateAt: string;
+
+}

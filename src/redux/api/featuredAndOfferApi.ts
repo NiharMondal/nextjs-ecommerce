@@ -1,14 +1,8 @@
-import { TCreateHotOffer, TProductResponse, TServerResponse } from "@/types";
+import { TCreateHotOffer, TFeaturedProductResponse, THotOfferResponse, TProductResponse, TServerResponse } from "@/types";
 import { baseApi } from "../baseApi";
 
 
-type THotOfferResponse = {
-    discount:number;
-    endDate: string;
-    price:number;
-    id:string;
-    product: TProductResponse;
-}
+
 
 const featuredAndOfferApi = baseApi.injectEndpoints({
     endpoints: builder=>({
@@ -32,6 +26,13 @@ const featuredAndOfferApi = baseApi.injectEndpoints({
             }),
             providesTags:["hot_offer"]
         }),
+        getSingleOfferedProduct: builder.query<TServerResponse<THotOfferResponse>,string>({
+            query: (id)=>({
+                url:`/hot-offer/${id}`,
+                method:"GET"
+            }),
+            providesTags:["hot_offer"]
+        }),
 
         
         deleteHotOffer: builder.mutation<TServerResponse<TProductResponse>,string>({
@@ -45,7 +46,6 @@ const featuredAndOfferApi = baseApi.injectEndpoints({
         
         addFeatureProduct: builder.mutation<TServerResponse<TProductResponse>,{productId:string}>({
             query: (payload)=>{
-                console.log(payload)
                 return{
 
                     url:"/featured-product",
@@ -56,7 +56,7 @@ const featuredAndOfferApi = baseApi.injectEndpoints({
             invalidatesTags:["featured_product"]
         }),
 
-        getFeaturedProduct: builder.query({
+        getFeaturedProduct: builder.query<TServerResponse<TFeaturedProductResponse[]>,void>({
             query: ()=>({
                 url:"/featured-product",
                 method:"GET"
@@ -76,4 +76,4 @@ const featuredAndOfferApi = baseApi.injectEndpoints({
 });
 
 
-export const {useAddToHotOfferMutation,useGetOfferedProductQuery,useDeleteHotOfferMutation,useAddFeatureProductMutation, useGetFeaturedProductQuery,useDeleteFeaturedProductMutation } = featuredAndOfferApi;
+export const {useAddToHotOfferMutation,useGetOfferedProductQuery,useGetSingleOfferedProductQuery, useDeleteHotOfferMutation,useAddFeatureProductMutation, useGetFeaturedProductQuery,useDeleteFeaturedProductMutation } = featuredAndOfferApi;

@@ -1,14 +1,14 @@
 import React from "react";
-import { backend_url } from "@/url";
 import { TProductResponse, TServerResponse } from "@/types";
 import DetailsWrapper from "@/components/product/product-details/DetailsWrapper";
 import Reviews from "@/components/product/reviews/Reviews";
 import RelatedProduct from "@/components/product/reviews/RelatedProduct";
+import { config } from "@/config";
 
 const productDetails = async (
 	slug: string
 ): Promise<TServerResponse<TProductResponse>> => {
-	const res = await fetch(`${backend_url}/product/${slug}`, {
+	const res = await fetch(`${config.backend_url}/product/${slug}`, {
 		method: "GET",
 		cache: "no-cache",
 	});
@@ -24,25 +24,84 @@ export default async function ProductDetails({
 	params: { slug: string };
 }) {
 	const { result: product } = await productDetails(slug);
-
+	const reviewData = {
+		rating: product?.rating,
+		reviews: product?.reviews,
+	};
 	return (
 		<>
 			<DetailsWrapper product={product} />
 
 			<div className="mt-5 max-w-7xl mx-auto">
-				<div className="px-4 grid grid-cols-1 lg:grid-cols-3 gap-5">
+				<div className="px-4 grid grid-cols-1 lg:grid-cols-3 gap-5 pb-5">
 					<div className="lg:col-span-2 space-y-5">
 						<div className=" bg-white rounded-md p-5 space-y-3">
+							<h4>Specification</h4>
+							<table className="w-full text-left text-gray-600">
+								<tr>
+									<td className="py-2 font-medium ">
+										Processor Brand
+									</td>
+									<td className="capitalize">
+										{product.brand}
+									</td>
+								</tr>
+								<tr>
+									<td className="py-2 font-medium ">
+										Processor Modle
+									</td>
+									<td>{product.processor_model}</td>
+								</tr>
+								<tr>
+									<td className="py-2 font-medium ">
+										Display Size
+									</td>
+									<td>{product.display_size}"</td>
+								</tr>
+								<tr>
+									<td className="py-2 font-medium ">
+										Display Type
+									</td>
+									<td>{product.display_type}</td>
+								</tr>
+								<tr>
+									<td className="py-2 font-medium ">
+										Display Resulation
+									</td>
+									<td>{product.display}</td>
+								</tr>
+								<tr>
+									<td className="py-2 font-medium ">RAM</td>
+									<td>{product.ram}</td>
+								</tr>
+								<tr>
+									<td className="py-2 font-medium ">
+										RAM Type
+									</td>
+									<td>{product.ram_type}</td>
+								</tr>
+								<tr>
+									<td className="py-2 font-medium ">
+										Storage Capacity
+									</td>
+									<td>
+										{product.ssd} SSD &amp; {product.hdd}{" "}
+										HHD{" "}
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div className=" bg-white rounded-md p-5 space-y-3">
 							<h3>Description</h3>
-							<h3>
+							<h4>
 								{product?.name} {product?.processor_model}{" "}
 								{product?.generation} {product?.display}
-							</h3>
+							</h4>
 
 							<p>{product?.description}</p>
 						</div>
 
-						<Reviews product={product} />
+						{/* <Reviews reviews={product?.reviews} /> */}
 					</div>
 					<RelatedProduct />
 				</div>

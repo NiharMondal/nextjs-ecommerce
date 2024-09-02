@@ -32,7 +32,7 @@ export default function FieldFiltering({
 	return (
 		<Disclosure as="div" className="bg-white p-4" defaultOpen={true}>
 			<DisclosureButton className="group flex w-full items-center justify-between">
-				<h3>{label}</h3>
+				<h4>{label}</h4>
 				<ChevronDownIcon className="size-5 fill-black/60 group-data-[hover]:fill-black/50 group-data-[open]:rotate-180" />
 			</DisclosureButton>
 			<DisclosurePanel className="border-t-2 mt-2 py-2 text-wrap">

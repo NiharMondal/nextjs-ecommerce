@@ -16,16 +16,16 @@
 
 @layer base {
 	h1 {
-		@apply text-xl font-extrabold md:text-3xl;
+		@apply text-4xl font-bold md:text-5xl ;
 	}
 	h2 {
-		@apply text-xl md:text-2xl font-bold tracking-wider;
+		@apply text-3xl md:text-4xl font-bold tracking-wider ;
 	}
 	h3 {
-		@apply text-base font-bold md:text-xl;
+		@apply text-2xl font-bold md:text-3xl;
 	}
 	h4 {
-		@apply text-base font-bold md:text-base text-slate-700 dark:text-white;
+		@apply text-xl font-bold md:text-2xl ;
 	}
 	input[type="checkbox"]{
 		@apply h-5 w-5 ring-0 focus:ring-0
@@ -81,6 +81,10 @@
 		width: 6px;
 		height: 4px;
 	}
+	.filter-scrollbar:hover::-webkit-scrollbar {
+		width: 8px;
+		height: 4px;
+	}
 	
 	.filter-scrollbar::-webkit-scrollbar-track {
 		background: #E5F1F3;
@@ -89,5 +93,13 @@
 	.filter-scrollbar::-webkit-scrollbar-thumb {
 		background: #ccc8ca;
 		border-radius: 6px;
+	}
+	.filter-scrollbar:hover::-webkit-scrollbar-thumb {
+		background: #bdbabb;
+		
+	}
+
+	.footer_link{
+		@apply hover:text-accent
 	}
 }

@@ -1,11 +1,9 @@
 import TopAppBar from "@/components/shared/TopAppBar";
 import React from "react";
-
-export default function HomeLayout({
-	children,
-}: {
+type HomeLayoutProps = {
 	children: React.ReactNode;
-}) {
+};
+export default function HomeLayout({ children }: HomeLayoutProps) {
 	return (
 		<>
 			<TopAppBar />

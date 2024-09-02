@@ -15,16 +15,10 @@ export default function TopAppBar() {
 	let [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<nav className="relative">
+		<nav className="relative border-b">
 			<div className="w-full px-5 lg:max-w-7xl mx-auto">
 				<div className="h-[80px] flex items-center justify-between">
-					<div className="md:hidden relative cursor-pointer">
-						<button onClick={() => setIsOpen(true)}>
-							<Bars3Icon width={20} className="cursor-pointer" />
-						</button>
-					</div>
-
-					<div className="hidden md:block">
+					<div className="">
 						<Link href="/">
 							<Image
 								src="/img/logo.png"
@@ -36,7 +30,7 @@ export default function TopAppBar() {
 					</div>
 
 					<SearchBox />
-					<div className="flex items-center gap-x-10">
+					<div className="flex items-center gap-x-5 md:gap-x-10">
 						<NavCart />
 
 						<Login />

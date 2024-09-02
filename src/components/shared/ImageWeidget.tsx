@@ -14,7 +14,7 @@ export default function ImageWeidget({ setPhoto }: Props) {
 		>
 			{({ open }) => {
 				return (
-					<button onClick={() => open()} className="btn bg-primary">
+					<button onClick={() => open()} className="btn bg-primary text-white">
 						Upload a photo
 					</button>
 				);
