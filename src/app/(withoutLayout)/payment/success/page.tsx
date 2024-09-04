@@ -34,7 +34,7 @@ export default function SuccessPage() {
 				dispatch(clearCart());
 			}
 		} else {
-			router.replace("/success-message");
+			router.replace("/payment/success-message");
 		}
 	};
 

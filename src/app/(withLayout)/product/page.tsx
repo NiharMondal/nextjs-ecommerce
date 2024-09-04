@@ -10,16 +10,13 @@ import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 
 import React, { Suspense, useState } from "react";
 import Pagination from "@/components/shared/Pagination";
-import { Metadata } from "next";
-
-
 
 export type InitialStateType = {
 	brand: string[];
 	processor_type: string[];
 };
 const MIN = 0;
-const MAX = 1000000;
+const MAX = 10000;
 
 export default function ProductPage({
 	searchParams,
@@ -305,19 +302,26 @@ export default function ProductPage({
 							</div>
 						</div>
 						<Suspense fallback={<Loading />}>
+							{!products?.result.length && (
+								<p className="text-2xl text-accent">
+									Sorry, No Product Found!
+								</p>
+							)}
 							<div className="w-full grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-5">
-								{products?.result.map((product) => (
+								{products?.result?.map((product) => (
 									<ProductCard
 										product={product}
 										key={product.id}
 									/>
 								))}
 							</div>
-							<Pagination
-								currentPage={products?.meta?.page! || page}
-								totalPages={products?.meta?.totalPages!}
-								setPage={setPage}
-							/>
+							{products?.result.length && (
+								<Pagination
+									currentPage={products?.meta?.page! || page}
+									totalPages={products?.meta?.totalPages!}
+									setPage={setPage}
+								/>
+							)}
 						</Suspense>
 					</div>
 				</div>

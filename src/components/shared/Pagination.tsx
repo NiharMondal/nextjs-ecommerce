@@ -56,23 +56,43 @@ export default function Pagination({
 
 	return (
 		<div className="flex justify-end items-center gap-x-3">
-			<button onClick={handlePreviousPage}>Prev</button>
+			<button
+				onClick={handlePreviousPage}
+				disabled={currentPage === 1}
+				className={`${
+					currentPage === 1
+						? "cursor-not-allowed"
+						: "cursor-pointer"
+				}`}
+			>
+				Prev
+			</button>
 			<ul className="flex gap-x-2">
 				{getPageNumbers().map((p) => (
 					<li
 						onClick={() => handlePageClick(p)}
 						key={p}
-						className={` size-8 pt-1 text-center hover:bg-primary hover:text-white cursor-pointer  ${
+						className={` size-8 pt-1 text-center hover:bg-primary hover:text-white cursor-pointer rounded-sm  ${
 							p === currentPage
 								? "bg-primary text-white"
-								: " text-primary"
+								: "text-primary"
 						}`}
 					>
 						{p}
 					</li>
 				))}
 			</ul>
-			<button onClick={handleNextPage}>Next</button>
+			<button
+				className={`${
+					currentPage === totalPages
+						? "cursor-not-allowed"
+						: "cursor-pointer"
+				}`}
+				onClick={handleNextPage}
+				disabled={currentPage === totalPages}
+			>
+				Next
+			</button>
 		</div>
 	);
 }

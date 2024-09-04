@@ -11,7 +11,7 @@ export default function OfferProductInfo({ product }: { product: THotOfferRespon
 					<span className="font-semibold">{product?.price}</span>
 				</p>
 				<p className="line-through">
-					Regular Price:{" "}
+					Price:{" "}
 					<span className="font-semibold">
 						{" "}
 						{product?.product?.price}

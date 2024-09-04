@@ -1,9 +1,6 @@
 "use client";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import {
-	logout,
-	selectedUser,
-} from "@/redux/slice/authSlice";
+import { logout, selectedUser } from "@/redux/slice/authSlice";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +8,6 @@ import headPng from "../../../public/img/head.png";
 import { logoutAction } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 import { dropdownAdminRoutes, dropdwonUserRotues } from "@/utils/routes";
-
 
 export default function DashboardDropdown() {
 	const dispatch = useAppDispatch();
@@ -24,7 +20,7 @@ export default function DashboardDropdown() {
 	};
 
 	return (
-		<div className="overflow-hidden">
+		<div className="overflow-hidden ring-2 ring-secondary rounded-full size-12">
 			<Menu>
 				<MenuButton className="size-12 border rounded-full">
 					<Image

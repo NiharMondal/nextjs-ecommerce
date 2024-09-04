@@ -8,13 +8,13 @@ export default function ProductInfo({product}:{product:TProductResponse}) {
 			<div className="whitespace-nowrap  flex flex-wrap items-center gap-3 *:bg-gray-200 *:py-1 *:px-3 *:rounded-full">
 				<p>
 					Price:{" "}
-					<span className="font-semibold">{product?.price}</span>
+					<span className="font-semibold">${product?.price}</span>
 				</p>
-				<p className="">
+				<p >
 					Regular Price:{" "}
 					<span className="font-semibold">
 						{" "}
-						{product?.regularPrice}
+						${product?.regularPrice}
 					</span>
 				</p>
 				<p>

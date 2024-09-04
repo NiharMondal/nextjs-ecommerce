@@ -3,7 +3,7 @@ import { RootState } from './store';
 import { config } from '@/config';
 
 
-const base_url = config.backend_url!;
+const base_url = config.backend_url;
 
 
 export const baseApi = createApi({
@@ -19,6 +19,6 @@ export const baseApi = createApi({
 			return headers;
 		},
     }),
-    tagTypes:["product", "customer", "reviews","transactions","hot_offer","featured_product","user","address"],
+    tagTypes:["product", "customer", "reviews","transactions","hot_offer","featured_product","user","address","order"],
     endpoints: ()=> ({})
 })

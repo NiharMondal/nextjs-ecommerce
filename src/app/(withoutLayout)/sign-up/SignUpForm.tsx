@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 export default function SignUpForm() {
 	const router = useRouter();
-	const [signUpUser] = useSignUpUserMutation();
+	const [signUpUser, { isLoading }] = useSignUpUserMutation();
 	const [showPass, setShowPass] = useState(false);
 
 	const {
@@ -101,7 +101,9 @@ export default function SignUpForm() {
 				</p>
 			</div>
 
-			<button className="btn primary w-full text-white">Sign up</button>
+			<button className="btn primary w-full text-white">
+				{isLoading ? "Please wait..." : "Register Account"}
+			</button>
 			<div>
 				<p>
 					Already have an account?{" "}

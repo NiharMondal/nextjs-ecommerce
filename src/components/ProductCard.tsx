@@ -1,10 +1,11 @@
 "use client";
 import { useAppDispatch } from "@/redux/hooks";
 import { addToCart } from "@/redux/slice/cartSlice";
-import { TProductResponse } from "@/types";
+import { CartProductType, TProductResponse } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { toast } from "react-toastify";
 
 export default function ProductCard({
 	product,
@@ -20,22 +21,27 @@ export default function ProductCard({
 		price: product.price,
 		productQuantity: 1,
 	};
+
+	const handleAddProduct = (product: CartProductType) => {
+		dispatch(addToCart(product));
+		toast.success("Product added to your cart");
+	};
 	return (
-		<div className="bg-white pb-5 rounded-md">
+		<div className="bg-white p-3 rounded-md min-h-[600px] group">
 			<Link href={`/product/${product.slug}`}>
-				<div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+				<div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg xl:aspect-h-8 xl:aspect-w-8 border-b ">
 					<Image
 						width={200}
 						height={300}
 						alt="product-name"
 						src={product?.photo}
-						className="w-full h-full object-cover object-center group-hover:opacity-75"
+						className="w-full h-full object-cover object-center group-hover:opacity-75 scale-90"
 					/>
 				</div>
 			</Link>
-			<div className="px-4 space-y-4">
+			<div className="space-y-4 min-h-[200px] border-b-2">
 				<Link href={`/product/${product.slug}`}>
-					<p className="mt-4 text-xl text-color hover:text-accent font-semibold hover:underline">
+					<p className="mt-4 text-lg text-color hover:text-accent font-semibold hover:underline">
 						{product?.name}
 					</p>
 				</Link>
@@ -51,6 +57,8 @@ export default function ProductCard({
 						Display: {product.display_size}" {product.display}
 					</li>
 				</ul>
+			</div>
+			<div className="pt-4">
 				<p className=" text-xl font-bold text-center text-accent">
 					${product?.price}{" "}
 					<span className="text-color text-sm line-through">
@@ -58,7 +66,7 @@ export default function ProductCard({
 					</span>
 				</p>
 				<button
-					onClick={() => dispatch(addToCart(productInfo))}
+					onClick={() => handleAddProduct(productInfo)}
 					className=" bg-primary/10 w-full py-2 rounded-md text-primary font-bold hover:bg-primary hover:text-white duration-150 ease-in-out"
 				>
 					Buy Now

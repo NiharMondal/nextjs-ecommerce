@@ -36,18 +36,25 @@ export default function SignInForm() {
 				toast.error("Invalid credentials!");
 			}
 		} catch (error) {
-			console.log(error);
+			toast.error("Something went wrong!");
 		}
 	};
 	return (
 		<form className="space-y-3" action={handleLogin}>
 			<div className="flex flex-col gap-y-2">
 				<label htmlFor="email">Email</label>
-				<input type="email" id="email" name="email" className="style" />
+				<input
+					type="email"
+					id="email"
+					name="email"
+					className="style"
+					required
+				/>
 			</div>
 			<div className="flex flex-col gap-y-2">
 				<label htmlFor="password">Password</label>
 				<input
+					required
 					type="password"
 					id="password"
 					name="password"

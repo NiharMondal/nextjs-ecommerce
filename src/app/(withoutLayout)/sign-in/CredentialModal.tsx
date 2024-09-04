@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
 export default function CredentialModal() {
-	let [isOpen, setIsOpen] = useState(false);
+	let [isOpen, setIsOpen] = useState(true);
 
 	return (
 		<div className="absolute top-8 right-5">

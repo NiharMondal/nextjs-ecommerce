@@ -102,8 +102,10 @@ export default async function ProductDetails({
 										Storage Capacity
 									</td>
 									<td>
-										{product.ssd} SSD &amp; {product.hdd}{" "}
-										HHD{" "}
+										{product.ssd} SSD{" "}
+										{product.hdd && (
+											<span>&amp; {product.hdd} HDD</span>
+										)}
 									</td>
 								</tr>
 							</table>

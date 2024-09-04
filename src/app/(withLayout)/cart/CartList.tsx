@@ -8,8 +8,7 @@ import EmptyCart from "./EmptyCart";
 import Link from "next/link";
 import { config } from "@/config";
 import { loadStripe } from "@stripe/stripe-js";
-import { selectedUser } from "@/redux/slice/authSlice";
-import { useAddOrderMutation } from "@/redux/api/orderApi";
+
 import { toast } from "react-toastify";
 
 export default function CartList() {
@@ -60,7 +59,7 @@ export default function CartList() {
 	return (
 		<div className="space-y-3">
 			<CartProductList />
-			{cartItems?.length > 0 && (
+			{cartItems?.length>0 && (
 				<div className="flex justify-between ">
 					<div>
 						<button
@@ -71,7 +70,7 @@ export default function CartList() {
 						</button>
 					</div>
 					<div>
-						<h2>Sub Total: {totalAmount}</h2>
+						<h2>Sub Total: ${totalAmount}</h2>
 						<div className="text-right space-x-8 mt-5">
 							<Link href="/product">
 								<button className="btn border-2 border-secondary hover:bg-secondary hover:text-white">
@@ -96,7 +95,7 @@ const CartProductList = () => {
 	const dispatch = useAppDispatch();
 	const { cartItems } = useAppSelector((state) => state.cart);
 
-	if (cartItems?.length < 1) return <EmptyCart />;
+	if (!cartItems?.length ) return <EmptyCart />;
 	return (
 		<>
 			{cartItems?.map((item) => (
@@ -118,7 +117,7 @@ const CartProductList = () => {
 							<h4 className="text-primary">{item.name}</h4>
 							<p>
 								Unit Price:{" "}
-								<span className="font-bold">{item.price}</span>
+								<span className="font-bold">${item.price}</span>
 							</p>
 							<button
 								onClick={() => dispatch(removeItem(item.id))}
@@ -129,7 +128,7 @@ const CartProductList = () => {
 						</div>
 					</div>
 					<ProductQuantityInput product={item} />
-					<div>{item.price * item.productQuantity}</div>
+					<div>${item.price * item.productQuantity}</div>
 				</div>
 			))}
 		</>

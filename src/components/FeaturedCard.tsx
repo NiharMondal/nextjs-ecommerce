@@ -9,22 +9,22 @@ export default function FeaturedCard({
 	product: TProductResponse;
 }) {
 	return (
-		<div>
-			<div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+		<div className="p-3 bg-white rounded-md group space-y-3">
+			<div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg xl:aspect-h-8 xl:aspect-w-8 border-b">
 				<Image
 					width={200}
 					height={300}
 					alt="product-name"
 					src={product?.photo}
-					className="w-full h-full object-cover object-center group-hover:opacity-75"
+					className="w-full h-full object-cover object-center group-hover:opacity-75 scale-90"
 				/>
 			</div>
-			<Link href={`/product/${product.slug}`}>
-				<p className="mt-4 text-xl text-color hover:text-accent font-semibold hover:underline">
-					{product?.name}
-				</p>
-			</Link>
-			<p className="mt-1 text-xl font-bold ">${product?.price}</p>
+			<p className="text-xl text-color hover:text-accent font-semibold hover:underline h-12">
+				<Link href={`/product/${product.slug}`}>{product?.name}</Link>
+			</p>
+			<p className="mt-2 text-xl font-bold text-center text-accent">
+				${product?.price}
+			</p>
 		</div>
 	);
 }
