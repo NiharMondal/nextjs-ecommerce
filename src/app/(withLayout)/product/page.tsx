@@ -45,7 +45,7 @@ export default function ProductPage({
 	//query params these are going to backend
 	const queryParams: Record<string, string> = {};
 
-	queryParams["search"] = searchParams.search.toString() || "";
+	queryParams["search"] = searchParams?.search?.toString() || "";
 	queryParams["price"] = price.toString();
 	queryParams["brand"] = brand.toString();
 
