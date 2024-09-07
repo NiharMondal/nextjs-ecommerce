@@ -78,6 +78,10 @@ export default function Footer() {
 					</div>
 				</div>
 			</div>
+
+			<p className="text-center mt-5">
+				All right reserved to &copy; <span className="text-accent">Nihar Mondal</span>
+			</p>
 		</footer>
 	);
 }

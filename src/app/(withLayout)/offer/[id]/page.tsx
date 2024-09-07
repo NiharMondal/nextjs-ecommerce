@@ -1,5 +1,5 @@
 import OfferDetailsWrapper from "@/components/product/product-offer-details/OfferDetailsWrapper";
-import RelatedProduct from "@/components/product/reviews/RelatedProduct";
+
 import { config } from "@/config";
 
 import { THotOfferResponse, TServerResponse } from "@/types";
@@ -29,17 +29,13 @@ export default async function ProductDetails({
 	params: { id: string };
 }) {
 	const { result: product } = await productDetails(id);
-	const reviewData = {
-		rating: product?.product?.rating,
-		reviews: product?.product?.reviews,
-	};
 	return (
 		<>
 			<OfferDetailsWrapper product={product} />
 
 			<div className="max-w-7xl mx-auto py-10">
-				<div className="px-4 grid grid-cols-1 lg:grid-cols-3 gap-5">
-					<div className="lg:col-span-2 space-y-5">
+				<div className="px-4 grid grid-cols-1 md:grid-cols-2 gap-5">
+					<div className=" space-y-5">
 						<div className=" bg-white rounded-md p-5 space-y-3">
 							<h4>Specification</h4>
 							<table className="w-full text-left text-gray-600">
@@ -96,22 +92,21 @@ export default async function ProductDetails({
 								</tr>
 							</table>
 						</div>
-						<div className=" bg-white rounded-md p-5 space-y-3">
-							<h3>Description</h3>
-
-							<h3>
-								{product?.product?.name}{" "}
-								{product?.product?.processor_model}{" "}
-								{product?.product?.generation}{" "}
-								{product?.product?.display}
-							</h3>
-
-							<p>{product?.product?.description}</p>
-						</div>
 
 						{/* <Reviews reviews={product?.product?.reviews}/> */}
 					</div>
-					<RelatedProduct />
+					<div className=" bg-white rounded-md p-5 space-y-3">
+						<h3>Description</h3>
+
+						<h3>
+							{product?.product?.name}{" "}
+							{product?.product?.processor_model}{" "}
+							{product?.product?.generation}{" "}
+							{product?.product?.display}
+						</h3>
+
+						<p>{product?.product?.description}</p>
+					</div>
 				</div>
 			</div>
 		</>

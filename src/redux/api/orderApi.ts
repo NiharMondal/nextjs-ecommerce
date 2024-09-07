@@ -8,7 +8,7 @@ export const orderApi = baseApi.injectEndpoints({
         //user creating order
         addOrder : builder.mutation<TServerResponse<TOrderResponse>,TOrderRequest>({
             query: (payload)=>{
-                console.log(payload)
+            
                 return {
                     url:"/order",
                     method:"POST",

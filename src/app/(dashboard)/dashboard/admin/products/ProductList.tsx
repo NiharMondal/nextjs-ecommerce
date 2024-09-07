@@ -4,7 +4,6 @@ import React, { useState } from "react";
 
 import ProductAction from "./ProductAction";
 import { useGetAllProductQuery } from "@/redux/api/productApi";
-import { serialize } from "v8";
 import Pagination from "@/components/shared/Pagination";
 
 export default function ProductList() {
@@ -14,10 +13,10 @@ export default function ProductList() {
 
 	const query: Record<string, string> = {};
 	query["search"] = search;
-	query["limit"] = limit;
-	query["page"] = page.toString();
+	query["limit"] = limit.toString();
+	query["page"] = page.toString()
 	const { data: products, isLoading } = useGetAllProductQuery(query);
-
+	
 	return (
 		<div className="space-y-5">
 			<p className="text-accent font-semibold text-lg bg-secondary/10 tracking-wider p-5 rounded-md border-l-2 border-accent">
@@ -78,7 +77,7 @@ export default function ProductList() {
 										<td>${product.price}</td>
 										<td>{product.brand}</td>
 										<td>{product.inStock}</td>
-										<ProductAction id={product.id} />
+										<ProductAction id={product?.id} />
 									</tr>
 								);
 							})}

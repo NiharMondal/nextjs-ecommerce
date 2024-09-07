@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useAddFeatureProductMutation } from "@/redux/api/featuredAndOfferApi";
 import OfferModal from "./OfferModal";
 import { useDeleteProductMutation } from "@/redux/api/productApi";
+import ProductEditModal from "@/components/admin-dashboard/@product/ProductEditModal";
 export default function ProductAction({ id }: { id: string }) {
 	const [deleteProduct] = useDeleteProductMutation();
 	const [addFeatureProduct] = useAddFeatureProductMutation();
@@ -11,7 +12,7 @@ export default function ProductAction({ id }: { id: string }) {
 	const handleDelete = async (id: string) => {
 		try {
 			const res = await deleteProduct(id).unwrap();
-			toast.success(res.message);
+			toast.success(res?.message);
 		} catch (error) {
 			toast.error("Something went wrong!");
 		}
@@ -42,9 +43,7 @@ export default function ProductAction({ id }: { id: string }) {
 				</button>
 			</td>
 			<td className="text-center space-x-1">
-				<button className="bg-accent/50 px-3 py-1 rounded-full text-gray-500 ">
-					Edit
-				</button>
+				<ProductEditModal productId={id} />
 				<button
 					onClick={() => handleDelete(id)}
 					className=" px-3 py-1 border border-accent rounded-md text-red-800 hover:bg-red-700 hover:text-white"

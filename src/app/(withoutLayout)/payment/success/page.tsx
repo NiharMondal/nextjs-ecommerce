@@ -28,13 +28,13 @@ export default function SuccessPage() {
 		items: reformItems,
 	};
 	const makeOder = async () => {
-		if (cartItems.length) {
+		if (!cartItems.length) {
+			router.replace("/payment/success-message");
+		} else {
 			const res = await addOrder(forOrderApi).unwrap();
 			if (res.success) {
 				dispatch(clearCart());
 			}
-		} else {
-			router.replace("/payment/success-message");
 		}
 	};
 

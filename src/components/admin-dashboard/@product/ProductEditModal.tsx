@@ -7,11 +7,16 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import ImageWeidget from "@/components/shared/ImageWeidget";
-import { useCreateProductMutation } from "@/redux/api/productApi";
+import {
+	useGetSingleProductQuery,
+	useUpdateProductMutation,
+} from "@/redux/api/productApi";
+type PartialProduct = Partial<TProduct>;
+export default function ProductEditModal({ productId }: { productId: string }) {
+	const { data: product } = useGetSingleProductQuery(productId);
 
-export default function ProductModal() {
-	const [createProduct, { isLoading: createLoading }] =
-		useCreateProductMutation();
+	const [updateProduct, { isLoading: updateLoading }] =
+		useUpdateProductMutation();
 	//for modal
 	const [isOpen, setIsOpen] = useState(false);
 	//for features
@@ -31,7 +36,7 @@ export default function ProductModal() {
 	};
 
 	//handle onSubmit
-	const onSubmit: SubmitHandler<TProduct> = async (data) => {
+	const onSubmit: SubmitHandler<PartialProduct> = async (data) => {
 		data.photo = photo?.secure_url;
 		data.price = Number(data.price);
 		data.regularPrice = Number(data.regularPrice);
@@ -39,27 +44,27 @@ export default function ProductModal() {
 		data.features = features;
 
 		try {
-			const response = await createProduct(data).unwrap();
+			const response = await updateProduct({
+				id: productId,
+				payload: data,
+			}).unwrap();
 			console.log(response);
 			if (response.success) {
 				toast.success(response.message);
 				setIsOpen(false);
 			}
 		} catch (error: any) {
-			if (error.status === 400) {
-				error.data.errorDetails.map((e: any) => toast.error(e.message));
-			} else {
-				toast.error("Something went wrong!");
-			}
+			console.log(error);
+			toast.error(error?.data?.message);
 		}
 	};
 	return (
 		<>
 			<button
 				onClick={() => setIsOpen(true)}
-				className="bg-secondary px-5 py-2 text-white rounded-md hover:bg-secondary/80"
+				className="px-3 py-1 border border-accent rounded-md text-red-800 hover:bg-secondary hover:text-white"
 			>
-				Create Product
+				Edit
 			</button>
 
 			<Dialog
@@ -85,6 +90,7 @@ export default function ProductModal() {
 									<div>
 										<p>Product name</p>
 										<input
+											defaultValue={product?.result?.name}
 											type="text"
 											{...register("name")}
 										/>
@@ -92,6 +98,9 @@ export default function ProductModal() {
 									<div>
 										<p>Price</p>
 										<input
+											defaultValue={
+												product?.result?.price
+											}
 											type="number"
 											{...register("price")}
 										/>
@@ -99,6 +108,9 @@ export default function ProductModal() {
 									<div>
 										<p>Regular Price</p>
 										<input
+											defaultValue={
+												product?.result?.regularPrice
+											}
 											type="number"
 											{...register("regularPrice")}
 										/>
@@ -106,6 +118,9 @@ export default function ProductModal() {
 									<div>
 										<p>Display name</p>
 										<input
+											defaultValue={
+												product?.result?.display
+											}
 											{...register("display")}
 											type="text"
 											placeholder="FHD (1920 X 1080)"
@@ -114,6 +129,9 @@ export default function ProductModal() {
 									<div>
 										<p>Stock</p>
 										<input
+											defaultValue={
+												product?.result?.inStock
+											}
 											type="number"
 											{...register("inStock")}
 										/>
@@ -299,6 +317,9 @@ export default function ProductModal() {
 								</div>
 								<div>
 									<textarea
+										defaultValue={
+											product?.result?.description
+										}
 										{...register("description")}
 										rows={4}
 										placeholder="Product description..."
@@ -332,7 +353,7 @@ export default function ProductModal() {
 									type="submit"
 									className="bg-accent py-2 text-white rounded-md hover:bg-accent/90 px-5"
 								>
-									{createLoading ? "Creating..." : "Create"}
+									{updateLoading ? "Updating..." : "Update"}
 								</button>
 							</form>
 						</div>

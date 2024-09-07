@@ -1,16 +1,23 @@
-import { TProductResponse } from '@/types';
-import React from 'react'
+import { TProductResponse } from "@/types";
+import React from "react";
 
-export default function ProductInfo({product}:{product:TProductResponse}) {
-  return (
+export default function ProductInfo({
+	product,
+}: {
+	product: TProductResponse;
+}) {
+	return (
 		<>
-			<h3 className=" text-primary">{product?.name}</h3>
+			<h3 className="font-normal text-primary">
+				{product?.name} {product?.processor_model} {product?.generation}{" "}
+				{product?.display}
+			</h3>
 			<div className="whitespace-nowrap  flex flex-wrap items-center gap-3 *:bg-gray-200 *:py-1 *:px-3 *:rounded-full">
 				<p>
 					Price:{" "}
 					<span className="font-semibold">${product?.price}</span>
 				</p>
-				<p >
+				<p>
 					Regular Price:{" "}
 					<span className="font-semibold">
 						{" "}
@@ -31,5 +38,5 @@ export default function ProductInfo({product}:{product:TProductResponse}) {
 				</p>
 			</div>
 		</>
-  );
+	);
 }

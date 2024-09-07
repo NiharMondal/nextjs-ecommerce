@@ -2,6 +2,11 @@ import { TProductResponse, TServerResponse } from "@/types";
 import { baseApi } from "../baseApi";
 import { TProduct } from "@/types";
 
+type UpdateProductPayload = {
+    id: string;
+    payload: Partial<TProduct>
+}
+
 const productApi = baseApi.injectEndpoints({
     endpoints: (builder)=>({
 
@@ -37,10 +42,44 @@ const productApi = baseApi.injectEndpoints({
             },
             providesTags:["product"]
         }),
+        
+        //get single product
+        getSingleProduct: builder.query<TServerResponse<TProductResponse>,string>({
+            query: (id)=>{
+                return{
+                    url:`/product/admin/${id}`,
+                    method:"GET",
+                }
+            },
+            providesTags:['product']
+        }),
 
+        getRelatedProduct: builder.query<TServerResponse<TProductResponse[]>,string>({
+            query: (id)=>{
+                return{
+                    url:`/product/related-product/${id}`,
+                    method:"GET",
+                }
+            },
+            providesTags:['product']
+        }),
+
+        //update product
+        updateProduct: builder.mutation<TServerResponse<TProductResponse>,UpdateProductPayload>({
+            query: ({payload,id}) => {
+                return {
+                    url:`/product/${id}`,
+                    method:"PATCH",
+                    body: payload
+                }
+            },
+            invalidatesTags:['product']
+        }),
+
+        //soft delete
         deleteProduct : builder.mutation<TServerResponse<TProductResponse>,string>({
             query:(id)=>({
-                url:`/product/${id}`,
+                url:`/product/soft/${id}`,
                 method:"DELETE",
             }),
             invalidatesTags:["product"]
@@ -51,4 +90,4 @@ const productApi = baseApi.injectEndpoints({
 });
 
 
-export const {useCreateProductMutation,useGetAllProductQuery,useDeleteProductMutation} = productApi;
+export const {useCreateProductMutation,useGetAllProductQuery,useGetSingleProductQuery, useGetRelatedProductQuery, useUpdateProductMutation, useDeleteProductMutation} = productApi;

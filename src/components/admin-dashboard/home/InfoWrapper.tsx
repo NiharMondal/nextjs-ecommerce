@@ -1,12 +1,16 @@
-import React from 'react'
+"use client";
+import React from "react";
 import {
 	CurrencyDollarIcon,
 	ShoppingCartIcon,
 	ClipboardDocumentListIcon,
 } from "@heroicons/react/24/outline";
-import ShortInfo from './ShortInfo';
+import ShortInfo from "./ShortInfo";
+import { useMetaDataQuery } from "@/redux/api/metaData";
 export default function InfoWrapper() {
-  return (
+	const { data: metaData } = useMetaDataQuery();
+
+	return (
 		<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 			<ShortInfo
 				icon={
@@ -17,7 +21,7 @@ export default function InfoWrapper() {
 					/>
 				}
 				title="Total Sales"
-				value="$1373823873"
+				value={"$" + metaData?.result?.totalSales}
 				clx="bg-primary/20"
 			/>
 			<ShortInfo
@@ -29,7 +33,7 @@ export default function InfoWrapper() {
 					/>
 				}
 				title="Total Ordrs"
-				value="2321"
+				value={metaData?.result?.orders}
 				clx="bg-secondary/20"
 			/>
 			<ShortInfo
@@ -41,9 +45,9 @@ export default function InfoWrapper() {
 					/>
 				}
 				title="Total Products"
-				value="432"
+				value={metaData?.result?.products}
 				clx="bg-yellow-500/20"
 			/>
 		</div>
-  );
+	);
 }

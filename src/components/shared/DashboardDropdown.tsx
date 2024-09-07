@@ -16,7 +16,7 @@ export default function DashboardDropdown() {
 	const handleLogout = () => {
 		logoutAction();
 		dispatch(logout());
-		router.push("/");
+		router.replace("/");
 	};
 
 	return (

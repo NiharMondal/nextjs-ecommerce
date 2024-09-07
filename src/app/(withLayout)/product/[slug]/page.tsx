@@ -65,9 +65,15 @@ export default async function ProductDetails({
 								</tr>
 								<tr>
 									<td className="py-2 font-medium ">
-										Processor Modle
+										Processor Model
 									</td>
 									<td>{product.processor_model}</td>
+								</tr>
+								<tr>
+									<td className="py-2 font-medium ">
+										Generation
+									</td>
+									<td>{product.generation}</td>
 								</tr>
 								<tr>
 									<td className="py-2 font-medium ">
@@ -122,7 +128,7 @@ export default async function ProductDetails({
 
 						{/* <Reviews reviews={product?.reviews} /> */}
 					</div>
-					<RelatedProduct />
+					<RelatedProduct productId={slug}/>
 				</div>
 			</div>
 		</>

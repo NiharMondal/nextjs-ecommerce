@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Loading() {
 	return (
-		<div className="absolute inset-0 bg-black/80">
+		<div className="absolute inset-0 bg-background">
 			<div className="flex items-center justify-center h-screen text-white">
 				<div className="animate-bounce">
 					<Image

@@ -26,7 +26,7 @@ type TOrderRes = {
 
 export default function UserOrderList() {
 	const user = useAppSelector(selectedUser);
-	const { data: orders } = useSingleUserOrderQuery(user!.id);
+	const { data: orders } = useSingleUserOrderQuery(user?.id as string);
 
 	return (
 		<div className="">
