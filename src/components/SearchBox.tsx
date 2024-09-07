@@ -48,7 +48,7 @@ export default function SearchBox() {
 					{/* Full-screen container to center the panel */}
 					<div className="absolute top-0 left-0 right-0">
 						{/* The actual dialog panel  */}
-						<DialogPanel className="max-w-lg space-y-4 bg-white p-8">
+						<DialogPanel className="w-full space-y-4 bg-white p-8">
 							<div className="relative group">
 								<input
 									value={search}
