@@ -5,7 +5,7 @@ import { decodeToken } from "@/utils/decodeToken";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -26,6 +26,7 @@ export default function SignInForm() {
 						role: user.role,
 					},
 				};
+
 				dispatch(setCredentials(userInfo));
 				if (user.role === "CUSTOMER") {
 					router.push("/account/edit-profile");
@@ -69,7 +70,9 @@ export default function SignInForm() {
 					Forgot your password?
 				</Link>
 			</div>
-			<button className="btn primary w-full text-white">Sign in</button>
+			<button className="btn primary w-full text-white">
+				<span>Sign in</span>
+			</button>
 			<div>
 				<p>
 					Don&apos;t have an account?{" "}

@@ -5,22 +5,22 @@ import { useRouter } from "next/navigation";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 export default function SearchBox() {
 	const router = useRouter();
-	const [search, setSearch] = useState("");
+	const [input, setInput] = useState("");
 	const [openSearch, setOpenSearch] = useState(false);
 
 	function open() {
 		setOpenSearch(true);
 	}
 	const handleSearch = () => {
-		if (search.length) {
-			router.push(`/product?search=${search}`);
+		if (input) {
+			router.push(`/product?search=${input}`);
 		} else {
 			router.push(`/product`);
 		}
 	};
 	const handleSearchForMobile = () => {
-		if (search.length) {
-			router.push(`/product?search=${search}`);
+		if (input) {
+			router.push(`/product?search=${input}`);
 		}else{
 			router.push(`/product`);
 		}
@@ -51,8 +51,8 @@ export default function SearchBox() {
 						<DialogPanel className="w-full space-y-4 bg-white p-8">
 							<div className="relative group">
 								<input
-									value={search}
-									onChange={(e) => setSearch(e.target.value)}
+									value={input}
+									onChange={(e) => setInput(e.target.value)}
 									type="text"
 									placeholder="Search Products"
 									className="ring-2 ring-secondary p-2 rounded outline-none w-full"
@@ -77,8 +77,8 @@ export default function SearchBox() {
 			<div className="hidden md:block">
 				<div className="flex items-center justify-center min-w-[200px] bg-light-gray rounded-full overflow-hidden h-12">
 					<input
-						value={search}
-						onChange={(e) => setSearch(e.target.value)}
+						value={input}
+						onChange={(e) => setInput(e.target.value)}
 						type="text"
 						placeholder="Search products..."
 						className="pl-8 w-full h-full outline-none text-gray-500 border-none focus:ring-0 ring-0"

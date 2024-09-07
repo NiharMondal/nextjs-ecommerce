@@ -23,7 +23,7 @@ export default function Process() {
 
 const ProcessCard = ({ process }: TCardProps) => {
 	return (
-		<div className="p-10 bg-white hover:bg-secondary/20 space-y-2 rounded-xl hover:shadow-lg hover:scale-105 duration-150 ">
+		<div className="p-10 bg-white space-y-2 rounded-xl hover:shadow-lg hover:scale-105 duration-150 ">
 			<div>
 				<process.icon className="size-20 w-fit mx-auto text-accent" />
 			</div>

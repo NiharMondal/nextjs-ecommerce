@@ -1,4 +1,5 @@
 "use client";
+import Loading from "@/app/loading";
 import { useAddOrderMutation } from "@/redux/api/orderApi";
 import { useAppSelector } from "@/redux/hooks";
 import { selectedUser } from "@/redux/slice/authSlice";
@@ -41,33 +42,5 @@ export default function SuccessPage() {
 	useEffect(() => {
 		makeOder();
 	}, [cartItems.length]);
-	return (
-		<div className="flex items-center gap-5 flex-wrap justify-between h-screen max-w-6xl mx-auto px-4 lg:px-0 pb-20">
-			<div>
-				<h1>Thank You!</h1>
-				<p>You have just placed an order! 🎇</p>
-
-				<h5 className="mt-5 text-lg">What you want to do next?</h5>
-				<div className="flex gap-x-7 mt-4 ">
-					<Link
-						href="/"
-						className="py-2 px-4 border-2 border-primary"
-					>
-						Go back home
-					</Link>
-					<Link href="/product" className="btn primary text-white">
-						Explore more
-					</Link>
-				</div>
-			</div>
-			<div className="relative order-first md:order-last">
-				<Image
-					src="/png/celebration.svg"
-					width={500}
-					height={500}
-					alt="success-celebration"
-				/>
-			</div>
-		</div>
-	);
+	return <Loading />;
 }
