@@ -8,7 +8,7 @@ import { useGetAllProductQuery } from "@/redux/api/productApi";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/solid";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Pagination from "@/components/shared/Pagination";
 
 export type InitialStateType = {
@@ -45,7 +45,7 @@ export default function ProductPage({
 	//query params these are going to backend
 	const queryParams: Record<string, string> = {};
 
-	queryParams["search"] = searchParams?.search || "";
+	queryParams["search"] = searchParams.search;
 	queryParams["price"] = price.toString();
 	queryParams["brand"] = brand.toString();
 
@@ -60,12 +60,13 @@ export default function ProductPage({
 	queryParams["ssd"] = ssd.toString();
 	queryParams["graphics"] = graphics.toString();
 	queryParams["operating_system"] = operating_system.toString();
-	// queryParams["features"] = features.toString();
+
 	queryParams["orderBy"] = orderBy.toString();
 	queryParams["page"] = page.toString();
 
 	// using rtk query to fetch data
 	const { data: products, isLoading } = useGetAllProductQuery(queryParams);
+	
 	if (isLoading) return <Loading />;
 	return (
 		<section className="max-w-7xl mx-auto">

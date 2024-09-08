@@ -13,16 +13,16 @@ export default function SearchBox() {
 	}
 	const handleSearch = () => {
 		if (input) {
-			router.push(`/product?search=${input}`);
+			router.replace(`/product?search=${input}`);
 		} else {
-			router.push(`/product`);
+			router.replace(`/product`);
 		}
 	};
 	const handleSearchForMobile = () => {
 		if (input) {
-			router.push(`/product?search=${input}`);
-		}else{
-			router.push(`/product`);
+			router.replace(`/product?search=${input}`);
+		} else {
+			router.replace(`/product`);
 		}
 		setOpenSearch(false);
 	};
