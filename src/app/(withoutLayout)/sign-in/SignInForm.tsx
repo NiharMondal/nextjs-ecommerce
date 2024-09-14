@@ -26,10 +26,10 @@ export default function SignInForm() {
 						role: user.role,
 					},
 				};
-
+				toast.success("Logged in successfully");
 				dispatch(setCredentials(userInfo));
 				if (user.role === "CUSTOMER") {
-					router.push("/account/edit-profile");
+					router.push("/account/order");
 				} else {
 					router.push("/dashboard/admin");
 				}

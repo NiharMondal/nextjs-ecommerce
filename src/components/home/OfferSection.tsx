@@ -28,7 +28,7 @@ export default function OfferSection({
 			<div className="max-w-4xl mx-auto rounded-md px-4 lg:px-0">
 				<Slider {...options}>
 					{products?.map((p) => (
-						<Link className="z-50" href={`/offer/${p.id}`}>
+						<Link className="z-50" href={`/offer/${p.id}`} key={p.id}>
 							<div
 								key={p.id}
 								className=" h-[350px] md:h-[450px] rounded-md relative border"
