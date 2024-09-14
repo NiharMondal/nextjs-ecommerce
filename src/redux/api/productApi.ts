@@ -32,8 +32,8 @@ const productApi = baseApi.injectEndpoints({
                             params.append(key, query[key].toString());
                         }
                     });
-                    }
-                return{
+                }
+                return {
 
                     url:`/product`,
                     method:"GET",
