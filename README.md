@@ -22,7 +22,8 @@ This is a full-stack e-commerce website built with Next.js, TailwindCSS, Redux T
   * Express.js
   * Prisma
   * MongoDB
-  * Payment System:
+  
+* Payment System:
   * Stripe
 ### Installation
 #### Clone the Repository
@@ -74,5 +75,6 @@ Seamless payment experience with Stripe integration.
 * Improve user dashboard with order history and tracking.
 
 
-**Backend GitHub Link**
+**Backend GitHub Link**   
+
 [Gadget Galaxy Backend](https://github.com/NiharMondal/gadget-galaxy-backend)
