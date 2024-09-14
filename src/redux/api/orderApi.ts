@@ -1,6 +1,6 @@
 
 import { TOrderRequest, TOrderResponse, TServerResponse } from "@/types";
-import { baseApi } from "../baseApi";
+import { baseApi } from "./baseApi";
 
 
 export const orderApi = baseApi.injectEndpoints({

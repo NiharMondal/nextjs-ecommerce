@@ -1,5 +1,5 @@
 import { TProductResponse, TServerResponse } from "@/types";
-import { baseApi } from "../baseApi";
+import { baseApi } from "./baseApi";
 import { TProduct } from "@/types";
 
 type UpdateProductPayload = {

@@ -1,6 +1,6 @@
 
 import { TChangePassword, TServerResponse, TUserRegistration, TUserRegistrationResponse } from "@/types";
-import { baseApi } from "../baseApi";
+import { baseApi } from "./baseApi";
 type TChangePasswordResponse = {
     success:boolean;
     message:string;

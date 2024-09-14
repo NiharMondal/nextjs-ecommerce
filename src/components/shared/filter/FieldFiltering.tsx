@@ -39,7 +39,7 @@ export default function FieldFiltering({
 				<div className="max-h-[300px] pr-5 overflow-y-auto filter-scrollbar">
 					{data.map((item) => (
 						<div
-							className="py-1 px-4 flex items-center gap-x-3 w-full hover:bg-primary/5 duration-100"
+							className="py-1 px-4 flex items-center gap-x-3 w-full hover:bg-primary/5 duration-100 "
 							key={item.value}
 						>
 							<input
@@ -48,8 +48,14 @@ export default function FieldFiltering({
 								name={item.name}
 								id={item.value}
 								value={item.value}
+								className="cursor-pointer"
 							/>
-							<label htmlFor={item.value} className="w-full inline-block h-full cursor-pointer">{item.name}</label>
+							<label
+								htmlFor={item.value}
+								className="w-full inline-block h-full cursor-pointer"
+							>
+								{item.name}
+							</label>
 						</div>
 					))}
 				</div>

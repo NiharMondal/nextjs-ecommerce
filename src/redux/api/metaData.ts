@@ -1,5 +1,5 @@
 import { TServerResponse } from "@/types";
-import { baseApi } from "../baseApi";
+import { baseApi } from "./baseApi";
 
 const metaApi = baseApi.injectEndpoints({
     endpoints: (builder)=>({

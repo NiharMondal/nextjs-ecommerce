@@ -41,10 +41,6 @@ export default async function ProductDetails({
 	params: { slug: string };
 }) {
 	const { result: product } = await productDetails(slug);
-	const reviewData = {
-		rating: product?.rating,
-		reviews: product?.reviews,
-	};
 	return (
 		<>
 			<DetailsWrapper product={product} />

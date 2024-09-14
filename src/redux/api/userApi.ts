@@ -3,7 +3,7 @@ import {
 	TServerResponse,
 	TUserResponse,
 } from "@/types";
-import { baseApi } from "../baseApi";
+import { baseApi } from "./baseApi";
 
 
 type TUpdateUserInfo = {

@@ -3,7 +3,7 @@ import cartReducer from "../redux/slice/cartSlice";
 import authReducer from "../redux/slice/authSlice";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
-import { baseApi } from "./baseApi";
+import { baseApi } from "./api/baseApi";
 import {
   persistReducer,
   FLUSH,

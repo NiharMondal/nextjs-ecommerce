@@ -14,7 +14,7 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
 		<Provider store={store}>
 			<PersistGate loading={null} persistor={persistor}>
 				{children}
-				<ToastContainer autoClose={1000} />
+				<ToastContainer autoClose={2000} />
 			</PersistGate>
 		</Provider>
 	);

@@ -1,5 +1,5 @@
 import { TCreateHotOffer, TFeaturedProductResponse, THotOfferResponse, TProductResponse, TServerResponse } from "@/types";
-import { baseApi } from "../baseApi";
+import { baseApi } from "./baseApi";
 
 
 
