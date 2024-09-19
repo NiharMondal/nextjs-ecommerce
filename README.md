@@ -4,7 +4,7 @@ This is a full-stack e-commerce website built with Next.js, TailwindCSS, Redux T
 **If you like it please give a star ⭐**    
 
 ### Available pages
-* Home page: /
+* Home page: https://gadget-galaxy-smoky.vercel.app/
 * Products page: /product
 * Single product page: /product/1
 * Offered product page: /offer/1
