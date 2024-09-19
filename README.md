@@ -90,9 +90,9 @@ Seamless payment experience with Stripe integration.
 #### Future Improvements
 * Add more payment gateways.
 * Implement real-time notifications for order updates.
-* Improve user dashboard with order history and tracking.
+* Improve user dashboard with tracking history.
 
 
-**Backend GitHub Link**   
+**Backend GitHub Link**    
 
-[Gadget Galaxy Backend](https://github.com/NiharMondal/gadget-galaxy-backend)
+Back end code: [Gadget Galaxy Backend](https://github.com/NiharMondal/gadget-galaxy-backend)
