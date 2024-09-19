@@ -1,5 +1,21 @@
 # Gadget Galaxy (a NextJs e-commerce web application)
-This is a full-stack e-commerce website built with Next.js, TailwindCSS, Redux Toolkit, RTK Query, Express.js, Prisma, and MongoDB. The application is designed for a seamless shopping experience, providing functionalities like product sorting, filtering, and search, along with an integrated Stripe payment system and user authentication.
+This is a full-stack e-commerce website built with Next.js, TailwindCSS, Redux Toolkit, RTK Query, NodeJs, Express.js, Prisma, and MongoDB. The application is designed for a seamless shopping experience, providing functionalities like product sorting, filtering, and search, along with an integrated Stripe payment system and user authentication.
+
+**If you like it please give a star ⭐**    
+
+### Available pages
+* Home page: /
+* Products page: /product
+* Single product page: /product/1
+* Offered product page: /offer/1
+* Cart page: /cart
+* Login page: /sign-in
+* Register page: /sign-up
+* 404 page
+
+### Screenshots
+![preview](public/preview/screencapture-gadget-galaxy.png)
+![preview](public/preview/screencapture-gadget-galaxy-product.png)
 
 ### Features
 * Next.js: Utilized for server-side rendering (SSR) to fetch products, improving SEO and performance.
