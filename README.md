@@ -14,7 +14,9 @@ This is a full-stack e-commerce website built with Next.js, TailwindCSS, Redux T
 * 404 page
 
 ### Screenshots
+* Home page
 ![preview](public/preview/screencapture-gadget-galaxy.png)
+* Product page
 ![preview](public/preview/screencapture-gadget-galaxy-product.png)
 
 ### Features
