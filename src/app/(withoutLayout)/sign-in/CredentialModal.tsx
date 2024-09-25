@@ -7,8 +7,8 @@ export default function CredentialModal() {
 
 	return (
 		<div className="absolute top-8 right-5">
-			<button onClick={() => setIsOpen(true)} title="See Credentials">
-				<QuestionMarkCircleIcon className="size-10 text-primary" />
+			<button onClick={() => setIsOpen(true)} title="See Credentials" className="bg-accent text-white p-2 rounded">
+				Credentials
 			</button>
 			<Dialog
 				open={isOpen}

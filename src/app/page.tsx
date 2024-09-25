@@ -6,6 +6,7 @@ import TopAppBar from "@/components/shared/TopAppBar";
 import { config } from "@/config";
 import { THotOfferResponse, TServerResponse } from "@/types";
 import React from "react";
+
 const getHotOfferProduct = async (): Promise<
 	TServerResponse<THotOfferResponse[]>
 > => {
