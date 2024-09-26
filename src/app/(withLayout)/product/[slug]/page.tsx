@@ -4,6 +4,7 @@ import DetailsWrapper from "@/components/product/product-details/DetailsWrapper"
 import RelatedProduct from "@/components/product/reviews/RelatedProduct";
 import { config } from "@/config";
 import type { Metadata } from "next";
+import Reviews from "@/components/product/reviews/Reviews";
 
 type Props = {
 	params: { slug: string };
@@ -41,6 +42,7 @@ export default async function ProductDetails({
 	params: { slug: string };
 }) {
 	const { result: product } = await productDetails(slug);
+	
 	return (
 		<>
 			<DetailsWrapper product={product} />
@@ -122,7 +124,7 @@ export default async function ProductDetails({
 							<p>{product?.description}</p>
 						</div>
 
-						{/* <Reviews reviews={product?.reviews} /> */}
+						{product?.reviews && <Reviews reviews={product?.reviews} productId={product.id} />}
 					</div>
 					<RelatedProduct productId={slug}/>
 				</div>

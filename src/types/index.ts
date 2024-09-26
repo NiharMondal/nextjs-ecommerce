@@ -25,7 +25,7 @@ export type TProductResponse = TProduct & {
   id:string; 
   rating:number; 
   slug:string;
-  reviews?: TReviews[]
+  reviews?: TReviewsResponse[]
   createdAt:string; 
   updatedAt:string;
 }
@@ -36,6 +36,16 @@ export type TReviews = {
   userId: string;
   productId:string;
 }
+export type TReviewsResponse = {
+  
+  id: string;
+  user: {
+    name:string;
+    avatar: string;
+  }
+  createdAt: string;
+  updatedAt:string;
+} & TReviews
 
 export type TOldProduct = {
 	id: string;

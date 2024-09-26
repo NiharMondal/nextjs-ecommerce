@@ -2,6 +2,7 @@ import Banner from "@/components/home/Banner";
 import FeaturedProduct from "@/components/home/FeaturedProduct";
 import OfferSection from "@/components/home/OfferSection";
 import Process from "@/components/home/Process";
+import Footer from "@/components/shared/Footer";
 import TopAppBar from "@/components/shared/TopAppBar";
 import { config } from "@/config";
 import { THotOfferResponse, TServerResponse } from "@/types";
@@ -27,6 +28,8 @@ export default async function HomePage() {
 			<OfferSection products={offerProducts && offerProducts?.result} />
 			<Process />
 			<FeaturedProduct />
+
+			<Footer />
 		</>
 	);
 }

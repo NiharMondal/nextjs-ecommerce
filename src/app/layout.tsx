@@ -4,7 +4,6 @@ import { Nunito } from "next/font/google";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Wrapper from "@/components/provider/Wrapper";
-import Footer from "@/components/shared/Footer";
 
 const nunito = Nunito({
 	subsets: ["latin"],
@@ -28,7 +27,6 @@ export default function RootLayout({
 				<Wrapper>
 					<main>{children}</main>
 				</Wrapper>
-				<Footer />
 			</body>
 		</html>
 	);

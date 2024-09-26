@@ -1,3 +1,4 @@
+import Footer from "@/components/shared/Footer";
 import TopAppBar from "@/components/shared/TopAppBar";
 import React from "react";
 type HomeLayoutProps = {
@@ -8,6 +9,7 @@ export default function HomeLayout({ children }: HomeLayoutProps) {
 		<>
 			<TopAppBar />
 			{children}
+			<Footer />
 		</>
 	);
 }

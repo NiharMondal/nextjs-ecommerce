@@ -42,6 +42,3 @@ export default function RelatedProduct({ productId }: { productId: string }) {
 	);
 }
 
-const RelatedProductCard = () => {
-	return <div></div>;
-};
