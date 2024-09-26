@@ -1,17 +1,20 @@
+import { TReviews, TReviewsResponse, TServerResponse } from "@/types";
 import { baseApi } from "./baseApi";
 
 
 const productReviewApi = baseApi.injectEndpoints({
     endpoints: builder=>({
-        createReview: builder.mutation({
-            query: ()=>({
-                url:"",
-                method:"POST"
+        createReview: builder.mutation<TServerResponse<TReviewsResponse>, TReviews>({
+
+            query: (payload)=>({
+                url:"/review",
+                method:"POST",
+                body:payload
             })
         }),
         getReview: builder.query({
-            query:(id)=>({
-                url:"",
+            query:()=>({
+                url:`/review`,
                 method:"GET"
             })
         }),

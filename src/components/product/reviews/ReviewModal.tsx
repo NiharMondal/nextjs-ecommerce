@@ -1,9 +1,11 @@
 "use client";
+import { useCreateReviewMutation } from "@/redux/api/productReviewApi";
 import { TReviews } from "@/types";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 type ReviewModalProsp = {
 	userId: string;
@@ -13,7 +15,9 @@ type ReviewModalProsp = {
 export default function ReviewModal({ userId, productId }: ReviewModalProsp) {
 	const router = useRouter();
 
-	const { register, handleSubmit } = useForm<TReviews>();
+	const { register, handleSubmit, reset } = useForm<TReviews>();
+
+	const [createReview] = useCreateReviewMutation();
 
 	// modal state
 	const [isOpen, setIsOpen] = useState(false);
@@ -26,17 +30,35 @@ export default function ReviewModal({ userId, productId }: ReviewModalProsp) {
 		setIsOpen(false);
 	}
 
-	const handleSubmitReview: SubmitHandler<TReviews> = (data) => {
-		(data.productId = productId), (data.userId = userId);
-        console.log(data)
-		// if (!userId) {
-		// 	router.push("/sign-in");
-		// } else {
-		// 	console.log(data);
-		// }
+	const handleSubmitReview: SubmitHandler<TReviews> = async (data) => {
+		data.productId = productId;
+		data.userId = userId;
+		data.rating = Number(data.rating);
+
+		
+		if (!userId) {
+			router.push("/sign-in");
+		} else {
+			try {
+				const res = await createReview(data).unwrap();
+				if (res.success) {
+					toast.success(res.message);
+                    reset();
+                    close();
+				}
+			} catch (error: any) {
+				if (error?.status === 400) {
+					error?.data?.errorDetails.map((err: any) =>
+						toast.error(err.message)
+					);
+				} else {
+					toast.error("Something went wrong!");
+				}
+			}
+		}
 	};
 	return (
-		<>
+		<div>
 			<button
 				className="btn border-2 border-primary text-primary hover:bg-primary hover:text-white"
 				onClick={open}
@@ -53,7 +75,7 @@ export default function ReviewModal({ userId, productId }: ReviewModalProsp) {
 					<div className="flex min-h-full items-center justify-center p-4">
 						<DialogPanel
 							transition
-							className="w-full max-w-md rounded-xl bg-primary p-6 "
+							className="w-full max-w-md rounded-xl bg-secondary p-6 "
 						>
 							<form
 								onSubmit={handleSubmit(handleSubmitReview)}
@@ -93,7 +115,7 @@ export default function ReviewModal({ userId, productId }: ReviewModalProsp) {
 									/>
 								</div>
 
-								<button className="text-white bg-secondary px-4 py-2 rounded-md  hover:shadow-lg">
+								<button className="text-white bg-primary px-4 py-2 rounded-md  hover:shadow-lg">
 									Submit Review
 								</button>
 							</form>
@@ -101,6 +123,6 @@ export default function ReviewModal({ userId, productId }: ReviewModalProsp) {
 					</div>
 				</div>
 			</Dialog>
-		</>
+		</div>
 	);
 }

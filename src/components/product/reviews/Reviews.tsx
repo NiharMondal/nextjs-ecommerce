@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { TReviewsResponse } from "@/types";
 import { ClipboardDocumentListIcon } from "@heroicons/react/24/outline";
@@ -10,9 +10,9 @@ import { selectedUser } from "@/redux/slice/authSlice";
 type ReviewProps = {
 	reviews: TReviewsResponse[];
 	productId: string;
-}
-export default function Reviews({ reviews,productId }:ReviewProps) {
-	const user:any = useAppSelector(selectedUser);
+};
+export default function Reviews({ reviews, productId }: ReviewProps) {
+	const user: any = useAppSelector(selectedUser);
 
 	return (
 		<>
@@ -34,7 +34,7 @@ export default function Reviews({ reviews,productId }:ReviewProps) {
 							<div className="py-4 flex gap-3" key={review.id}>
 								<div className="max-h-[60px] max-w-[60px]">
 									<Image
-										src={avatar || review.user.avatar}
+										src={review?.user?.avatar || avatar}
 										height={100}
 										width={100}
 										alt="avatar"
