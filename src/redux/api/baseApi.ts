@@ -3,7 +3,7 @@ import { RootState } from '../store';
 import { config } from '@/config';
 
 
-const base_url = config.backend_url;
+const base_url = config.backend_url_production;
 
 
 export const baseApi = createApi({
