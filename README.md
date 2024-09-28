@@ -31,9 +31,8 @@ This is a full-stack e-commerce website built with Next.js, TailwindCSS, Redux T
   * Admin can manage product for featured product
   * Admin can manage product for "Hot Offer"
   * Admin can track transactions/latest order
-  * Admin can see most valuable customer      
-     
-*__User Dashboard__
+  * Admin can see most valuable customer        
+* __User Dashboard__
   * Users can track their order
   * Users can edit their profile
   * Users can upload new profile picture 

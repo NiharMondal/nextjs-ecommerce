@@ -20,7 +20,10 @@ export default function FeaturedCard({
 				/>
 			</div>
 			<p className="text-xl text-color hover:text-accent font-semibold hover:underline h-12">
-				<Link href={`/product/${product.slug}`}>{product?.name}</Link>
+				<Link href={`/product/${product.slug}`}>
+					{product?.name} {product?.processor_model} 
+					{product?.generation} {product?.display}
+				</Link>
 			</p>
 			<p className="mt-2 text-xl font-bold text-center text-accent">
 				${product?.price}
