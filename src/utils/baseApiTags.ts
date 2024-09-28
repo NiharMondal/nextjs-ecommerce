@@ -1,0 +1,1 @@
+export const tagList:string[] = ["product", "customer", "reviews","transactions","hot_offer","featured_product","user","address","order","review"]

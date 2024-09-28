@@ -10,22 +10,35 @@ const productReviewApi = baseApi.injectEndpoints({
                 url:"/review",
                 method:"POST",
                 body:payload
-            })
+            }),
+            invalidatesTags:["review"]
         }),
-        getReview: builder.query({
+        getReview: builder.query<TServerResponse<TReviewsResponse[]>, void>({
             query:()=>({
                 url:`/review`,
                 method:"GET"
-            })
+            }),
+            providesTags:["review"]
         }),
-        getSingleReview: builder.query<any, string>({
+
+        getSingleReview: builder.query<TServerResponse<TReviewsResponse>, string>({
             query:(id)=>({
                 url: `/review/${id}`,
                 method:"GET"
-            })
+            }),
+            providesTags:["review"]
         }),
+        
+        deleteReview: builder.mutation({
+            query:(id)=>({
+                url: `/review/${id}`,
+                method:"DELETE",
+
+            }),
+            invalidatesTags:["review"]
+        })
     })
 });
 
 
-export const {useCreateReviewMutation, useGetReviewQuery,useGetSingleReviewQuery} = productReviewApi;
+export const {useCreateReviewMutation, useGetReviewQuery,useGetSingleReviewQuery,useDeleteReviewMutation} = productReviewApi;

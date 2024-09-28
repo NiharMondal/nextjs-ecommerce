@@ -39,7 +39,11 @@ export type TReviews = {
 export type TReviewsResponse = {
   
   id: string;
-  user: {
+  product?: {
+    name:string;
+  
+  }
+  user?: {
     name:string;
     avatar: string;
   }

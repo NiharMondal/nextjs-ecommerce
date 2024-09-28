@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { RootState } from '../store';
 import { config } from '@/config';
+import { tagList } from '@/utils/baseApiTags';
 
 
-const base_url = config.backend_url_production;
+const base_url = config.backend_url;
 
 
 export const baseApi = createApi({
@@ -19,6 +20,6 @@ export const baseApi = createApi({
 			return headers;
 		},
     }),
-    tagTypes:["product", "customer", "reviews","transactions","hot_offer","featured_product","user","address","order"],
+    tagTypes: tagList,
     endpoints: ()=> ({})
 })
