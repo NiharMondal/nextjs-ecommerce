@@ -19,15 +19,17 @@ export default function FeaturedCard({
 					className="w-full h-full object-cover object-center group-hover:opacity-75 scale-90"
 				/>
 			</div>
-			<p className="text-xl text-color hover:text-accent font-semibold hover:underline h-12">
-				<Link href={`/product/${product.slug}`}>
-					{product?.name} {product?.processor_model} 
-					{product?.generation} {product?.display}
-				</Link>
-			</p>
-			<p className="mt-2 text-xl font-bold text-center text-accent">
-				${product?.price}
-			</p>
+			<div className="space-y-3">
+				<p className="text-lg text-color hover:text-accent font-semibold hover:underline ">
+					<Link href={`/product/${product.slug}`}>
+						{product?.name} {product?.processor_model}
+						{product?.generation}
+					</Link>
+				</p>
+				<p className="mt-2 text-xl font-bold text-center text-accent">
+					${product?.price}
+				</p>
+			</div>
 		</div>
 	);
 }

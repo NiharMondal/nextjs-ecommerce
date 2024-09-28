@@ -7,14 +7,17 @@ export default function OfferProductInfo({ product }: { product: THotOfferRespon
 			<h3 className=" text-primary">{product?.product?.name}</h3>
 			<div className="whitespace-nowrap  flex flex-wrap items-center gap-3 *:bg-gray-200 *:py-1 *:px-3 *:rounded-full">
 				<p className="text-primary">
+					Discount:{" "}
+					<span className="font-semibold">{product?.discount}%</span>
+				</p>
+				<p className="text-primary">
 					Offered Price:{" "}
-					<span className="font-semibold">{product?.price}</span>
+					<span className="font-semibold">${product?.price}</span>
 				</p>
 				<p className="line-through">
 					Price:{" "}
 					<span className="font-semibold">
-						{" "}
-						{product?.product?.price}
+						${product?.product?.price}
 					</span>
 				</p>
 				<p>
