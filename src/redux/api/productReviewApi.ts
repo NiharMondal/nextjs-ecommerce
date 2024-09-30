@@ -29,7 +29,7 @@ const productReviewApi = baseApi.injectEndpoints({
             providesTags:["review"]
         }),
         
-        deleteReview: builder.mutation({
+        deleteReview: builder.mutation<TServerResponse<TReviewsResponse>, string>({
             query:(id)=>({
                 url: `/review/${id}`,
                 method:"DELETE",

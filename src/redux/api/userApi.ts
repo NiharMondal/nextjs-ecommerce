@@ -69,8 +69,16 @@ const userApi = baseApi.injectEndpoints({
 			}),
 			invalidatesTags: ["address"],
 		}),
+
+
+		topCustomer : builder.query({
+			query:()=>({
+				url: "/user/top-customer",
+				method:"GET",
+			})
+		})
 		
 	}),
 });
 
-export const { useGetMyProfileQuery, useUpdateProfileMutation, useUpdateAvatarMutation,useGetAddressQuery, useUpdateAddressMutation } = userApi;
+export const { useGetMyProfileQuery, useUpdateProfileMutation, useUpdateAvatarMutation,useGetAddressQuery, useUpdateAddressMutation, useTopCustomerQuery } = userApi;

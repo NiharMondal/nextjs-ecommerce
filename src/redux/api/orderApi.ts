@@ -20,7 +20,7 @@ export const orderApi = baseApi.injectEndpoints({
         }),
 
         //for-admin
-        allOrders: builder.query({
+        allOrders: builder.query<TServerResponse<TOrderResponse[]>,void>({
             query:()=>({
                 url:"/order",
                 method:"GET"
@@ -33,15 +33,6 @@ export const orderApi = baseApi.injectEndpoints({
         singleUserOrder: builder.query<TServerResponse<any>, string>({
             query: (userId)=>({
                 url:`/order/${userId}`,
-                method:"GET"
-            }),
-            providesTags:["order"]
-        }),
-
-        //admin --> customers who successfully placed order
-        getCustomer: builder.query<TServerResponse<any>, void>({
-            query: ()=>({
-                url:`/order/customer`,
                 method:"GET"
             }),
             providesTags:["order"]
@@ -59,4 +50,4 @@ export const orderApi = baseApi.injectEndpoints({
 });
 
 
-export const {useAddOrderMutation, useAllOrdersQuery, useSingleUserOrderQuery, useGetCustomerQuery,useGetLatestOrderQuery} = orderApi;
+export const {useAddOrderMutation, useAllOrdersQuery, useSingleUserOrderQuery,useGetLatestOrderQuery} = orderApi;

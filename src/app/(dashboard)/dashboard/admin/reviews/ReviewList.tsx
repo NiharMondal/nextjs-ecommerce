@@ -1,11 +1,28 @@
 "use client";
-import { useGetReviewQuery } from "@/redux/api/productReviewApi";
+import {
+	useDeleteReviewMutation,
+	useGetReviewQuery,
+} from "@/redux/api/productReviewApi";
 import React from "react";
 import { TrashIcon } from "@heroicons/react/24/outline";
-export default function ReviewList() {
-	const { data: reviews, isLoading } = useGetReviewQuery();
+import { toast } from "react-toastify";
 
+
+
+export default function ReviewList() {
+	const { data: reviews } = useGetReviewQuery();
+	const [deleteReview] = useDeleteReviewMutation();
 	if (!reviews?.result.length) return <p>No data found!</p>;
+
+	const handleDelete = async (id: string) => {
+		try {
+			await deleteReview(id);
+
+			toast.success("Review deleted successfully");
+		} catch (error) {
+			toast.error("Something went wrong!");
+		}
+	};
 	return (
 		<div className="bg-white p-5 rounded">
 			<table className="w-full text-left">
@@ -18,13 +35,13 @@ export default function ReviewList() {
 				</thead>
 				<tbody>
 					{reviews?.result?.map((review) => (
-						<tr key={review.id} >
+						<tr key={review.id}>
 							<td className="py-2">{review?.product?.name}</td>
 							<td>{review?.user?.name}</td>
 							<td>{review.message.substring(0, 100)}</td>
 							<td>{review.rating}</td>
-							<td>
-								<TrashIcon width={20} className="text-accent" />
+							<td  onClick={() => handleDelete(review.id)}>
+								<TrashIcon width={20} className="text-accent cursor-pointer" />
 							</td>
 						</tr>
 					))}

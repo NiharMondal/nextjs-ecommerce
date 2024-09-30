@@ -1,10 +1,9 @@
 "use client";
-import { useGetCustomerQuery } from "@/redux/api/orderApi";
+import { useTopCustomerQuery } from "@/redux/api/userApi";
 import React from "react";
 
 export default function AdminCustomerPage() {
-	const { data: customers,isLoading } = useGetCustomerQuery();
-
+	const { data: customers,isLoading } = useTopCustomerQuery(undefined);
 	return (
 		<div className="space-y-5">
 			<div className="p-5 bg-secondary/10 text-accent rounded-md border-l-2 border-accent">
@@ -26,8 +25,8 @@ export default function AdminCustomerPage() {
 						<tbody>
 							{customers?.result.map((cu: any) => (
 								<tr className="border-b" key={cu?.id}>
-									<td className="py-2">{cu?.user?.name}</td>
-									<td>{cu?.user?.email}</td>
+									<td className="py-2">{cu?.name}</td>
+									<td>{cu?.email}</td>
 								</tr>
 							))}
 						</tbody>

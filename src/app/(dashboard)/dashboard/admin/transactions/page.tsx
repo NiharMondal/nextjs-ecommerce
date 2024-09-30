@@ -3,7 +3,7 @@ import { useAllOrdersQuery } from "@/redux/api/orderApi";
 import React from "react";
 
 export default function Transaction() {
-	const { data: orders,isLoading } = useAllOrdersQuery({});
+	const { data: orders,isLoading } = useAllOrdersQuery();
 	return (
 		<div className="space-y-3">
 			<h4>Brief details of Transaction information</h4>
