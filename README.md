@@ -3,10 +3,8 @@
 A high-performance Next.js e-commerce platform with Redux Toolkit for state management, dynamic product filtering, pagination, and integrated Stripe payments. This project is built with Server-Side Rendering (SSR) and Static Site Generation (SSG) for optimized SEO and fast performance. It uses TailwindCSS for styling and includes dynamic charts for data visualization.
 
 **If you like it please give a star ⭐**    
-**Backend GitHub Link**    
-
-Back end code: [Gadget Galaxy Backend](https://github.com/NiharMondal/gadget-galaxy-backend)
-
+ 
+**Back-end github:** [Gadget Galaxy Backend](https://github.com/NiharMondal/gadget-galaxy-backend)
 
 ### Features
 * Next.js: Utilized for server-side rendering (SSR) to fetch products, improving SEO and performance.
@@ -109,6 +107,9 @@ Seamless payment experience with Stripe integration.
 * Add more payment gateways.
 * Implement real-time notifications for order updates.
 * Improve user dashboard with tracking history.
+
+## Contributing
+Contributions are welcome! If you'd like to contribute to this project, feel free to submit a pull request or open an issue.
 
 ### Screenshots
 * Home page
