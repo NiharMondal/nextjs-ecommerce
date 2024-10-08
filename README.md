@@ -38,7 +38,7 @@ A high-performance Next.js e-commerce platform with Redux Toolkit for state mana
 * __Backend:__ Node.js, Express (Optional)    
 * __Database:__ MongoDB (with Mongoose/Prisma for querying)   
 * __Payments:__ Stripe    
-* __Charts:__ Chart.js or Recharts    
+* __Charts:__ Chart.js    
    
 
 ### Installation
