@@ -1,15 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import ForgotForm from "./ForgotForm";
+import ResetForm from "./ResetForm";
+import Link from "next/link";
+import Image from "next/image";
 
-export const metadata = {
-	title: "Forgot Password | Gadget Galaxy",
-	description:
-		"Reset your password to regain access to your account at Your Store Name. Enter your email to receive password reset instructions.",
-};
-
-export default function ForgotPassword() {
+export default function ResetPasswordPage() {
 	return (
 		<section className="h-screen flex items-center justify-center">
 			<div className="p-8 border-t-2 border-accent shadow-xl w-full max-w-xl rounded-md">
@@ -24,7 +18,7 @@ export default function ForgotPassword() {
 						/>
 					</Link>
 				</div>
-				<ForgotForm />
+				<ResetForm />
 			</div>
 		</section>
 	);
