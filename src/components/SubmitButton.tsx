@@ -2,10 +2,11 @@ import React from "react";
 interface ISubmitButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 	isLoading?: boolean;
 	children: React.ReactNode;
-	classsName?: string;
+	className?: string;
 }
 export default function SubmitButton({
 	isLoading,
+	className,
 	children,
 	...props
 }: ISubmitButtonProps) {
@@ -13,7 +14,10 @@ export default function SubmitButton({
 		<button
 			type="submit"
 			{...props}
-			className={`flex items-center justify-center capitalize btn primary text-white`}
+			className={`flex items-center justify-center capitalize btn  ${
+				!className ? "btn primary text-white" : className
+			}`}
+			disabled={isLoading}
 		>
 			{isLoading && (
 				<svg

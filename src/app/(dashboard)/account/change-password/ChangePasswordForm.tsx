@@ -1,4 +1,5 @@
 "use client";
+import SubmitButton from "@/components/SubmitButton";
 import { useChangePasswordMutation } from "@/redux/api/authApi";
 import { TChangePassword } from "@/types";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
@@ -8,7 +9,7 @@ import { toast } from "react-toastify";
 
 export default function ChangePasswordForm() {
 	const [showPass, setShowPass] = useState(false);
-	const [changePassword] = useChangePasswordMutation();
+	const [changePassword, { isLoading }] = useChangePasswordMutation();
 	const {
 		register,
 		handleSubmit,
@@ -89,10 +90,7 @@ export default function ChangePasswordForm() {
 					)}
 				</p>
 			</div>
-
-			<button type="submit" className="btn primary text-white">
-				Update
-			</button>
+			<SubmitButton isLoading={isLoading}>Update</SubmitButton>
 		</form>
 	);
 }
