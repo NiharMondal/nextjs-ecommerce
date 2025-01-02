@@ -8,6 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import ImageWeidget from "@/components/shared/ImageWeidget";
 import { useCreateProductMutation } from "@/redux/api/productApi";
+import SubmitButton from "@/components/SubmitButton";
 
 export default function ProductModal() {
 	const [createProduct, { isLoading: createLoading }] =
@@ -328,12 +329,12 @@ export default function ProductModal() {
 										))}
 									</div>
 								</div>
-								<button
-									type="submit"
+								<SubmitButton
+									isLoading={createLoading}
 									className="bg-accent py-2 text-white rounded-md hover:bg-accent/90 px-5"
 								>
-									{createLoading ? "Creating..." : "Create"}
-								</button>
+									Create
+								</SubmitButton>
 							</form>
 						</div>
 					</DialogPanel>

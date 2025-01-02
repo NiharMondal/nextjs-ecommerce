@@ -7,6 +7,7 @@ import { TUserRegistration } from "@/types";
 import { useSignUpUserMutation } from "@/redux/api/authApi";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import SubmitButton from "@/components/SubmitButton";
 export default function SignUpForm() {
 	const router = useRouter();
 	const [signUpUser, { isLoading }] = useSignUpUserMutation();
@@ -101,9 +102,12 @@ export default function SignUpForm() {
 				</p>
 			</div>
 
-			<button className="btn primary w-full text-white">
-				{isLoading ? "Please wait..." : "Register Account"}
-			</button>
+			<SubmitButton
+				isLoading={isLoading}
+				className="w-full primary text-white"
+			>
+				Sign Up
+			</SubmitButton>
 			<div>
 				<p>
 					Already have an account?{" "}

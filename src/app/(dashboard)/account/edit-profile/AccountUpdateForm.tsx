@@ -1,5 +1,6 @@
 "use client";
 import ImageWeidget from "@/components/shared/ImageWeidget";
+import SubmitButton from "@/components/SubmitButton";
 import {
 	useGetMyProfileQuery,
 	useUpdateAvatarMutation,
@@ -20,8 +21,10 @@ export default function AccountUpdateForm() {
 	const [photo, setPhoto] = useState<any>(null);
 	const user = useAppSelector(selectedUser);
 	const { data: profileInfo } = useGetMyProfileQuery(user?.id as string);
-	const [updateProfile] = useUpdateProfileMutation();
-	const [updateAvatar] = useUpdateAvatarMutation();
+	const [updateProfile, { isLoading: profileLoading }] =
+		useUpdateProfileMutation();
+	const [updateAvatar, { isLoading: avatarLoading }] =
+		useUpdateAvatarMutation();
 	const updateUserInfo: SubmitHandler<Partial<TUserResponse>> = async (
 		data
 	) => {
@@ -91,9 +94,7 @@ export default function AccountUpdateForm() {
 					/>
 				</div>
 
-				<button type="submit" className="btn primary text-white">
-					Update
-				</button>
+				<SubmitButton isLoading={profileLoading}>Update</SubmitButton>
 			</form>
 
 			{/* user profile photo update */}
@@ -113,12 +114,12 @@ export default function AccountUpdateForm() {
 					<span>
 						<ArrowRightIcon width={20} />
 					</span>
-					<button
-						type="submit"
-						className="btn border-2 border-primary hover:bg-primary hover:text-white"
+					<SubmitButton
+						className="bg-white text-primary border border-primary"
+						isLoading={avatarLoading}
 					>
-						Submit Photo
-					</button>
+						submit photo
+					</SubmitButton>
 				</form>
 			</div>
 		</div>
