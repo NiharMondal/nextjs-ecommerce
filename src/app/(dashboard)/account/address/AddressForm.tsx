@@ -1,4 +1,5 @@
 "use client";
+import SubmitButton from "@/components/SubmitButton";
 import {
 	useGetAddressQuery,
 	useUpdateAddressMutation,
@@ -14,7 +15,7 @@ export default function AddressForm() {
 	const user = useAppSelector(selectedUser);
 	const { register, handleSubmit } = useForm<TAddress>();
 	const { data: addressData } = useGetAddressQuery(user?.id as string);
-	const [updateAddress] = useUpdateAddressMutation();
+	const [updateAddress, { isLoading }] = useUpdateAddressMutation();
 	const updateAddressInfo: SubmitHandler<TAddress> = async (data) => {
 		const updatedData = {
 			payload: data,
@@ -71,9 +72,7 @@ export default function AddressForm() {
 				/>
 			</div>
 
-			<button type="submit" className="btn primary text-white">
-				Update
-			</button>
+			<SubmitButton isLoading={isLoading}>Update</SubmitButton>
 		</form>
 	);
 }
