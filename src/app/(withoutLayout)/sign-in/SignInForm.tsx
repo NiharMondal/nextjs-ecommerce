@@ -16,7 +16,7 @@ const demoUsers = {
 	},
 	admin: {
 		email: "demoadmin@gmail.com",
-		password: " demoadmin!pass",
+		password: "demoadmin!pass",
 	},
 };
 
